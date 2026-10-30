@@ -126,7 +126,7 @@ export function Header() {
         <div className="hidden items-center gap-2 lg:flex">
           <Link
             href="/contact"
-            className="rounded-full bg-signal px-5 py-2.5 text-[0.95rem] font-semibold text-white transition-colors hover:bg-[#5a48ff]"
+            className="rounded-full bg-signal px-5 py-2.5 text-[0.95rem] font-semibold text-on-signal transition-colors hover:bg-signal-hover"
           >
             Start a project
           </Link>
@@ -180,7 +180,7 @@ export function Header() {
           </ul>
           <Link
             href="/contact"
-            className="mt-auto block rounded-full bg-signal px-6 py-4 text-center font-semibold text-white"
+            className="mt-auto block rounded-full bg-signal px-6 py-4 text-center font-semibold text-on-signal"
           >
             Start a project
           </Link>

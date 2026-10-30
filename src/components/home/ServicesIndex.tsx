@@ -42,7 +42,7 @@ export function ServicesIndex({ services }: { services: ServiceCategory[] }) {
                 active !== null && active !== i ? "md:text-night/35" : ""
               } md:hover:pl-8`}
             >
-              <h3 className="display-soft text-2xl transition-colors group-hover:text-signal md:col-span-5 md:text-[2.1rem]">
+              <h3 className="display-soft text-2xl transition-colors group-hover:text-signal-ink md:col-span-5 md:text-[2.1rem]">
                 {s.name}
               </h3>
               <p className="max-w-[52ch] leading-relaxed text-graphite md:col-span-5">{s.line}</p>
@@ -56,7 +56,7 @@ export function ServicesIndex({ services }: { services: ServiceCategory[] }) {
         <div
           ref={panel}
           aria-hidden="true"
-          className={`pointer-events-none absolute left-0 top-0 z-10 w-72 rounded-2xl bg-night p-6 text-white shadow-[0_30px_60px_-20px_rgba(13,15,36,0.5)] transition-[opacity,scale] duration-300 ease-[var(--ease-out-quart)] ${
+          className={`pointer-events-none absolute left-0 top-0 z-10 w-72 rounded-2xl bg-night p-6 text-white shadow-[0_30px_60px_-20px_color-mix(in_srgb,var(--color-night)_50%,transparent)] transition-[opacity,scale] duration-300 ease-[var(--ease-out-quart)] ${
             current ? "scale-100 opacity-100" : "scale-90 opacity-0"
           }`}
         >

@@ -9,7 +9,7 @@ import { prefersReducedMotion } from "@/components/motion/utils";
 
 const themes = [
   { bg: "bg-night", text: "text-white", sub: "text-mist", accent: "text-signal", chip: "border-white/20 text-chalk/80" },
-  { bg: "bg-signal", text: "text-white", sub: "text-white/70", accent: "text-white/25", chip: "border-white/30 text-white/85" },
+  { bg: "bg-signal", text: "text-on-signal", sub: "text-on-signal/70", accent: "text-on-signal/15", chip: "border-on-signal/30 text-on-signal/85" },
   { bg: "bg-chalk", text: "text-night", sub: "text-graphite", accent: "text-signal", chip: "border-night/15 text-graphite" },
   { bg: "bg-night-2", text: "text-white", sub: "text-mist", accent: "text-signal-soft/40", chip: "border-white/20 text-chalk/80" },
   { bg: "bg-white", text: "text-night", sub: "text-graphite", accent: "text-night/10", chip: "border-night/15 text-graphite" },

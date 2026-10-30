@@ -30,7 +30,7 @@ export default function WorkPage() {
                 href={`/work/${p.slug}`}
                 className="group grid gap-4 py-10 md:grid-cols-12 md:items-baseline md:gap-6 md:px-4 md:hover:bg-chalk"
               >
-                <h2 className="display text-[clamp(2rem,4.5vw,3.5rem)] transition-colors group-hover:text-signal md:col-span-5">
+                <h2 className="display text-[clamp(2rem,4.5vw,3.5rem)] transition-colors group-hover:text-signal-ink md:col-span-5">
                   {p.name}
                 </h2>
                 <div className="md:col-span-4">

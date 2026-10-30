@@ -36,7 +36,7 @@ export function Footer() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="rounded-full bg-signal px-6 py-3 font-semibold text-white transition-colors hover:bg-[#5a48ff]"
+                className="rounded-full bg-signal px-6 py-3 font-semibold text-on-signal transition-colors hover:bg-signal-hover"
               >
                 Start a project
               </Link>

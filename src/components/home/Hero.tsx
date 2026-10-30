@@ -98,7 +98,7 @@ export function Hero() {
             <Magnetic>
               <Link
                 href="/contact"
-                className="block rounded-full bg-signal px-7 py-4 font-semibold text-white transition-colors hover:bg-[#5a48ff]"
+                className="block rounded-full bg-signal px-7 py-4 font-semibold text-on-signal transition-colors hover:bg-signal-hover"
               >
                 Start a project
               </Link>

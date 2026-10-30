@@ -151,7 +151,7 @@ export default function Home() {
                 <li key={ind.name}>
                   <Link
                     href={`/work/${ind.work}`}
-                    className="block rounded-full bg-signal px-5 py-3 font-semibold transition-colors hover:bg-[#5a48ff]"
+                    className="block rounded-full bg-signal px-5 py-3 font-semibold text-on-signal transition-colors hover:bg-signal-hover"
                   >
                     {ind.name}
                   </Link>
@@ -185,14 +185,14 @@ export default function Home() {
               whoever is free.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 font-semibold">
-              <Link href="/about" className="text-signal underline-offset-4 hover:underline">
+              <Link href="/about" className="text-signal-ink underline-offset-4 hover:underline">
                 About 7CODE
               </Link>
               <a
                 href={site.founder.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-signal underline-offset-4 hover:underline"
+                className="text-signal-ink underline-offset-4 hover:underline"
               >
                 LinkedIn
               </a>
@@ -200,7 +200,7 @@ export default function Home() {
                 href={site.founder.upwork}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-signal underline-offset-4 hover:underline"
+                className="text-signal-ink underline-offset-4 hover:underline"
               >
                 Upwork profile
               </a>
@@ -210,19 +210,19 @@ export default function Home() {
       </section>
 
       {/* CONTACT CTA */}
-      <section aria-labelledby="cta-h" className="bg-signal text-white">
+      <section aria-labelledby="cta-h" className="bg-signal text-on-signal">
         <div className="wrap grid gap-10 py-20 md:grid-cols-12 md:py-28">
           <RevealText id="cta-h" className="display text-[clamp(2.6rem,6.5vw,5.75rem)] md:col-span-8">
               Have a big idea? Let&apos;s build it properly.
             </RevealText>
           <div className="md:col-span-4 md:self-end">
-            <p className="text-lg leading-relaxed text-white/85">
+            <p className="text-lg leading-relaxed opacity-85">
               Tell us about your goals. We&apos;ll reply with a practical plan, a timeline and a price.
             </p>
             <Magnetic>
             <Link
               href="/contact"
-              className="mt-8 inline-block rounded-full bg-white px-7 py-4 font-semibold text-night transition-colors hover:bg-chalk"
+              className="mt-8 inline-block rounded-full bg-night px-7 py-4 font-semibold text-white transition-colors hover:bg-night-2"
             >
               Start your project
             </Link>

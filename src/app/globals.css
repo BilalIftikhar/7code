@@ -1,16 +1,28 @@
 @import "tailwindcss";
 
 /* 7CODE design tokens */
+/*
+ * Colour roles
+ *   night / night-2   dark surfaces        paper / chalk   light surfaces
+ *   signal            accent fill          on-signal       text on accent fill
+ *   signal-hover      accent fill, hovered
+ *   signal-ink        accent as text on light    signal-soft  accent as text on dark
+ *   graphite / mist   secondary text on light / dark        rule  hairlines
+ */
 @theme {
-  --color-night: #0d0f24;
-  --color-night-2: #171a36;
-  --color-chalk: #edeff5;
-  --color-paper: #f8f9fc;
-  --color-signal: #4733ff;
-  --color-signal-soft: #8f84ff;
-  --color-graphite: #5b6075;
-  --color-mist: #a3a8bd;
-  --color-rule: #d3d7e3;
+  /* Magenta Night */
+  --color-night: #160b26;
+  --color-night-2: #24123a;
+  --color-chalk: #f2ecf2;
+  --color-paper: #fcf9fb;
+  --color-signal: #d6246e;
+  --color-signal-hover: #e83a82;
+  --color-on-signal: #ffffff;
+  --color-signal-ink: #b8175a;
+  --color-signal-soft: #ff8dbe;
+  --color-graphite: #5f566b;
+  --color-mist: #ada3b8;
+  --color-rule: #e2d9e3;
 
   --font-sans: "Archivo Variable", system-ui, sans-serif;
 

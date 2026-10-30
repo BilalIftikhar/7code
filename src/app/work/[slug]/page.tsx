@@ -116,7 +116,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
               <ol className="mt-6 space-y-6">
                 {p.approach.map((step, n) => (
                   <li key={n} className="grid grid-cols-[2.5rem_1fr] gap-2 border-t border-rule pt-6">
-                    <span className="tabular-nums text-signal">{String(n + 1).padStart(2, "0")}</span>
+                    <span className="tabular-nums text-signal-ink">{String(n + 1).padStart(2, "0")}</span>
                     <p className="text-lg leading-relaxed">{step}</p>
                   </li>
                 ))}
