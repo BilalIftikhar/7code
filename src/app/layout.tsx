@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/archivo/standard.css";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { Cursor } from "@/components/motion/Cursor";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -41,6 +44,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        <SmoothScroll />
+        <Cursor />
       </body>
     </html>
   );

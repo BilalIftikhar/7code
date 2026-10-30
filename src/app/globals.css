@@ -19,8 +19,14 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+  }
+  .has-cursor [data-cursor] {
+    cursor: none;
+  }
+  /* If JS never runs, reveal headlines anyway */
+  [data-reveal].invisible {
+    animation: reveal-fallback 0s 2.5s forwards;
   }
   body {
     background: var(--color-paper);
@@ -38,8 +44,7 @@
     border-radius: 2px;
   }
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
+    *,*::before, *::after {
       animation-duration: 0.01ms !important;
       animation-delay: 0ms !important;
       animation-iteration-count: 1 !important;
@@ -80,6 +85,9 @@
 @keyframes draw-seven {
   from { stroke-dashoffset: 1; }
   to { stroke-dashoffset: 0; }
+}
+@keyframes reveal-fallback {
+  to { visibility: visible; }
 }
 @keyframes rise {
   from { opacity: 0; transform: translateY(0.4em); }
