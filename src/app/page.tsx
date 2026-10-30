@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { services } from "@/lib/services";
-import { projects } from "@/lib/projects";
+import { archive, projects } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { Hero } from "@/components/home/Hero";
@@ -11,12 +11,15 @@ import { RevealText } from "@/components/motion/RevealText";
 import { Magnetic } from "@/components/motion/Magnetic";
 
 const industries: { name: string; work?: string }[] = [
+  { name: "Live events & marketplaces", work: "av-leads" },
   { name: "Logistics & transport", work: "ferry-global" },
   { name: "Heavy equipment & cranes", work: "seven-lift" },
   { name: "Construction & contracting", work: "maxtgc" },
   { name: "Industrial lifting", work: "masood-lifts" },
   { name: "Apparel & manufacturing", work: "muhseeq" },
-  { name: "eCommerce & retail" },
+  { name: "eCommerce & retail", work: "poolstore" },
+  { name: "Enterprise XR", work: "igivu" },
+  { name: "Logistics platforms", work: "logistivo" },
   { name: "Real estate" },
   { name: "Healthcare" },
   { name: "Education" },
@@ -57,13 +60,14 @@ export default function Home() {
             <dd className="display mt-6 text-6xl">{site.founder.yearsExperience} years</dd>
           </div>
           <div className="rounded-xl bg-card p-6 md:p-8">
-            <dt className="text-graphite">Live projects in this portfolio</dt>
-            <dd className="display mt-6 text-6xl">{projects.length}</dd>
+            <dt className="text-graphite">Projects shipped, including design work</dt>
+            <dd className="display mt-6 text-6xl">{projects.length + archive.length}</dd>
+            <dd className="mt-1 text-sm text-graphite">{projects.length} with full case studies</dd>
           </div>
           <div className="rounded-xl bg-card p-6 md:p-8">
             <dt className="text-graphite">Countries those clients operate in</dt>
-            <dd className="display mt-6 text-6xl">3</dd>
-            <dd className="mt-1 text-sm text-graphite">UAE, Oman and Pakistan</dd>
+            <dd className="display mt-6 text-6xl">4</dd>
+            <dd className="mt-1 text-sm text-graphite">UAE, Oman, United Kingdom and Pakistan</dd>
           </div>
         </dl>
       </section>
@@ -92,8 +96,8 @@ export default function Home() {
               More work
             </RevealText>
             <p className="max-w-[44ch] text-lg leading-relaxed text-graphite md:col-span-4 md:col-start-9 md:self-end">
-              Websites and search programmes for companies that sell heavy, specialised services, where one good lead is
-              worth a lot.
+              Marketplaces, storefronts, business websites and search programmes for clients in the UAE, Oman, the UK and
+              Pakistan.
             </p>
           </div>
 
@@ -185,10 +189,14 @@ export default function Home() {
           <div className="md:col-span-6 md:col-start-7">
             <p className="text-xl leading-relaxed">
               7CODE was founded by {site.founder.name}, a senior full-stack engineer with {site.founder.yearsExperience}{" "}
-              years of building production applications in Laravel, PHP, React, Next.js, Vue and Shopify.
+              years of building production web applications in Laravel, PHP, React, Vue, Next.js and Shopify.
             </p>
             <p className="mt-5 leading-relaxed text-graphite">
-              He leads the technical direction on every project and works with a distributed team of designers,
+              He spent four years as a senior software engineer at Algolix Technologies building SaaS products, and
+              currently builds the AV Leads marketplace. He is Top Rated on Upwork with a 100% Job Success Score.
+            </p>
+            <p className="mt-5 leading-relaxed text-graphite">
+              At 7CODE he leads the technical direction on every project and works with a distributed team of designers,
               developers and marketers across Pakistan. Clients get senior judgement on their project, not a hand-off to
               whoever is free.
             </p>

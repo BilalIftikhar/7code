@@ -90,13 +90,19 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
                 <dd className="mt-1 font-semibold">{p.client}</dd>
               </div>
               <div>
+                <dt className="text-sm text-graphite">Our role</dt>
+                <dd className="mt-1">{p.role}</dd>
+              </div>
+              <div>
                 <dt className="text-sm text-graphite">What we did</dt>
                 <dd className="mt-1">{p.scope.join(", ")}</dd>
               </div>
+              {p.stack.length > 0 && (
               <div>
                 <dt className="text-sm text-graphite">Built with</dt>
                 <dd className="mt-1">{p.stack.join(", ")}</dd>
               </div>
+              )}
               {p.focusAreas && (
                 <div>
                   <dt className="text-sm text-graphite">Areas targeted</dt>

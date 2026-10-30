@@ -46,7 +46,7 @@ export function WorkGrid({ projects, offset = 0 }: { projects: Project[]; offset
                 </p>
               </div>
               <span className="shrink-0 rounded-full border border-rule bg-card px-3 py-1 text-xs font-semibold">
-                {p.scope[0]}
+                {p.kind}
               </span>
             </div>
             <ul className="mt-3 flex flex-wrap gap-1.5">
