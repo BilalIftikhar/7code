@@ -6,7 +6,7 @@ import { submitEnquiry, type ContactState } from "./actions";
 import { services } from "@/lib/services";
 import { whatsappLink } from "@/lib/site";
 
-const budgets = ["Under $1,000", "$1,000 – $5,000", "$5,000 – $15,000", "$15,000+", "Not sure yet"];
+const budgets = ["Under AED 4,000 (≈ $1,000)", "AED 4,000 – 18,000", "AED 18,000 – 55,000", "AED 55,000+", "Not sure yet"];
 const timelines = ["As soon as possible", "Within 1 month", "1 – 3 months", "Flexible"];
 
 const input =

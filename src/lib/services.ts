@@ -31,7 +31,7 @@ export const services: ServiceCategory[] = [
     line: "Custom websites, web applications, SaaS platforms and APIs, built to be fast and easy to maintain.",
     includes: ["Custom websites", "Web applications", "SaaS development", "APIs & integrations", "CRM & ERP", "Maintenance"],
     tools: ["Next.js", "React", "Laravel", "Node.js", "PostgreSQL", "MySQL", "TypeScript", "Vercel"],
-    seoTitle: "Web & software development — custom websites, web apps and SaaS",
+    seoTitle: "Web Development Services — Custom Websites, Web Apps & SaaS in the UAE",
     metaDescription:
       "7CODE builds custom websites, web applications, SaaS platforms and APIs in Next.js, React and Laravel for businesses in the UAE, UK and worldwide.",
     h1: "Web and software development",
@@ -40,7 +40,7 @@ export const services: ServiceCategory[] = [
       "Most of our work is in Next.js and React on the front end and Laravel or Node.js behind it, with PostgreSQL or MySQL underneath. We pick the stack for the job, not the other way round, and we write code your next developer can pick up without a rewrite.",
     ],
     details: [
-      { name: "Custom websites", body: "Fast, search-friendly business websites built from your content and your sales process, not a theme with your logo on it." },
+      { name: "Custom websites", body: "Fast, search-friendly business websites built from your content and your sales process, in English, Arabic (right-to-left) or both." },
       { name: "Web applications", body: "Dashboards, portals, booking systems and internal tools, with proper user roles, validation and audit trails." },
       { name: "SaaS and marketplaces", body: "Multi-tenant products with subscriptions, onboarding, matching and payments, designed to grow without slowing down." },
       { name: "APIs and integrations", body: "REST APIs, OAuth logins, payment gateways and webhooks, including the edge cases real payment flows produce." },
@@ -75,7 +75,7 @@ export const services: ServiceCategory[] = [
     line: "iOS and Android apps from a single codebase, designed for how people actually use their phones.",
     includes: ["iOS & Android", "React Native", "Flutter", "App UI/UX", "App maintenance"],
     tools: ["React Native", "Expo", "Flutter", "TypeScript", "Firebase", "Laravel APIs"],
-    seoTitle: "Mobile app development — iOS and Android apps with React Native and Flutter",
+    seoTitle: "Mobile App Development — iOS & Android Apps for UAE Businesses",
     metaDescription:
       "Cross-platform iOS and Android app development with React Native and Flutter, from UX design and APIs to App Store and Google Play release.",
     h1: "Mobile app development",
@@ -115,7 +115,7 @@ export const services: ServiceCategory[] = [
     line: "Shopify and WooCommerce stores, custom themes and headless storefronts that turn visitors into orders.",
     includes: ["Shopify & Shopify Plus", "Theme development", "Headless Shopify", "WooCommerce", "Conversion optimisation"],
     tools: ["Shopify", "Liquid", "Hydrogen", "Next.js", "WooCommerce", "PHP"],
-    seoTitle: "eCommerce & Shopify development — stores, themes and headless storefronts",
+    seoTitle: "Shopify & eCommerce Website Development — UAE, UK & Pakistan",
     metaDescription:
       "Shopify, Shopify Plus, WooCommerce and headless eCommerce development: custom themes, store speed and conversion work for online retailers.",
     h1: "eCommerce and Shopify development",
@@ -159,7 +159,7 @@ export const services: ServiceCategory[] = [
     line: "Custom themes and plugins, speed work and dependable maintenance for WordPress sites.",
     includes: ["Custom themes", "Plugin development", "Elementor & Gutenberg", "Speed optimisation", "Maintenance"],
     tools: ["WordPress", "PHP", "Gutenberg", "Elementor", "ACF", "WooCommerce"],
-    seoTitle: "WordPress development — custom themes, plugins, speed and maintenance",
+    seoTitle: "WordPress Development — Custom Themes, Plugins & Speed Optimisation",
     metaDescription:
       "Custom WordPress themes and plugins, Elementor and Gutenberg builds, speed optimisation, maintenance and migrations from WordPress to Next.js.",
     h1: "WordPress development",
@@ -200,7 +200,7 @@ export const services: ServiceCategory[] = [
     line: "Search visibility on Google and in AI assistants, from technical fixes to local pages written for real areas.",
     includes: ["Technical SEO", "Local SEO", "International SEO", "Answer engine optimisation", "Generative engine optimisation", "SEO audits"],
     tools: ["Semrush", "Google Search Console", "Google Analytics 4", "Schema.org", "Next.js"],
-    seoTitle: "SEO, AEO & GEO services — rank on Google and get cited by AI assistants",
+    seoTitle: "SEO Services in Dubai & the UAE — SEO, AEO & GEO for AI Search",
     metaDescription:
       "Technical, local and international SEO plus answer engine (AEO) and generative engine optimisation (GEO) for businesses in the UAE, Oman and worldwide.",
     h1: "SEO, AEO and GEO",
@@ -211,9 +211,9 @@ export const services: ServiceCategory[] = [
     details: [
       { name: "Technical SEO", body: "Crawlability, Core Web Vitals, canonical tags, sitemaps, redirects and structured data, fixed at the code level." },
       { name: "Local SEO", body: "Location pages written for the real districts your customers search — Al Reem, Sohar Port, Dubai Marina — not copy-pasted city pages." },
-      { name: "International SEO", body: "Market and language targeting with hreflang and country-specific content when you sell across borders." },
+      { name: "International and bilingual SEO", body: "Market and language targeting with hreflang, including English and Arabic versions, when you sell across borders." },
       { name: "AEO", body: "Question-led content with concise, answer-first paragraphs and FAQ markup that search engines can quote." },
-      { name: "GEO", body: "Clear entity information, consistent business details across profiles and well-sourced content that AI assistants can rely on." },
+      { name: "GEO and AI Overviews", body: "Clear entity information, consistent business details and well-sourced content, so Google's AI Overviews, ChatGPT and Gemini can describe you accurately." },
       { name: "Audits and keyword research", body: "Competitor and keyword research with Semrush, and a prioritised list of fixes rather than a 90-page PDF." },
     ],
     forWho: [
@@ -243,7 +243,7 @@ export const services: ServiceCategory[] = [
     line: "Strategy, content and community management across the platforms your customers use.",
     includes: ["Instagram & Facebook", "LinkedIn", "TikTok", "YouTube", "Content planning"],
     tools: ["Meta Business Suite", "LinkedIn", "TikTok", "YouTube Studio", "Figma", "Canva"],
-    seoTitle: "Social media marketing — strategy, content and management",
+    seoTitle: "Social Media Marketing Agency — Strategy, Content & Management",
     metaDescription:
       "Social media strategy, content creation and account management for Instagram, Facebook, LinkedIn, TikTok and YouTube, tied to your website and leads.",
     h1: "Social media marketing",
@@ -283,7 +283,7 @@ export const services: ServiceCategory[] = [
     line: "Brand identities, design systems and product interfaces, designed in Figma and built to the pixel.",
     includes: ["Brand identity", "Logo design", "UI/UX design", "Design systems", "Figma to code", "Website redesign"],
     tools: ["Figma", "Adobe XD", "Illustrator", "Photoshop", "Framer"],
-    seoTitle: "Branding & UI/UX design — brand identity, product design and Figma to code",
+    seoTitle: "Branding & UI/UX Design Agency — Brand Identity, Web & App Design",
     metaDescription:
       "Brand identity, logo design, UI/UX design, design systems and Figma-to-code development for websites, SaaS products and mobile apps.",
     h1: "Branding and UI/UX design",
@@ -325,7 +325,7 @@ export const services: ServiceCategory[] = [
     line: "Google, Meta and LinkedIn campaigns measured against leads and sales, not impressions.",
     includes: ["Google Ads", "Meta Ads", "LinkedIn Ads", "PPC management", "Conversion tracking"],
     tools: ["Google Ads", "Meta Ads Manager", "LinkedIn Campaign Manager", "Google Analytics 4", "Google Tag Manager"],
-    seoTitle: "Performance marketing — Google Ads, Meta Ads and PPC management",
+    seoTitle: "Google Ads & PPC Management — Performance Marketing in the UAE",
     metaDescription:
       "Google Ads, Meta Ads and LinkedIn Ads campaigns with proper conversion tracking and landing pages, managed against leads and sales.",
     h1: "Performance marketing",
@@ -365,7 +365,7 @@ export const services: ServiceCategory[] = [
     line: "AI features, chatbots and workflow automation that remove repetitive work from your team.",
     includes: ["AI integration", "AI chatbots", "Workflow automation", "CRM automation", "AI-powered apps"],
     tools: ["OpenAI API", "Claude API", "n8n", "Zapier", "Laravel", "Next.js"],
-    seoTitle: "AI & automation — AI integration, chatbots and workflow automation",
+    seoTitle: "AI Automation & Chatbot Development — AI Integration for Businesses",
     metaDescription:
       "AI integration, chatbots, CRM automation and workflow automation for businesses, built into your existing website, apps and tools.",
     h1: "AI and automation",

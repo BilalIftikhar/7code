@@ -15,6 +15,11 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
 - [x] 4. Company: About (founder from CV, Person schema), How we work, Industries, Contact (server-validated form, honeypot + timing spam check, Resend email or WhatsApp hand-off), FAQ, Privacy, Terms, 404
 - [x] 5. Locations: /locations hub + Lahore (HQ, ProfessionalService schema), Dubai and Abu Dhabi (served remotely, Service schema — no office claimed)
 - [x] 6. Insights: Markdown articles in content/insights, index with topic filters, article pages (TOC, reading time, author bio, share, related, FAQs, BlogPosting + FAQPage + Breadcrumb schema), homepage "Latest insights"; 3 articles
+- [x] UAE competitor upgrade (vs Digital Gravity, Element8, Red Spider, AUN Digital):
+  - Keywords: keyword-led H1 + titles ("Web Development Company in Dubai", "Web Design & Development Company in Abu Dhabi", "Software House … in Lahore", "SEO Services in Dubai & the UAE"…); service-in-city sections on each location page; bilingual/Arabic + AI Overviews wording
+  - Trust & conversion: client-name strip, Upwork Top Rated / 100% JSS badges, verbatim Upwork reviews, count-up stats, homepage quote form, floating WhatsApp, AED budgets
+  - 3D: three.js extruded glossy "7" with particles + wireframe echo (mouse + scroll reactive, lazy-loaded after the intro, pauses off-screen, SVG fallback)
+  - Motion graphics: pinned "Build → Launch → Grow" scroll story, code-scramble keyword line, CSS headline reveal
 - [ ] 7. SEO/AEO/GEO + QA + deploy: sitemap, robots, Organization schema, OG images, Lighthouse, Vercel
 
 ## Needed from the founder before launch
@@ -28,7 +33,7 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
 - Confirm the UI/UX archive clients (Lahore Qalandars, Mövenpick, Harris Security etc.) — the Branding & UI/UX page mentions sports, security, logistics, hospitality and tech clients based on them
 - Services with no case study yet (mobile apps, social media, performance marketing, AI): add work as it ships
 - Contact form email: set RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL (see .env.example); until then it hands off to WhatsApp
-- Confirm budget ranges on the contact form (currently USD)
+- Confirm budget ranges on the contact form (now AED, with a USD hint on the first band)
 - Have Privacy and Terms reviewed before launch
 - Review the 3 launch articles — they're bylined to the founder
 
@@ -38,3 +43,4 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
 2. Frontmatter: `title`, `description` (meta, ~150 chars), `category` (one of the 15 in src/lib/insights.ts), `published: YYYY-MM-DD`; optional `seoTitle`, `updated`, `faqs` (list of `q`/`a`).
 3. Open with a bolded **Short answer:** paragraph, use `##` headings (they build the table of contents), and link to relevant /services, /work and /locations pages.
 4. Rebuild and deploy.
+- Semrush API units: top up to pull real search volumes and difficulty for the UAE/Lahore keyword set before final targeting

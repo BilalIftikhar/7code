@@ -4,20 +4,24 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { RevealText } from "@/components/motion/RevealText";
 import { Magnetic } from "@/components/motion/Magnetic";
+import { ScrambleText } from "@/components/motion/ScrambleText";
 import { ProjectVisual } from "@/components/ProjectVisual";
+import { HeroSeven } from "@/components/three/HeroSeven";
 import { prefersReducedMotion } from "@/components/motion/utils";
+import { site, whatsappLink } from "@/lib/site";
 import type { Project } from "@/lib/projects";
+
+const LINES = ["Digital", "experiences,", "engineered", "for growth."];
 
 export function Hero({ featured }: { featured: Project }) {
   const showcase = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion() || !showcase.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      // Showcase opens up from slightly inset to full width as it scrolls in
+      // Showcase opens up as it scrolls in (headline reveal is pure CSS — see .line-rise)
       gsap.fromTo(
         showcase.current,
         { clipPath: "inset(6% 4% 0% 4% round 18px)" },
@@ -32,46 +36,67 @@ export function Hero({ featured }: { featured: Project }) {
   }, []);
 
   return (
-    <section className="wrap pt-12 md:pt-20">
-      <div className="flex flex-wrap items-baseline justify-between gap-3 text-sm text-graphite">
-        <p className="rise" style={{ animationDelay: "0.1s" }}>
-          Digital agency, Lahore
-        </p>
-        <p className="rise" style={{ animationDelay: "0.15s" }}>
-          Working with the UAE, Oman and worldwide
-        </p>
+    <section className="wrap pt-10 md:pt-16">
+      <div className="grid items-center gap-6 lg:grid-cols-12">
+        <div className="relative z-10 lg:col-span-8">
+          <h1>
+            <span className="flex items-center gap-3 text-sm font-semibold text-graphite md:text-base">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-[#25d366] shadow-[0_0_0_4px_rgba(37,211,102,0.18)]" aria-hidden="true" />
+              <ScrambleText text="Web development, SEO & digital marketing agency for Dubai, Abu Dhabi & Lahore" delay={150} />
+            </span>{" "}
+            <span className="display mt-6 block text-[clamp(2.7rem,7.4vw,7.4rem)]">
+              {LINES.map((l, i) => (
+                <span key={l} className="block overflow-hidden pb-[0.06em]">
+                  <span className="line-rise block" style={{ animationDelay: `${0.15 + i * 0.09}s` }}>
+                    {l}
+                  </span>{" "}
+                </span>
+              ))}
+            </span>
+          </h1>
+        </div>
+        <HeroSeven className="-mt-4 h-[300px] sm:h-[380px] lg:col-span-4 lg:mt-0 lg:h-[560px]" />
       </div>
 
-      <RevealText
-        as="h1"
-        onLoad
-        delay={0.15}
-        className="display invisible mt-6 text-[clamp(2.9rem,10.6vw,10.5rem)] text-balance"
-      >
-        Digital experiences, engineered for growth.
-      </RevealText>
-
-      <div className="rise mt-10 grid gap-6 md:mt-12 md:grid-cols-12 md:items-end" style={{ animationDelay: "0.7s" }}>
-        <p className="max-w-[46ch] text-lg leading-relaxed text-graphite text-pretty md:col-span-6">
-          From custom software and high-performing websites to mobile apps, eCommerce and search marketing, 7CODE helps
-          businesses build, launch and grow with confidence.
-        </p>
+      <div className="rise mt-6 grid gap-6 md:mt-10 md:grid-cols-12 md:items-end" style={{ animationDelay: "0.8s" }}>
+        <div className="md:col-span-6">
+          <p className="max-w-[48ch] text-lg leading-relaxed text-graphite text-pretty">
+            Custom websites, web apps, Shopify stores and mobile apps — plus the SEO, AI-search and ad campaigns that make them
+            pay. Built by senior engineers for businesses across the UAE, Oman, the UK and Pakistan.
+          </p>
+          <ul className="mt-6 flex flex-wrap gap-2 text-sm">
+            <li className="flex items-center gap-2 rounded-full border border-rule bg-card px-3.5 py-2">
+              <span className="font-semibold">Top Rated</span>
+              <span className="text-graphite">on Upwork</span>
+            </li>
+            <li className="flex items-center gap-2 rounded-full border border-rule bg-card px-3.5 py-2">
+              <span className="font-semibold">100%</span>
+              <span className="text-graphite">Job Success</span>
+            </li>
+            <li className="flex items-center gap-2 rounded-full border border-rule bg-card px-3.5 py-2">
+              <span className="font-semibold">{site.founder.yearsExperience} years</span>
+              <span className="text-graphite">senior engineering</span>
+            </li>
+          </ul>
+        </div>
         <div className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
           <Magnetic>
             <Link
               href="/contact"
               className="block rounded-full bg-signal px-7 py-4 font-semibold text-on-signal transition-colors hover:bg-signal-hover"
             >
-              Start a project
+              Get a free quote
             </Link>
           </Magnetic>
           <Magnetic>
-            <Link
-              href="/work"
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block rounded-full border border-night/20 bg-card px-7 py-4 font-semibold text-night transition-colors hover:border-night"
             >
-              Explore our work
-            </Link>
+              WhatsApp us
+            </a>
           </Magnetic>
         </div>
       </div>

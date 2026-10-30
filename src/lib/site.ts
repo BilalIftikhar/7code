@@ -7,7 +7,7 @@ export const site = {
   url: "https://7code.agency", // TODO: confirm final domain
   tagline: "We build. We grow. We transform.",
   description:
-    "7CODE is a founder-led digital agency in Lahore building websites, web apps, mobile apps and eCommerce, and growing them with SEO, AEO and GEO for clients in the UAE and worldwide.",
+    "Web development, SEO and digital marketing agency for Dubai, Abu Dhabi and Lahore: custom websites, web apps, Shopify stores, mobile apps and AI-search SEO.",
   founder: {
     name: "Muhammad Bilal Iftikhar",
     role: "Founder & technical lead",

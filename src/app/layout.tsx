@@ -6,19 +6,20 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Cursor } from "@/components/motion/Cursor";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "7CODE — Digital agency for websites, apps and search growth",
+    default: "7CODE | Web Development & SEO Agency in Dubai, Abu Dhabi & Lahore",
     template: "%s | 7CODE",
   },
   description: site.description,
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: "7CODE — Digital agency for websites, apps and search growth",
+    title: "7CODE | Web Development & SEO Agency in Dubai, Abu Dhabi & Lahore",
     description: site.description,
   },
   twitter: { card: "summary_large_image" },
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Footer />
         <SmoothScroll />
         <Cursor />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

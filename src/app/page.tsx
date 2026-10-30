@@ -1,7 +1,13 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import { ClientStrip } from "@/components/home/ClientStrip";
+import { GrowthStory } from "@/components/home/GrowthStory";
+import { Testimonials } from "@/components/home/Testimonials";
+import { CountUp } from "@/components/motion/CountUp";
+import { ContactForm } from "@/app/contact/ContactForm";
 import { services } from "@/lib/services";
 import { archive, projects } from "@/lib/projects";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
@@ -10,7 +16,6 @@ import { ServicesIndex } from "@/components/home/ServicesIndex";
 import { RevealText } from "@/components/motion/RevealText";
 import { getArticles } from "@/lib/insights";
 import { ArticleCard } from "@/components/insights/ArticleCard";
-import { Magnetic } from "@/components/motion/Magnetic";
 
 const industries: { name: string; work?: string }[] = [
   { name: "Live events & marketplaces", work: "av-leads" },
@@ -54,21 +59,31 @@ export default function Home() {
     <>
       <Hero featured={projects[0]} />
 
+      <div className="mt-16 md:mt-24">
+        <ClientStrip />
+      </div>
+
       {/* CREDIBILITY — verified facts only */}
       <section aria-label="At a glance" className="wrap py-16 md:py-20">
         <dl className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <div className="rounded-xl bg-card p-6 md:p-8">
             <dt className="text-graphite">Founder&apos;s full-stack experience</dt>
-            <dd className="display mt-6 text-6xl">{site.founder.yearsExperience} years</dd>
+            <dd className="display mt-6 text-6xl">
+              <CountUp to={6} suffix="+" /> years
+            </dd>
           </div>
           <div className="rounded-xl bg-card p-6 md:p-8">
             <dt className="text-graphite">Projects shipped, including design work</dt>
-            <dd className="display mt-6 text-6xl">{projects.length + archive.length}</dd>
+            <dd className="display mt-6 text-6xl">
+              <CountUp to={projects.length + archive.length} />
+            </dd>
             <dd className="mt-1 text-sm text-graphite">{projects.length} with full case studies</dd>
           </div>
           <div className="rounded-xl bg-card p-6 md:p-8">
             <dt className="text-graphite">Countries those clients operate in</dt>
-            <dd className="display mt-6 text-6xl">4</dd>
+            <dd className="display mt-6 text-6xl">
+              <CountUp to={4} />
+            </dd>
             <dd className="mt-1 text-sm text-graphite">UAE, Oman, United Kingdom and Pakistan</dd>
           </div>
         </dl>
@@ -81,12 +96,14 @@ export default function Home() {
               What we do
             </RevealText>
           <p className="max-w-[44ch] text-lg leading-relaxed text-graphite md:col-span-4 md:col-start-9 md:self-end">
-            Nine disciplines, one team. Hire us for a single job or the whole thing, from first design to the leads that
-            follow.
+            Web development, mobile apps, Shopify, WordPress, SEO and digital marketing — nine disciplines, one team, from
+            first design to the leads that follow.
           </p>
         </div>
         <ServicesIndex services={services} />
       </section>
+
+      <GrowthStory />
 
       <Marquee />
 
@@ -116,6 +133,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Testimonials />
 
       {/* WHY 7CODE */}
       <section aria-labelledby="why-h" className="wrap py-24 md:py-32">
@@ -248,24 +267,29 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* CONTACT CTA */}
-      <section aria-labelledby="cta-h" className="wrap pb-6">
-        <div className="grid gap-10 rounded-2xl bg-night px-6 py-16 text-white md:grid-cols-12 md:px-12 md:py-24">
-          <RevealText id="cta-h" className="display text-[clamp(2.6rem,6.5vw,5.75rem)] md:col-span-8">
-              Have a big idea? Let&apos;s build it properly.
+      {/* QUOTE */}
+      <section aria-labelledby="quote-h" className="wrap pb-6">
+        <div className="grid gap-12 rounded-2xl bg-night px-6 py-14 text-white md:px-12 md:py-20 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <RevealText id="quote-h" className="display text-[clamp(2.6rem,5.5vw,5rem)]">
+              Have a big idea? Get a free quote.
             </RevealText>
-          <div className="md:col-span-4 md:self-end">
-            <p className="text-lg leading-relaxed opacity-85">
-              Tell us about your goals. We&apos;ll reply with a practical plan, a timeline and a price.
+            <p className="mt-6 max-w-[40ch] text-lg leading-relaxed text-white/75">
+              Tell us about your goals. We&apos;ll reply with a practical plan, a timeline and a fixed price.
             </p>
-            <Magnetic>
-            <Link
-              href="/contact"
-              className="mt-8 inline-block rounded-full bg-white px-7 py-4 font-semibold text-night transition-colors hover:bg-chalk"
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-block rounded-full border border-white/25 px-6 py-3 font-semibold transition-colors hover:border-white"
             >
-              Start your project
-            </Link>
-            </Magnetic>
+              Prefer WhatsApp? Message us
+            </a>
+          </div>
+          <div className="rounded-xl bg-paper p-5 text-night md:p-8 lg:col-span-7">
+            <Suspense fallback={<div className="h-[560px]" />}>
+              <ContactForm />
+            </Suspense>
           </div>
         </div>
       </section>

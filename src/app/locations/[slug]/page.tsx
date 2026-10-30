@@ -130,15 +130,35 @@ export default async function LocationPage({ params }: PageProps<"/locations/[sl
         <SectionTitle id="lsvc-h" note={`The services ${l.city} clients ask us for most.`}>
           Services in {l.city}
         </SectionTitle>
-        <ul className="mt-12 divide-y divide-rule border-b border-rule">
-          {svc.map((s) => (
-            <li key={s.slug}>
-              <Link href={`/services/${s.slug}`} className="group grid gap-2 py-6 md:grid-cols-12 md:items-baseline md:gap-6 md:px-4 md:hover:bg-card">
-                <h3 className="display-soft text-2xl md:col-span-5">{s.name}</h3>
-                <p className="leading-relaxed text-graphite md:col-span-6">{s.line}</p>
-              </Link>
-            </li>
-          ))}
+        <ul className="mt-12 grid gap-3 md:grid-cols-2">
+          {l.cityServices.map((cs) => {
+            const sv = services.find((x) => x.slug === cs.service);
+            return (
+              <li key={cs.h}>
+                <Link
+                  href={`/services/${cs.service}`}
+                  className="group flex h-full flex-col justify-between gap-8 rounded-xl bg-card p-6 transition-colors hover:bg-night hover:text-white md:p-8"
+                >
+                  <div>
+                    <h3 className="display-soft text-2xl">{cs.h}</h3>
+                    <p className="mt-3 leading-relaxed text-graphite transition-colors group-hover:text-white/75">{cs.body}</p>
+                  </div>
+                  <span className="text-sm font-semibold underline-offset-4 group-hover:underline">{sv?.name ?? "View service"}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {svc
+            .filter((s) => !l.cityServices.some((cs) => cs.service === s.slug))
+            .map((s) => (
+              <li key={s.slug}>
+                <Link href={`/services/${s.slug}`} className="block rounded-full border border-rule bg-card px-4 py-2 text-sm font-semibold hover:border-night">
+                  {s.name}
+                </Link>
+              </li>
+            ))}
         </ul>
         <div className="mt-10">
           <h3 className="text-sm text-graphite">Industries we focus on here</h3>

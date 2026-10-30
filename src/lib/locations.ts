@@ -14,6 +14,8 @@ export type Location = {
   areas: { label: string; items: string[] };
   needs: { name: string; body: string }[];
   services: string[]; // service slugs, most relevant first
+  /** Service-in-city sections, each written for this market */
+  cityServices: { service: string; h: string; body: string }[];
   industries: string[];
   work: string[]; // project slugs
   faqs: { q: string; a: string }[];
@@ -25,10 +27,10 @@ export const locations: Location[] = [
     city: "Lahore",
     country: "Pakistan",
     presence: "headquarters",
-    seoTitle: "Web development & SEO company in Lahore — 7CODE",
+    seoTitle: "Software House & Web Development Company in Lahore | 7CODE",
     metaDescription:
       "7CODE is a Lahore-based web development, software and SEO agency building websites, web apps, Shopify stores and search programmes for Pakistani businesses and exporters.",
-    h1: "Web development and digital growth in Lahore",
+    h1: "Software house and web development company in Lahore",
     intro: [
       "Lahore is home. 7CODE's founder and team work from here, building websites, software and stores for businesses across Punjab and for clients abroad.",
       "For Lahore businesses that means working with a team in your own city and time zone, with the same senior engineering we deliver to clients in the UAE and UK.",
@@ -45,6 +47,12 @@ export const locations: Location[] = [
       { name: "Search in Urdu and English", body: "Customers search in both languages and in Roman Urdu. Local SEO here means writing for how people actually type, not just translated keywords." },
     ],
     services: ["web-development", "ecommerce", "seo-aeo-geo", "branding-ui-ux", "mobile-apps"],
+    cityServices: [
+      { service: "web-development", h: "Software development company in Lahore", body: "Custom web applications, SaaS platforms and APIs in Laravel, Next.js and Node.js, led by a senior engineer with 6+ years of production experience." },
+      { service: "web-development", h: "Website design and development in Lahore", body: "Fast, mobile-first business websites for Lahore companies, built to bring enquiries straight to WhatsApp and your inbox." },
+      { service: "seo-aeo-geo", h: "SEO services in Lahore", body: "Google Business Profile optimisation, local pages and content written for how Lahore customers search — in English, Urdu and Roman Urdu." },
+      { service: "ecommerce", h: "eCommerce and Shopify development in Lahore", body: "Shopify and WooCommerce stores for local brands, and B2B catalogues with quote requests for exporters selling abroad." },
+    ],
     industries: ["Textile & apparel exporters", "Education", "Healthcare & clinics", "Real estate", "Retail", "Startups & SaaS"],
     work: ["muhseeq", "av-leads", "logistivo"],
     faqs: [
@@ -59,10 +67,10 @@ export const locations: Location[] = [
     city: "Dubai",
     country: "United Arab Emirates",
     presence: "remote",
-    seoTitle: "Web development & digital marketing for Dubai businesses — 7CODE",
+    seoTitle: "Web Development Company in Dubai | Web Design, SEO & Apps — 7CODE",
     metaDescription:
       "Websites, web apps, Shopify stores, SEO and digital marketing for Dubai businesses, delivered remotely by 7CODE with a UAE WhatsApp line and Gulf-hours availability.",
-    h1: "Web development and digital marketing for Dubai businesses",
+    h1: "Web development company for Dubai businesses",
     intro: [
       "Dubai businesses compete with international brands from day one. Your website has to be fast, bilingual-ready and convincing to buyers who compare five suppliers before calling one.",
       "7CODE builds and grows websites, platforms and stores for UAE companies remotely from Lahore. We have no Dubai office; we work in your hours on a UAE WhatsApp number, one hour behind Gulf time.",
@@ -79,6 +87,13 @@ export const locations: Location[] = [
       { name: "Competitive search", body: "Dubai keywords are expensive. Ranking takes district-level pages and content worth reading, plus Google Ads while SEO builds." },
     ],
     services: ["web-development", "ecommerce", "seo-aeo-geo", "performance-marketing", "social-media", "ai-automation"],
+    cityServices: [
+      { service: "web-development", h: "Web design and development in Dubai", body: "Custom Next.js and Laravel websites and web apps for Dubai companies — mobile-first, ready for English and Arabic, with WhatsApp-first contact." },
+      { service: "seo-aeo-geo", h: "SEO services in Dubai", body: "Technical SEO, district-level pages for areas like Business Bay, JLT and Al Quoz, and AI-search optimisation so Google's AI Overviews and ChatGPT describe you correctly." },
+      { service: "ecommerce", h: "Shopify and eCommerce development in Dubai", body: "Shopify and custom stores with AED pricing, VAT-ready setup, UAE delivery options and product pages tuned for mobile speed." },
+      { service: "mobile-apps", h: "Mobile app development in Dubai", body: "iOS and Android apps from one React Native or Flutter codebase, sharing one backend with your website and admin panel." },
+      { service: "performance-marketing", h: "Google Ads and digital marketing in Dubai", body: "Google and Meta campaigns with conversion tracking set up first, sending traffic to landing pages built for each campaign." },
+    ],
     industries: ["Logistics & freight", "Real estate", "eCommerce & retail", "Construction & contracting", "Hospitality", "Professional services"],
     work: ["ferry-global", "maxtgc", "seven-lift"],
     faqs: [
@@ -93,10 +108,10 @@ export const locations: Location[] = [
     city: "Abu Dhabi",
     country: "United Arab Emirates",
     presence: "remote",
-    seoTitle: "Web development & SEO for Abu Dhabi companies — 7CODE",
+    seoTitle: "Web Design & Development Company in Abu Dhabi | SEO — 7CODE",
     metaDescription:
       "Websites and local SEO for Abu Dhabi companies in heavy equipment, logistics and contracting — from Mussafah and MBZ City to KIZAD — delivered remotely by 7CODE.",
-    h1: "Web development and SEO for Abu Dhabi companies",
+    h1: "Web design and development company for Abu Dhabi",
     intro: [
       "Much of our UAE work is in Abu Dhabi. We've built websites and local search programmes for a crane hire company and a logistics firm based in the capital, so we know how industrial buyers here find suppliers.",
       "We work remotely from Lahore, with no Abu Dhabi office. You get a UAE WhatsApp line, working hours that match yours and the same senior team throughout.",
@@ -113,6 +128,12 @@ export const locations: Location[] = [
       { name: "Tender-ready credibility", body: "Procurement teams check licences, fleets and service lists. Clear, accurate company information wins trust before the first call." },
     ],
     services: ["seo-aeo-geo", "web-development", "performance-marketing", "branding-ui-ux", "ai-automation"],
+    cityServices: [
+      { service: "web-development", h: "Web design and development in Abu Dhabi", body: "Lead-focused websites for industrial, logistics and contracting companies, with call and WhatsApp on every screen, fleet and service pages, and company details procurement teams can verify." },
+      { service: "seo-aeo-geo", h: "SEO services in Abu Dhabi", body: "Separate, genuinely local pages for areas like Mussafah, MBZ City, KIZAD, Al Reem, Yas and Saadiyat — the approach behind our Seven Lift work." },
+      { service: "web-development", h: "Websites for logistics and equipment companies", body: "Service structures that present freight, warehousing, customs and equipment hire clearly, with emirate-wide search coverage from a single Abu Dhabi base." },
+      { service: "performance-marketing", h: "Google Ads in Abu Dhabi", body: "Search campaigns for urgent, high-intent searches like equipment hire and transport, running while organic rankings build." },
+    ],
     industries: ["Heavy equipment & cranes", "Logistics & freight", "Construction & contracting", "Oil & gas services", "Industrial supply", "Real estate"],
     work: ["seven-lift", "ferry-global", "maxtgc"],
     faqs: [
