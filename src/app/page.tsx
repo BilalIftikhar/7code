@@ -8,6 +8,8 @@ import { Marquee } from "@/components/home/Marquee";
 import { WorkGrid } from "@/components/home/WorkGrid";
 import { ServicesIndex } from "@/components/home/ServicesIndex";
 import { RevealText } from "@/components/motion/RevealText";
+import { getArticles } from "@/lib/insights";
+import { ArticleCard } from "@/components/insights/ArticleCard";
 import { Magnetic } from "@/components/motion/Magnetic";
 
 const industries: { name: string; work?: string }[] = [
@@ -223,6 +225,27 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* INSIGHTS */}
+      <section aria-labelledby="insights-h" className="wrap pb-24 md:pb-32">
+        <div className="flex flex-wrap items-end justify-between gap-6 border-t border-night pt-10">
+          <RevealText id="insights-h" className="display text-[clamp(2.4rem,5.5vw,4.5rem)]">
+            Latest insights
+          </RevealText>
+          <Link href="/insights" className="font-semibold underline-offset-4 hover:underline">
+            All insights
+          </Link>
+        </div>
+        <ul className="mt-12 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {getArticles()
+            .slice(0, 3)
+            .map((a, i) => (
+              <li key={a.slug}>
+                <ArticleCard a={a} index={i} />
+              </li>
+            ))}
+        </ul>
       </section>
 
       {/* CONTACT CTA */}

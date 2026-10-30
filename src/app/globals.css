@@ -114,3 +114,72 @@
   opacity: 0;
   animation: rise 0.8s var(--ease-out-quart) forwards;
 }
+
+/* Article body */
+.prose-7 {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  max-width: 68ch;
+}
+.prose-7 > * + * { margin-top: 1.25em; }
+.prose-7 h2 {
+  margin-top: 2.6em;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  scroll-margin-top: 6rem;
+}
+.prose-7 h3 {
+  margin-top: 2em;
+  font-size: 1.3rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  scroll-margin-top: 6rem;
+}
+.prose-7 h2 + *, .prose-7 h3 + * { margin-top: 0.75em; }
+.prose-7 p, .prose-7 li { color: color-mix(in srgb, var(--color-night) 82%, transparent); }
+.prose-7 strong { color: var(--color-night); font-weight: 650; }
+.prose-7 a {
+  color: var(--color-night);
+  font-weight: 550;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+.prose-7 a:hover { text-decoration-thickness: 2px; }
+.prose-7 ul, .prose-7 ol { padding-left: 1.4em; }
+.prose-7 ul { list-style: disc; }
+.prose-7 ol { list-style: decimal; }
+.prose-7 li { padding-left: 0.3em; }
+.prose-7 li + li { margin-top: 0.45em; }
+.prose-7 li::marker { color: var(--color-mist); }
+.prose-7 ul:has(> li > input[type="checkbox"]) { list-style: none; padding-left: 0; }
+.prose-7 li:has(> input[type="checkbox"]) {
+  display: flex;
+  gap: 0.75em;
+  align-items: baseline;
+  padding: 0.7em 1em;
+  border-radius: 0.6rem;
+  background: var(--color-card);
+}
+.prose-7 li > input[type="checkbox"] { accent-color: var(--color-night); transform: translateY(0.1em); }
+.prose-7 > p:first-child {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  background: var(--color-card);
+  color: var(--color-night);
+}
+.prose-7 blockquote {
+  border-left: 2px solid var(--color-night);
+  padding-left: 1.25em;
+  font-style: italic;
+}
+.prose-7 code {
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  border-radius: 0.3em;
+  background: var(--color-chalk);
+}

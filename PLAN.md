@@ -14,7 +14,7 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
 - [x] 3. Services: /services overview + 9 service pages — unique copy, included, who it’s for, approach, related work, FAQs (FAQPage + Service + Breadcrumb schema)
 - [x] 4. Company: About (founder from CV, Person schema), How we work, Industries, Contact (server-validated form, honeypot + timing spam check, Resend email or WhatsApp hand-off), FAQ, Privacy, Terms, 404
 - [x] 5. Locations: /locations hub + Lahore (HQ, ProfessionalService schema), Dubai and Abu Dhabi (served remotely, Service schema — no office claimed)
-- [ ] 6. Insights blog: MDX system + first articles
+- [x] 6. Insights: Markdown articles in content/insights, index with topic filters, article pages (TOC, reading time, author bio, share, related, FAQs, BlogPosting + FAQPage + Breadcrumb schema), homepage "Latest insights"; 3 articles
 - [ ] 7. SEO/AEO/GEO + QA + deploy: sitemap, robots, Organization schema, OG images, Lighthouse, Vercel
 
 ## Needed from the founder before launch
@@ -30,3 +30,11 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
 - Contact form email: set RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL (see .env.example); until then it hands off to WhatsApp
 - Confirm budget ranges on the contact form (currently USD)
 - Have Privacy and Terms reviewed before launch
+- Review the 3 launch articles — they're bylined to the founder
+
+## Publishing a new article
+
+1. Add `content/insights/your-article-slug.md` (the file name becomes the URL).
+2. Frontmatter: `title`, `description` (meta, ~150 chars), `category` (one of the 15 in src/lib/insights.ts), `published: YYYY-MM-DD`; optional `seoTitle`, `updated`, `faqs` (list of `q`/`a`).
+3. Open with a bolded **Short answer:** paragraph, use `##` headings (they build the table of contents), and link to relevant /services, /work and /locations pages.
+4. Rebuild and deploy.
