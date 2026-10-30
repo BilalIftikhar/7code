@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { projects } from "@/lib/projects";
+import { WorkGrid } from "@/components/home/WorkGrid";
+import { RevealText } from "@/components/motion/RevealText";
 
 export const metadata: Metadata = {
   title: "Our work — websites and SEO for UAE, Oman and Pakistan businesses",
@@ -12,38 +13,19 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <>
-      <section className="seven-edge bg-night pb-32 text-white">
-        <div className="wrap pt-20 md:pt-28">
-          <h1 className="display max-w-[12ch] text-[clamp(2.6rem,8vw,7rem)]">Work that brings in the calls.</h1>
-          <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-chalk/85">
-            Five projects for companies that sell specialised services — cranes, freight, lifting, manufacturing — where
-            a single enquiry can be worth a month of revenue.
-          </p>
-        </div>
+      <section className="wrap pt-16 md:pt-24">
+        <p className="text-sm text-graphite">Work, {projects.length} projects</p>
+        <RevealText as="h1" onLoad className="display invisible mt-6 max-w-[14ch] text-[clamp(2.8rem,9vw,8rem)]">
+          Work that brings in the calls.
+        </RevealText>
+        <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-graphite">
+          Projects for companies that sell specialised services — cranes, freight, lifting, manufacturing — where a single
+          enquiry can be worth a month of revenue.
+        </p>
       </section>
 
-      <section className="wrap py-20 md:py-28">
-        <ul className="divide-y divide-rule border-y border-rule">
-          {projects.map((p) => (
-            <li key={p.slug}>
-              <Link
-                href={`/work/${p.slug}`}
-                className="group grid gap-4 py-10 md:grid-cols-12 md:items-baseline md:gap-6 md:px-4 md:hover:bg-chalk"
-              >
-                <h2 className="display text-[clamp(2rem,4.5vw,3.5rem)] transition-colors group-hover:text-signal-ink md:col-span-5">
-                  {p.name}
-                </h2>
-                <div className="md:col-span-4">
-                  <p className="text-sm text-graphite">
-                    {p.industry}, {p.region}
-                  </p>
-                  <p className="mt-2 leading-relaxed">{p.summary}</p>
-                </div>
-                <p className="text-sm text-graphite md:col-span-3 md:text-right">{p.scope.join(", ")}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <section className="wrap py-16 md:py-24">
+        <WorkGrid projects={projects} />
       </section>
     </>
   );

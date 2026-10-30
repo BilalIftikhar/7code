@@ -10,7 +10,7 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
 - [x] 1. Foundation + homepage: tokens, logo, header with mega menu, mobile menu, footer, homepage
 - [x] 2. Work: /work index + 5 case-study pages (with CreativeWork schema)
 - [x] Design direction: Locomotive (smooth scroll, line reveals, velocity marquee), Dogstudio (reactive 7, custom cursor), BASIC/DEPT + Clay (stacking case-study cards), Resn (magnetic buttons, hover preview). GSAP + Lenis; all motion off for reduced-motion users
-- [x] Colour scheme: Magenta Night (night #160b26, signal #d6246e) — all colours are role tokens in globals.css
+- [x] Look: Awwwards-inspired gallery style — light grey page, white cards, near-black type and pill buttons, Inter Tight headlines, featured-project showcase, project card grid. Colours are role tokens in globals.css
 - [ ] 3. Services: /services overview + 9 category pages, unique copy and FAQs each
 - [ ] 4. Company: About, Process, Contact (working form + WhatsApp), FAQ, Privacy, Terms, 404, Industries
 - [ ] 5. Locations: Lahore, Dubai, Abu Dhabi (genuinely local, no fake offices)

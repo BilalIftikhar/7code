@@ -68,11 +68,11 @@ export function Cursor() {
     >
       <div
         className={`-translate-x-1/2 -translate-y-1/2 rounded-full transition-[width,height,background-color] duration-300 ease-[var(--ease-out-quart)] flex items-center justify-center ${
-          label ? "h-28 w-28 bg-white shadow-[0_10px_40px_-8px_color-mix(in_srgb,var(--color-night)_45%,transparent)] ring-1 ring-night/10" : "h-3 w-3 bg-signal"
+          label ? "h-28 w-28 bg-night shadow-[0_10px_40px_-8px_rgba(0,0,0,0.35)] ring-1 ring-white/15" : "h-3 w-3 bg-signal"
         }`}
       >
         <span
-          className={`whitespace-nowrap text-sm font-semibold text-night transition-opacity duration-200 ${
+          className={`whitespace-nowrap text-sm font-semibold text-white transition-opacity duration-200 ${
             label ? "opacity-100" : "opacity-0"
           }`}
         >

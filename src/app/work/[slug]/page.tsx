@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
+import { ProjectVisual } from "@/components/ProjectVisual";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -40,43 +41,43 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
     <article>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <header className="seven-edge relative overflow-hidden bg-night pb-36 text-white">
-        <svg
-          viewBox="0 0 100 120"
-          className="pointer-events-none absolute -bottom-6 -right-10 h-[80%] w-auto text-signal/30 md:right-[4%]"
-          aria-hidden="true"
-        >
-          <path d="M8 14 H90 L38 116" fill="none" stroke="currentColor" strokeWidth="13" />
-        </svg>
-        <div className="wrap relative pt-10 md:pt-14">
-          <nav aria-label="Breadcrumb" className="text-sm text-mist">
-            <ol className="flex gap-2">
-              <li>
-                <Link href="/" className="hover:text-white">Home</Link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li>
-                <Link href="/work" className="hover:text-white">Work</Link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li aria-current="page" className="text-chalk">{p.name}</li>
-            </ol>
-          </nav>
-          <p className="mt-16 text-mist">
-            {p.industry}, {p.region}
-          </p>
-          <h1 className="display mt-4 text-[clamp(2.8rem,10vw,8.5rem)]">{p.name}</h1>
-          <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-chalk/85 md:text-xl">{p.summary}</p>
+      <header className="wrap pt-10 md:pt-14">
+        <nav aria-label="Breadcrumb" className="text-sm text-graphite">
+          <ol className="flex gap-2">
+            <li>
+              <Link href="/" className="hover:text-night">Home</Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li>
+              <Link href="/work" className="hover:text-night">Work</Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" className="text-night">{p.name}</li>
+          </ol>
+        </nav>
+        <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-8">
+            <p className="text-graphite">
+              {p.industry}, {p.region}
+            </p>
+            <h1 className="display mt-4 text-[clamp(2.8rem,10vw,8.5rem)]">{p.name}</h1>
+          </div>
           {p.url && (
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-block rounded-full border border-white/25 px-6 py-3 font-semibold transition-colors hover:border-white/60"
-            >
-              Visit {p.url.replace(/^https?:\/\/(www\.)?/, "")}
-            </a>
+            <div className="md:col-span-4 md:justify-self-end">
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-full bg-signal px-6 py-3 font-semibold text-on-signal transition-colors hover:bg-signal-hover"
+              >
+                Visit {p.url.replace(/^https?:\/\/(www\.)?/, "")}
+              </a>
+            </div>
           )}
+        </div>
+        <p className="mt-8 max-w-[56ch] text-lg leading-relaxed text-graphite md:text-xl">{p.summary}</p>
+        <div className="mt-12 overflow-hidden rounded-xl">
+          <ProjectVisual project={p} index={i} size="lg" className="aspect-[4/3] md:aspect-[16/8]" />
         </div>
       </header>
 
@@ -123,7 +124,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
               </ol>
             </section>
 
-            <section aria-labelledby="results" className="mt-16 rounded-2xl bg-chalk p-7 md:p-9">
+            <section aria-labelledby="results" className="mt-16 rounded-xl bg-card p-7 md:p-9">
               <h2 id="results" className="display-soft text-2xl">Results</h2>
               <p className="mt-3 leading-relaxed text-graphite">
                 We publish results only once they&apos;re measured and the client has approved them. Figures for this
@@ -134,8 +135,8 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
         </div>
       </div>
 
-      <Link href={`/work/${next.slug}`} className="group block bg-night text-white">
-        <div className="wrap flex flex-col gap-3 py-16 md:flex-row md:items-end md:justify-between md:py-20">
+      <Link href={`/work/${next.slug}`} className="group wrap mb-6 block">
+        <div className="rounded-2xl bg-night px-6 text-white md:px-12 flex flex-col gap-3 py-16 md:flex-row md:items-end md:justify-between md:py-20">
           <div>
             <p className="text-mist">Next project</p>
             <p className="display mt-3 text-[clamp(2.4rem,7vw,5.5rem)] transition-colors group-hover:text-signal-soft">

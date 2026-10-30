@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
-import { WorkStack } from "@/components/home/WorkStack";
+import { WorkGrid } from "@/components/home/WorkGrid";
 import { ServicesIndex } from "@/components/home/ServicesIndex";
 import { RevealText } from "@/components/motion/RevealText";
 import { Magnetic } from "@/components/motion/Magnetic";
@@ -47,22 +47,22 @@ const reasons = [
 export default function Home() {
   return (
     <>
-      <Hero />
+      <Hero featured={projects[0]} />
 
       {/* CREDIBILITY — verified facts only */}
       <section aria-label="At a glance" className="wrap py-16 md:py-20">
-        <dl className="grid grid-cols-1 gap-y-8 sm:grid-cols-3 sm:gap-x-10">
-          <div className="border-l-2 border-signal pl-5">
+        <dl className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <div className="rounded-xl bg-card p-6 md:p-8">
             <dt className="text-graphite">Founder&apos;s full-stack experience</dt>
-            <dd className="display mt-2 text-5xl">{site.founder.yearsExperience} years</dd>
+            <dd className="display mt-6 text-6xl">{site.founder.yearsExperience} years</dd>
           </div>
-          <div className="border-l-2 border-rule pl-5">
+          <div className="rounded-xl bg-card p-6 md:p-8">
             <dt className="text-graphite">Live projects in this portfolio</dt>
-            <dd className="display mt-2 text-5xl">{projects.length}</dd>
+            <dd className="display mt-6 text-6xl">{projects.length}</dd>
           </div>
-          <div className="border-l-2 border-rule pl-5">
+          <div className="rounded-xl bg-card p-6 md:p-8">
             <dt className="text-graphite">Countries those clients operate in</dt>
-            <dd className="display mt-2 text-5xl">3</dd>
+            <dd className="display mt-6 text-6xl">3</dd>
             <dd className="mt-1 text-sm text-graphite">UAE, Oman and Pakistan</dd>
           </div>
         </dl>
@@ -89,7 +89,7 @@ export default function Home() {
         <div className="wrap">
           <div className="grid gap-6 md:grid-cols-12">
             <RevealText id="work-h" className="display text-[clamp(2.4rem,5.5vw,4.5rem)] md:col-span-7">
-              Selected work
+              More work
             </RevealText>
             <p className="max-w-[44ch] text-lg leading-relaxed text-graphite md:col-span-4 md:col-start-9 md:self-end">
               Websites and search programmes for companies that sell heavy, specialised services, where one good lead is
@@ -98,7 +98,15 @@ export default function Home() {
           </div>
 
           <div className="mt-14">
-            <WorkStack projects={projects} />
+            <WorkGrid projects={projects.slice(1)} offset={1} />
+          </div>
+          <div className="mt-14 flex justify-center">
+            <Link
+              href="/work"
+              className="rounded-full border border-night/20 bg-card px-7 py-4 font-semibold transition-colors hover:border-night"
+            >
+              View all work
+            </Link>
           </div>
         </div>
       </section>
@@ -134,13 +142,13 @@ export default function Home() {
       </section>
 
       {/* INDUSTRIES */}
-      <section aria-labelledby="ind-h" className="bg-night py-24 text-white md:py-32">
+      <section aria-labelledby="ind-h" className="bg-card py-24 md:py-32">
         <div className="wrap grid gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
             <RevealText id="ind-h" className="display text-[clamp(2.4rem,5.5vw,4.5rem)]">
               Industries
             </RevealText>
-            <p className="mt-6 max-w-[40ch] leading-relaxed text-mist">
+            <p className="mt-6 max-w-[40ch] leading-relaxed text-graphite">
               The highlighted sectors link to work we&apos;ve shipped. The rest are sectors we build for using the same
               approach.
             </p>
@@ -157,7 +165,7 @@ export default function Home() {
                   </Link>
                 </li>
               ) : (
-                <li key={ind.name} className="rounded-full border border-white/15 px-5 py-3 text-chalk/80">
+                <li key={ind.name} className="rounded-full border border-rule px-5 py-3 text-graphite">
                   {ind.name}
                 </li>
               ),
@@ -210,8 +218,8 @@ export default function Home() {
       </section>
 
       {/* CONTACT CTA */}
-      <section aria-labelledby="cta-h" className="bg-signal text-on-signal">
-        <div className="wrap grid gap-10 py-20 md:grid-cols-12 md:py-28">
+      <section aria-labelledby="cta-h" className="wrap pb-6">
+        <div className="grid gap-10 rounded-2xl bg-night px-6 py-16 text-white md:grid-cols-12 md:px-12 md:py-24">
           <RevealText id="cta-h" className="display text-[clamp(2.6rem,6.5vw,5.75rem)] md:col-span-8">
               Have a big idea? Let&apos;s build it properly.
             </RevealText>
@@ -222,7 +230,7 @@ export default function Home() {
             <Magnetic>
             <Link
               href="/contact"
-              className="mt-8 inline-block rounded-full bg-night px-7 py-4 font-semibold text-white transition-colors hover:bg-night-2"
+              className="mt-8 inline-block rounded-full bg-white px-7 py-4 font-semibold text-night transition-colors hover:bg-chalk"
             >
               Start your project
             </Link>

@@ -36,7 +36,7 @@ export function Footer() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="rounded-full bg-signal px-6 py-3 font-semibold text-on-signal transition-colors hover:bg-signal-hover"
+                className="rounded-full bg-white px-6 py-3 font-semibold text-night transition-colors hover:bg-chalk"
               >
                 Start a project
               </Link>
@@ -149,7 +149,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="wrap flex flex-col gap-4 py-6 text-sm text-mist sm:flex-row sm:items-center sm:justify-between">
           <p className="flex items-center gap-2">
-            <Mark className="h-5 w-5 text-white" />© <Year /> 7CODE. Built in Lahore for clients worldwide.
+            <Mark className="h-5 w-5" invert />© <Year /> 7CODE. Built in Lahore for clients worldwide.
           </p>
           <ul className="flex gap-6">
             <li>

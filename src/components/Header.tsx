@@ -43,10 +43,10 @@ export function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-night text-chalk">
+    <header className="sticky top-0 z-50 border-b border-rule bg-paper/90 text-night backdrop-blur-md">
       <div className="wrap flex h-16 items-center justify-between gap-6 md:h-[4.5rem]">
         <Link href="/" aria-label="7CODE home" className="shrink-0">
-          <Logo tone="chalk" />
+          <Logo />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
@@ -60,7 +60,7 @@ export function Header() {
               aria-expanded={servicesOpen}
               aria-controls="services-panel"
               onClick={() => setServicesOpen((o) => !o)}
-              className="flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.95rem] text-chalk/85 transition-colors hover:text-white"
+              className="flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.95rem] text-graphite transition-colors hover:bg-chalk hover:text-night"
             >
               Services
               <svg
@@ -75,19 +75,19 @@ export function Header() {
             <div
               id="services-panel"
               ref={panelRef}
-              className={`fixed inset-x-0 top-[4.5rem] origin-top border-t border-white/10 bg-night transition-[opacity,transform] duration-300 ease-[var(--ease-out-quart)] ${
+              className={`fixed inset-x-0 top-[4.5rem] origin-top border-y border-rule bg-card shadow-[0_24px_40px_-24px_rgba(0,0,0,0.18)] transition-[opacity,transform] duration-300 ease-[var(--ease-out-quart)] ${
                 servicesOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
               }`}
             >
               <div className="wrap grid grid-cols-12 gap-8 py-10">
                 <div className="col-span-3">
-                  <p className="display-soft text-2xl text-white">Everything a growing business needs online.</p>
-                  <p className="mt-3 text-sm leading-relaxed text-mist">
+                  <p className="display-soft text-2xl text-night">Everything a growing business needs online.</p>
+                  <p className="mt-3 text-sm leading-relaxed text-graphite">
                     One team for the build and the growth that follows.
                   </p>
                   <Link
                     href="/services"
-                    className="mt-6 inline-block text-sm font-semibold text-signal-soft underline-offset-4 hover:underline"
+                    className="mt-6 inline-block text-sm font-semibold text-night underline underline-offset-4 hover:underline"
                   >
                     See all services
                   </Link>
@@ -97,10 +97,10 @@ export function Header() {
                     <li key={s.slug}>
                       <Link
                         href={`/services/${s.slug}`}
-                        className="group block rounded-lg px-3 py-3 transition-colors hover:bg-white/5"
+                        className="group block rounded-lg px-3 py-3 transition-colors hover:bg-paper"
                       >
-                        <span className="block font-semibold text-white">{s.name}</span>
-                        <span className="mt-1 block text-[0.8rem] leading-snug text-mist">
+                        <span className="block font-semibold text-night">{s.name}</span>
+                        <span className="mt-1 block text-[0.8rem] leading-snug text-graphite">
                           {s.includes.slice(0, 3).join(", ")}
                         </span>
                       </Link>
@@ -116,7 +116,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               aria-current={pathname.startsWith(item.href) ? "page" : undefined}
-              className="rounded-full px-4 py-2 text-[0.95rem] text-chalk/85 transition-colors hover:text-white aria-[current=page]:text-white"
+              className="rounded-full px-4 py-2 text-[0.95rem] text-graphite transition-colors hover:bg-chalk hover:text-night aria-[current=page]:text-night"
             >
               {item.label}
             </Link>
@@ -154,7 +154,7 @@ export function Header() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`fixed inset-x-0 bottom-0 top-16 overflow-y-auto bg-night transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-x-0 bottom-0 top-16 overflow-y-auto bg-paper transition-opacity duration-300 lg:hidden ${
           menuOpen ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
@@ -162,17 +162,17 @@ export function Header() {
           <ul className="space-y-1">
             {[{ href: "/services", label: "Services" }, ...nav, { href: "/contact", label: "Contact" }].map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="display block py-2 text-[2.6rem] text-white">
+                <Link href={item.href} className="display block py-2 text-[2.6rem] text-night">
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="mt-10 text-sm text-mist">Services</p>
+          <p className="mt-10 text-sm text-graphite">Services</p>
           <ul className="mt-3 grid grid-cols-1 gap-x-6 gap-y-3 xs:grid-cols-2">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link href={`/services/${s.slug}`} className="text-chalk/90">
+                <Link href={`/services/${s.slug}`} className="text-night">
                   {s.name}
                 </Link>
               </li>
