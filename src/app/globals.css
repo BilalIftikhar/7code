@@ -296,3 +296,59 @@ html:not(.intro-seen) .rise { animation-delay: calc(var(--d, 0s) + 1.05s); }
 @media (max-width: 767px) {
   [data-reveal].invisible { visibility: visible; }
 }
+
+/* Text roll: the label slides up and an identical copy rises from below */
+.roll {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+}
+.roll > span,
+.roll::after {
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.roll::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  transform: translateY(105%);
+}
+a:hover > .roll > span, button:hover > .roll > span,
+a:focus-visible > .roll > span, button:focus-visible > .roll > span { transform: translateY(-105%); }
+a:hover > .roll::after, button:hover > .roll::after,
+a:focus-visible > .roll::after, button:focus-visible > .roll::after { transform: translateY(0); }
+
+/* Full-screen menu: curtain drop, staggered link rise */
+.site-menu {
+  visibility: hidden;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1), visibility 0s linear 0.7s;
+}
+.site-menu.is-open {
+  visibility: visible;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1), visibility 0s;
+}
+.site-menu .menu-item > a {
+  transform: translateY(110%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.site-menu.is-open .menu-item > a {
+  transform: none;
+  transition-delay: calc(0.25s + var(--i, 0) * 0.05s);
+}
+.site-menu .menu-aside {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.site-menu.is-open .menu-aside {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.45s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-menu, .site-menu.is-open { clip-path: none; }
+  .site-menu .menu-item > a, .site-menu .menu-aside { transform: none; opacity: 1; }
+}
