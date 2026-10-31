@@ -210,6 +210,33 @@ export default function Home() {
               developers and marketers across Pakistan. Clients get senior judgement on their project, not a hand-off to
               whoever is free.
             </p>
+            <p className="mt-10 text-sm font-semibold uppercase tracking-[0.12em] text-graphite">Tech stack</p>
+            <ul aria-label="Tech stack" className="mt-4 flex flex-wrap gap-2">
+              {[
+                "PHP",
+                "Laravel",
+                "Python",
+                "JavaScript",
+                "TypeScript",
+                "Next.js",
+                "React",
+                "Vue.js",
+                "Node.js",
+                "PostgreSQL",
+                "MySQL",
+                "MongoDB",
+                "Firebase",
+                "Supabase",
+                "AWS",
+                "Railway",
+                "Vercel",
+                "Shopify",
+              ].map((t) => (
+                <li key={t} className="rounded-full border border-rule bg-card px-3.5 py-1.5 text-sm">
+                  {t}
+                </li>
+              ))}
+            </ul>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 font-semibold">
               <Link href="/about" className="text-signal-ink underline-offset-4 hover:underline">
                 About 7CODE
