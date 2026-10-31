@@ -197,6 +197,7 @@ export const projects: Project[] = [
     client: "MUHSEEQ Apparel Manufacturing",
     industry: "Apparel manufacturing (B2B)",
     region: "Faisalabad, Pakistan",
+    url: "https://www.muhseeqapparel.com",
     kind: "Website",
     summary:
       "A B2B product catalogue and quotation website for an apparel manufacturer selling to international buyers.",
