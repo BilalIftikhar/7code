@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { CtaBox, JsonLd, PageHeader } from "@/components/PageParts";
 import { FaqList, faqJsonLd } from "@/components/FaqList";
 
-export const metadata: Metadata = {
-  title: "FAQ — working with 7CODE",
+export const metadata: Metadata = meta({
+  title: "FAQ — pricing, timelines and how we work",
   description:
     "Answers about 7CODE: where we're based, working with UAE and UK clients remotely, pricing, timelines, ownership, support and what a full-service digital agency does.",
-  alternates: { canonical: "/faq" },
-};
+  path: "/faq",
+});
 
 const groups: { name: string; faqs: { q: string; a: string }[] }[] = [
   {

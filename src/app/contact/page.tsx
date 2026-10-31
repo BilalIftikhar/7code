@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import { Suspense } from "react";
 import { ContactForm } from "./ContactForm";
 import { PageHeader } from "@/components/PageParts";
 import { site, whatsappLink } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Contact — start a project with 7CODE",
+export const metadata: Metadata = meta({
+  title: "Contact — start a project",
   description:
     "Tell 7CODE about your website, app, store or marketing project. Send an enquiry or message us on WhatsApp for a plan, timeline and fixed quote.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

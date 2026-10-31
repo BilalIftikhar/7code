@@ -1,4 +1,6 @@
+import { ids } from "@/lib/schema";
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/projects";
@@ -9,15 +11,24 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
+/** Short place name for titles: "Abu Dhabi, UAE" → ", Abu Dhabi"; generic regions are left out. */
+const place = (region: string) => {
+  const first = region.split(",")[0].trim();
+  if (/^(remote|international)/i.test(first)) return "";
+  return `, ${first === "United Kingdom" ? "UK" : first}`;
+};
+
 export async function generateMetadata({ params }: PageProps<"/work/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const p = projects.find((x) => x.slug === slug);
   if (!p) return {};
-  return {
-    title: `${p.name} case study — ${p.industry}, ${p.region}`,
+  const long = `${p.name} case study — ${p.industry}${place(p.region)}`;
+  return meta({
+    title: long.length <= 65 ? long : `${p.name} — ${p.industry}${place(p.region)}`,
+    image: `/work/${p.slug}/opengraph-image`,
     description: p.summary,
-    alternates: { canonical: `/work/${p.slug}` },
-  };
+    path: `/work/${p.slug}`,
+  });
 }
 
 export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
@@ -32,7 +43,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
     "@type": "CreativeWork",
     name: `${p.name} — ${p.industry}`,
     description: p.summary,
-    creator: { "@type": "Organization", name: site.name, url: site.url },
+    creator: { "@type": "Organization", "@id": ids.org, name: site.name, url: site.url },
     about: { "@type": "Organization", name: p.client, ...(p.url ? { url: p.url } : {}) },
     keywords: [...p.scope, ...p.stack].join(", "),
   };

@@ -22,7 +22,8 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
   - Motion graphics: pinned "Build → Launch → Grow" scroll story, code-scramble keyword line, CSS headline reveal
 - [x] World-class agency layer (Awwwards/Lusion/Locomotive patterns): 3D tilt cards with glare + depth layers site-wide; pinned horizontal cover-flow 3D work gallery (swipe carousel on mobile); first-visit counter preloader (skipped for 12h, reduced motion, and if JS fails); curtain page transitions; scroll-velocity skew on the marquee
 - [x] Speed pass (Lighthouse): 3D loads on first interaction + hardware GPU only; phones paint the hero instantly (no preloader/mask/scramble); next/font/local preloaded Latin font with size-matched fallback; GSAP/Lenis loaded on demand in idle time; CSS (compositor) marquee; lazy, re-render-free motion story and gallery; Suspense hydration boundaries; contrast fixes. Result: desktop 98–100 perf on all audited pages, a11y/BP/SEO 100; mobile LCP 1.8–2.3 s and CLS 0 under real throttling
-- [ ] 7. SEO/AEO/GEO + QA + deploy: sitemap, robots, Organization schema, OG images, Lighthouse, Vercel
+- [x] 7. SEO/AEO/GEO + QA + deploy prep: sitemap.xml, robots.txt (open to AI crawlers), llms.txt, Organization + WebSite schema linked by @id from every page schema, generated share images per page (home, services, work, locations, insights), favicon/app icon/manifest in the "7_" mark, shared metadata helper (titles ≤65 chars, descriptions ≤160, canonical + og:url everywhere), security headers, domain via NEXT_PUBLIC_SITE_URL, README deploy guide. QA: 36 pages / 66 internal links clean, JSON-LD valid, 404 noindex; Lighthouse desktop 95–100, a11y/BP/SEO 100
+- [ ] Go live: private GitHub repo → Vercel import → env vars → domain → Search Console + Bing sitemap submission (steps in README)
 
 ## Needed from the founder before launch
 

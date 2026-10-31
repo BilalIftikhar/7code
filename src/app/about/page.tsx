@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { CtaBox, JsonLd, PageHeader, SectionTitle } from "@/components/PageParts";
 import { archive, projects } from "@/lib/projects";
+import { ids } from "@/lib/schema";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About 7CODE — founder-led digital agency in Lahore",
+export const metadata: Metadata = meta({
+  title: "About us — a founder-led digital agency in Lahore",
   description:
-    "7CODE is a founder-led digital agency in Lahore, Pakistan, led by senior full-stack engineer Muhammad Bilal Iftikhar and serving clients in the UAE, Oman, the UK and worldwide.",
-  alternates: { canonical: "/about" },
-};
+    "7CODE is a founder-led digital agency in Lahore, led by senior full-stack engineer Muhammad Bilal Iftikhar, serving clients in the UAE, Oman, the UK and beyond.",
+  path: "/about",
+});
 
 const timeline = [
   { when: "2017 – 2021", what: "Bachelor's in Information Technology, University of Agriculture Faisalabad", detail: "System analysis, software architecture and database design." },
@@ -37,9 +39,10 @@ export default function AboutPage() {
   const personLd = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": ids.founder,
     name: site.founder.name,
     jobTitle: "Founder & Senior Full-Stack Software Engineer",
-    worksFor: { "@type": "Organization", name: site.name, url: site.url },
+    worksFor: { "@id": ids.org },
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of Agriculture Faisalabad" },
     knowsAbout: ["Laravel", "PHP", "Next.js", "React", "Vue.js", "TypeScript", "Shopify", "REST APIs", "PostgreSQL", "MySQL"],
     sameAs: [site.founder.linkedin, site.founder.upwork, site.founder.portfolio],

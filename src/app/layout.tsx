@@ -9,6 +9,8 @@ import { Cursor } from "@/components/motion/Cursor";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Preloader, introScript } from "@/components/motion/Preloader";
 import { site } from "@/lib/site";
+import { meta } from "@/lib/meta";
+import { organizationLd, websiteLd } from "@/lib/schema";
 
 // Self-hosted, preloaded, Latin-only variable font with a size-matched fallback (no layout shift on swap)
 const interTight = localFont({
@@ -23,19 +25,20 @@ const interTight = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  applicationName: site.name,
+  ...meta({
+    title: "7CODE | Web Development & SEO Agency in Dubai, Abu Dhabi & Lahore",
+    description: site.description,
+    path: "/",
+    absolute: true,
+  }),
   title: {
     default: "7CODE | Web Development & SEO Agency in Dubai, Abu Dhabi & Lahore",
     template: "%s | 7CODE",
   },
-  description: site.description,
-  openGraph: {
-    type: "website",
-    siteName: site.name,
-    title: "7CODE | Web Development & SEO Agency in Dubai, Abu Dhabi & Lahore",
-    description: site.description,
-  },
-  twitter: { card: "summary_large_image" },
-  alternates: { canonical: "/" },
+  authors: [{ name: site.founder.name, url: `${site.url}/about` }],
+  creator: site.name,
+  formatDetection: { telephone: false, email: false, address: false },
 };
 
 export const viewport: Viewport = {
@@ -47,6 +50,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${interTight.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: introScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationLd(), websiteLd()]) }}
+        />
       </head>
       <body className="flex min-h-full flex-col">
         <Preloader />

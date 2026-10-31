@@ -1,7 +1,7 @@
 ---
 title: "SEO, AEO and GEO: what's the difference, and which does your business need?"
 seoTitle: "SEO vs AEO vs GEO — the differences explained for business owners"
-description: "SEO ranks your pages, AEO gets your content used as the answer, and GEO helps AI assistants describe and cite your business. Here's how each works and where to start."
+description: "SEO ranks your pages, AEO gets your content used as the answer, and GEO helps AI assistants cite your business. How each works and where to start."
 category: SEO
 published: 2026-10-31
 faqs:

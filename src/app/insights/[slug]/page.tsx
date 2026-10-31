@@ -1,4 +1,6 @@
+import { ids } from "@/lib/schema";
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatDate, getArticle, getArticles, getRelated } from "@/lib/insights";
@@ -18,21 +20,20 @@ export async function generateMetadata({ params }: PageProps<"/insights/[slug]">
   const { slug } = await params;
   const a = getArticle(slug);
   if (!a) return {};
-  return {
+  return meta({
     title: a.seoTitle ?? a.title,
     description: a.description,
-    alternates: { canonical: `/insights/${a.slug}` },
-    authors: [{ name: site.founder.name, url: `${site.url}/about` }],
+    path: `/insights/${a.slug}`,
+    image: `/insights/${a.slug}/opengraph-image`,
+    extra: { authors: [{ name: site.founder.name, url: `${site.url}/about` }] },
     openGraph: {
       type: "article",
-      title: a.seoTitle ?? a.title,
-      description: a.description,
       publishedTime: a.published,
       modifiedTime: a.updated ?? a.published,
       authors: [site.founder.name],
       section: a.category,
     },
-  };
+  });
 }
 
 export default async function ArticlePage({ params }: PageProps<"/insights/[slug]">) {
@@ -61,7 +62,7 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
       jobTitle: "Founder & Senior Full-Stack Software Engineer",
       sameAs: [site.founder.linkedin],
     },
-    publisher: { "@type": "Organization", name: site.name, url: site.url },
+    publisher: { "@type": "Organization", "@id": ids.org, name: site.name, url: site.url },
   };
   const crumbs = [
     { name: "Home", href: "/" },

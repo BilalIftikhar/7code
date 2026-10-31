@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { CtaBox, PageHeader, SectionTitle } from "@/components/PageParts";
 import { projects } from "@/lib/projects";
 
-export const metadata: Metadata = {
-  title: "Industries — logistics, heavy equipment, eCommerce, marketplaces and more",
+export const metadata: Metadata = meta({
+  title: "Industries we serve — logistics, heavy equipment, eCommerce & more",
   description:
-    "7CODE builds websites, platforms and search programmes for logistics, heavy equipment and crane hire, eCommerce, marketplaces, manufacturing and enterprise technology.",
-  alternates: { canonical: "/industries" },
-};
+    "Websites, platforms and SEO for logistics, heavy equipment and crane hire, eCommerce, marketplaces, manufacturing and enterprise technology.",
+  path: "/industries",
+});
 
 const proven = [
   {

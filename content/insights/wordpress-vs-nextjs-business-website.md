@@ -1,7 +1,7 @@
 ---
 title: "WordPress or Next.js for your business website? An honest comparison"
-seoTitle: "WordPress vs Next.js for a business website — which should you choose?"
-description: "WordPress is easy to edit and has plugins for everything. Next.js is faster and more secure but needs developers. How to choose, and when it makes sense to switch."
+seoTitle: "WordPress vs Next.js for a business website: which to choose?"
+description: "WordPress is easy to edit and has plugins for everything. Next.js is faster and more secure but needs developers. How to choose, and when to switch."
 category: Web Development
 published: 2026-10-27
 faqs:

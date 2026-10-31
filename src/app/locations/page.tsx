@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { locations } from "@/lib/locations";
 import { CtaBox, PageHeader } from "@/components/PageParts";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = meta({
   title: "Locations — Lahore, Dubai and Abu Dhabi",
   description:
     "7CODE is headquartered in Lahore, Pakistan, and serves businesses in Dubai, Abu Dhabi and the rest of the UAE remotely.",
-  alternates: { canonical: "/locations" },
-};
+  path: "/locations",
+});
 
 export default function LocationsPage() {
   return (

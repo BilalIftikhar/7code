@@ -1,4 +1,6 @@
+import { ids } from "@/lib/schema";
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import { Card3D } from "@/components/motion/Card3D";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -18,12 +20,7 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
   const { slug } = await params;
   const s = getService(slug);
   if (!s) return {};
-  return {
-    title: s.seoTitle,
-    description: s.metaDescription,
-    alternates: { canonical: `/services/${s.slug}` },
-    openGraph: { title: `${s.seoTitle} | 7CODE`, description: s.metaDescription },
-  };
+  return meta({ title: s.seoTitle, description: s.metaDescription, path: `/services/${s.slug}`, image: `/services/${s.slug}/opengraph-image` });
 }
 
 export default async function ServicePage({ params }: PageProps<"/services/[slug]">) {
@@ -41,7 +38,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
     name: s.name,
     description: s.metaDescription,
     serviceType: s.name,
-    provider: { "@type": "Organization", name: site.name, url: site.url },
+    provider: { "@type": "Organization", "@id": ids.org, name: site.name, url: site.url },
     areaServed: ["Pakistan", "United Arab Emirates", "Oman", "Saudi Arabia", "United Kingdom", "United States"],
     hasOfferCatalog: {
       "@type": "OfferCatalog",

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import { CtaBox, JsonLd, PageHeader, SectionTitle } from "@/components/PageParts";
 import { FaqList, faqJsonLd } from "@/components/FaqList";
 
-export const metadata: Metadata = {
-  title: "How we work — 7CODE's project process",
+export const metadata: Metadata = meta({
+  title: "How we work — our project process",
   description:
     "How a 7CODE project runs, from discovery and strategy to design, development, testing, launch and ongoing growth, plus engagement models and communication.",
-  alternates: { canonical: "/process" },
-};
+  path: "/process",
+});
 
 const stages = [
   { name: "Discover", body: "A call and a short questionnaire about your business, customers and goals.", get: "A one-page brief we both agree on" },

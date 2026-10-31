@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = meta({
   title: "Privacy policy",
-  description: "How 7CODE collects, uses and protects the information you share through this website.",
-  alternates: { canonical: "/privacy" },
-};
+  description:
+    "How 7CODE collects, uses and protects the information you share through this website.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

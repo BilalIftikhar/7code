@@ -1,4 +1,6 @@
+import { ids } from "@/lib/schema";
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import { Card3D } from "@/components/motion/Card3D";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -19,12 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/locations/[slug]"
   const { slug } = await params;
   const l = getLocation(slug);
   if (!l) return {};
-  return {
-    title: { absolute: l.seoTitle },
-    description: l.metaDescription,
-    alternates: { canonical: `/locations/${l.slug}` },
-    openGraph: { title: l.seoTitle, description: l.metaDescription },
-  };
+  return meta({ title: l.seoTitle, description: l.metaDescription, path: `/locations/${l.slug}`, absolute: true, image: `/locations/${l.slug}/opengraph-image` });
 }
 
 export default async function LocationPage({ params }: PageProps<"/locations/[slug]">) {
@@ -54,7 +51,7 @@ export default async function LocationPage({ params }: PageProps<"/locations/[sl
           "@type": "Service",
           name: `Web development and digital marketing in ${l.city}`,
           description: l.metaDescription,
-          provider: { "@type": "Organization", name: site.name, url: site.url },
+          provider: { "@type": "Organization", "@id": ids.org, name: site.name, url: site.url },
           areaServed: { "@type": "City", name: l.city, containedInPlace: { "@type": "Country", name: l.country } },
         };
 

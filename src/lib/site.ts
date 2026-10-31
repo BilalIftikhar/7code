@@ -4,7 +4,9 @@
 
 export const site = {
   name: "7CODE",
-  url: "https://7code.agency", // TODO: confirm final domain
+  // Final domain: set NEXT_PUBLIC_SITE_URL in Vercel (no trailing slash). Sitemap, canonicals,
+  // share images, schema and llms.txt all follow it.
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://7code.agency").replace(/\/$/, ""), // TODO: confirm final domain
   tagline: "We build. We grow. We transform.",
   description:
     "Web development, SEO and digital marketing agency for Dubai, Abu Dhabi and Lahore: custom websites, web apps, Shopify stores, mobile apps and AI-search SEO.",

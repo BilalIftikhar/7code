@@ -1,15 +1,17 @@
+import { ids } from "@/lib/schema";
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import { getArticles } from "@/lib/insights";
 import { site } from "@/lib/site";
 import { CtaBox, JsonLd, PageHeader } from "@/components/PageParts";
 import { InsightsIndex } from "@/components/insights/InsightsIndex";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = meta({
   title: "Insights — guides on web development, SEO, AEO, GEO and growth",
   description:
     "Practical guides from 7CODE on web development, SEO, answer and generative engine optimisation, eCommerce and hiring remote teams, written from real client work.",
-  alternates: { canonical: "/insights" },
-};
+  path: "/insights",
+});
 
 export default function InsightsPage() {
   // Pass metadata only — not the article bodies — to the client component
@@ -28,7 +30,7 @@ export default function InsightsPage() {
     "@type": "Blog",
     name: "7CODE Insights",
     url: `${site.url}/insights`,
-    publisher: { "@type": "Organization", name: site.name, url: site.url },
+    publisher: { "@type": "Organization", "@id": ids.org, name: site.name, url: site.url },
     blogPost: articles.map((a) => ({
       "@type": "BlogPosting",
       headline: a.title,

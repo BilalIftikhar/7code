@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import { Card3D } from "@/components/motion/Card3D";
 import Link from "next/link";
 import { services } from "@/lib/services";
 import { site, whatsappLink } from "@/lib/site";
 import { RevealText } from "@/components/motion/RevealText";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = meta({
   title: "Services — web, mobile, eCommerce, SEO, design and AI",
   description:
-    "7CODE's services: web and software development, mobile apps, eCommerce and Shopify, WordPress, SEO/AEO/GEO, social media, branding and UI/UX, performance marketing, and AI automation.",
-  alternates: { canonical: "/services" },
-};
+    "Web and software development, mobile apps, Shopify and eCommerce, WordPress, SEO/AEO/GEO, social media, branding, UI/UX, paid ads and AI automation.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   const ld = {

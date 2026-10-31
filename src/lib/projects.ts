@@ -117,7 +117,7 @@ export const projects: Project[] = [
     url: "https://ferryglobaluae.com",
     kind: "Website & SEO",
     summary:
-      "A new website for an Abu Dhabi logistics company that runs land, sea and air freight, warehousing, customs clearance and equipment rental from a single office in MBZ City.",
+      "A new website for an Abu Dhabi logistics company running land, sea and air freight, warehousing, customs clearance and equipment rental from MBZ City.",
     role: "Website design and build, UAE-wide SEO structure and deployment.",
     scope: ["Website design & build", "UAE-wide SEO", "Service architecture", "Deployment"],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],

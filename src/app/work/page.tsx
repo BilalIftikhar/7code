@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import { archive, projects } from "@/lib/projects";
 import { WorkGrid } from "@/components/home/WorkGrid";
 import { Archive } from "@/components/Archive";
 import { RevealText } from "@/components/motion/RevealText";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = meta({
   title: "Our work — websites, platforms, eCommerce and UI/UX",
   description:
-    "Case studies from 7CODE: marketplaces, eCommerce storefronts, Next.js websites and local SEO for clients in the UAE, Oman, the UK and Pakistan, plus an archive of earlier design and web projects.",
-  alternates: { canonical: "/work" },
-};
+    "Case studies from 7CODE: marketplaces, eCommerce stores, Next.js websites and local SEO for clients in the UAE, Oman, the UK and Pakistan.",
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (

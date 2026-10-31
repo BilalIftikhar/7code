@@ -29,7 +29,7 @@ export const locations: Location[] = [
     presence: "headquarters",
     seoTitle: "Software House & Web Development Company in Lahore | 7CODE",
     metaDescription:
-      "7CODE is a Lahore-based web development, software and SEO agency building websites, web apps, Shopify stores and search programmes for Pakistani businesses and exporters.",
+      "Lahore-based web development, software and SEO agency building websites, web apps, Shopify stores and search programmes for Pakistani businesses and exporters.",
     h1: "Software house and web development company in Lahore",
     intro: [
       "Lahore is home. 7CODE's founder and team work from here, building websites, software and stores for businesses across Punjab and for clients abroad.",

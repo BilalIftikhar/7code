@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { meta } from "@/lib/meta";
 import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = meta({
   title: "Terms and conditions",
-  description: "The terms that apply to using the 7CODE website and to project enquiries.",
-  alternates: { canonical: "/terms" },
-};
+  description:
+    "The terms that apply to using the 7CODE website and to project enquiries.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
