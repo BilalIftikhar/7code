@@ -44,7 +44,7 @@ export async function submitEnquiry(_prev: ContactState, fd: FormData): Promise<
   const errors: ContactState["errors"] = {};
   if (values.name!.length < 2) errors.name = "Enter your name.";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email!)) errors.email = "Enter an email address like name@company.com.";
-  if (values.details!.length < 20) errors.details = "Tell us a little more about the project — at least a sentence or two.";
+  if (values.details!.length < 20) errors.details = "Tell us a little more about the project, at least a sentence or two.";
   if (values.service && !services.some((s) => s.slug === values.service) && values.service !== "other")
     errors.service = "Choose a service from the list.";
   for (const [k, v] of Object.entries(values)) if (v && v.length > 4000) errors[k as Field] = "This is too long.";
