@@ -26,10 +26,12 @@ const menuLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-const places = [
-  { city: "Lahore", tz: "Asia/Karachi", href: "/locations/lahore" },
+const places: { city: string; note?: string; tz?: string; href: string }[] = [
+  { city: "Lahore", note: "HQ", tz: "Asia/Karachi", href: "/locations/lahore" },
   { city: "Dubai", tz: "Asia/Dubai", href: "/locations/dubai" },
   { city: "Abu Dhabi", tz: "Asia/Dubai", href: "/locations/abu-dhabi" },
+  { city: "UAE", note: "All 7 emirates", tz: "Asia/Dubai", href: "/locations" },
+  { city: "Worldwide", note: "Remote", href: "/contact" },
 ];
 
 /* ---------- Live studio clock (client-only, minute precision) ---------- */
@@ -379,13 +381,16 @@ export function Header() {
   );
 }
 
-function PlaceRow({ city, tz, href }: { city: string; tz: string; href: string }) {
-  const time = useClock(tz);
+function PlaceRow({ city, note, tz, href }: { city: string; note?: string; tz?: string; href: string }) {
+  const time = useClock(tz ?? "Asia/Karachi");
   return (
     <li>
-      <Link href={href} className="flex items-center justify-between py-3 text-white/80 transition-colors hover:text-white">
-        <span className="font-semibold">{city}</span>
-        <span className="tabular-nums text-white/60">{time ?? "--:--"}</span>
+      <Link href={href} className="flex items-center justify-between gap-4 py-3 text-white/80 transition-colors hover:text-white">
+        <span>
+          <span className="font-semibold">{city}</span>
+          {note && <span className="ml-2 text-sm text-white/50">{note}</span>}
+        </span>
+        <span className="tabular-nums text-white/60">{tz ? (time ?? "--:--") : "Any time zone"}</span>
       </Link>
     </li>
   );
