@@ -74,7 +74,7 @@ export function Hero({ featured }: { featured: Project }) {
           </p>
           <ul className="mt-6 flex flex-wrap gap-2 text-sm">
             <li className="flex items-center gap-2 rounded-full border border-rule bg-card px-3.5 py-2">
-              <span className="font-semibold">Top Rated</span>
+              <span className="font-semibold">Top Rated Plus</span>
               <span className="text-graphite">on Upwork</span>
             </li>
             <li className="flex items-center gap-2 rounded-full border border-rule bg-card px-3.5 py-2">

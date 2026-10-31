@@ -131,7 +131,7 @@ export default function AboutPage() {
           <div className="rounded-xl bg-card p-6 md:p-8">
             <dt className="text-graphite">Upwork standing</dt>
             <dd className="display mt-6 text-6xl">100%</dd>
-            <dd className="mt-1 text-sm text-graphite">Job Success Score, Top Rated</dd>
+            <dd className="mt-1 text-sm text-graphite">Job Success Score, Top Rated Plus</dd>
           </div>
         </dl>
       </section>
@@ -155,7 +155,7 @@ export default function AboutPage() {
                 </div>
                 <div className="flex justify-between gap-6">
                   <dt className="text-white/60">Upwork</dt>
-                  <dd className="text-right font-semibold">Top Rated, 100% Job Success</dd>
+                  <dd className="text-right font-semibold">Top Rated Plus, 100% Job Success</dd>
                 </div>
                 <div className="flex justify-between gap-6">
                   <dt className="text-white/60">Education</dt>
@@ -183,7 +183,7 @@ export default function AboutPage() {
             </p>
             <p className="mt-5 leading-relaxed text-graphite">
               He prefers working straight from founders and designers rather than a fully specified ticket, which is how
-              most of 7CODE&apos;s client work runs. He is Top Rated on Upwork with a 100% Job Success Score.
+              most of 7CODE&apos;s client work runs. He is Top Rated Plus on Upwork with a 100% Job Success Score.
             </p>
             <p className="mt-5 leading-relaxed text-graphite">
               Before founding 7CODE he spent four years as a senior engineer at Algolix Technologies building client SaaS

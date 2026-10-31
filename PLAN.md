@@ -17,7 +17,7 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
 - [x] 6. Insights: Markdown articles in content/insights, index with topic filters, article pages (TOC, reading time, author bio, share, related, FAQs, BlogPosting + FAQPage + Breadcrumb schema), homepage "Latest insights"; 3 articles
 - [x] UAE competitor upgrade (vs Digital Gravity, Element8, Red Spider, AUN Digital):
   - Keywords: keyword-led H1 + titles ("Web Development Company in Dubai", "Web Design & Development Company in Abu Dhabi", "Software House … in Lahore", "SEO Services in Dubai & the UAE"…); service-in-city sections on each location page; bilingual/Arabic + AI Overviews wording
-  - Trust & conversion: client-name strip, Upwork Top Rated / 100% JSS badges, verbatim Upwork reviews, count-up stats, homepage quote form, floating WhatsApp, AED budgets
+  - Trust & conversion: client-name strip, Upwork Top Rated Plus / 100% JSS badges, verbatim Upwork reviews, count-up stats, homepage quote form, floating WhatsApp, AED budgets
   - 3D: three.js extruded glossy "7" with particles + wireframe echo (mouse + scroll reactive, lazy-loaded after the intro, pauses off-screen, SVG fallback)
   - Motion graphics: pinned "Build → Launch → Grow" scroll story, code-scramble keyword line, CSS headline reveal
 - [x] World-class agency layer (Awwwards/Lusion/Locomotive patterns): 3D tilt cards with glare + depth layers site-wide; pinned horizontal cover-flow 3D work gallery (swipe carousel on mobile); first-visit counter preloader (skipped for 12h, reduced motion, and if JS fails); curtain page transitions; scroll-velocity skew on the marquee

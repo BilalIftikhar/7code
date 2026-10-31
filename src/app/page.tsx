@@ -203,7 +203,7 @@ export default function Home() {
             </p>
             <p className="mt-5 leading-relaxed text-graphite">
               He spent four years as a senior software engineer at Algolix Technologies building SaaS products, and
-              currently builds the AV Leads marketplace. He is Top Rated on Upwork with a 100% Job Success Score.
+              currently builds the AV Leads marketplace. He is Top Rated Plus on Upwork with a 100% Job Success Score.
             </p>
             <p className="mt-5 leading-relaxed text-graphite">
               At 7CODE he leads the technical direction on every project and works with a distributed team of designers,
