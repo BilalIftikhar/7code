@@ -136,9 +136,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             <ul className="mt-6 space-y-3">
               {s.forWho.map((w) => (
                 <li key={w} className="flex gap-3 text-lg leading-relaxed">
-                  <svg viewBox="0 0 100 120" className="mt-1.5 h-4 w-auto shrink-0" aria-hidden="true">
-                    <path d="M8 14 H90 L38 116" fill="none" stroke="currentColor" strokeWidth="16" />
-                  </svg>
+                  <span className="mt-[0.8em] h-[3px] w-3 shrink-0 rounded-sm bg-cursor" aria-hidden="true" />
                   {w}
                 </li>
               ))}

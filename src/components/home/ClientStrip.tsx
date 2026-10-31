@@ -12,9 +12,7 @@ export function ClientStrip() {
       >
         {p.name}
       </Link>
-      <svg viewBox="0 0 100 120" className="h-4 w-auto text-rule" aria-hidden="true">
-        <path d="M0 0H100V17L51 120H29L76 19H0Z" fill="currentColor" />
-      </svg>
+      <span className="h-[3px] w-3 rounded-sm bg-cursor" aria-hidden="true" />
     </li>
   ));
 

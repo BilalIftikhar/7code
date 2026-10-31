@@ -28,46 +28,53 @@ export function createSevenScene(
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
   camera.position.set(0, 0, 9);
 
-  // --- The 7 ------------------------------------------------------------
-  // Outline drawn on a 100 x 120 grid (y down), mirrored into three's y-up space.
-  const pts: [number, number][] = [
-    [0, 0], [100, 0], [100, 17], [51, 120], [29, 120], [76, 19], [0, 19],
-  ];
-  const shape = new THREE.Shape(pts.map(([x, y]) => new THREE.Vector2(x, -y)));
-  const geo = new THREE.ExtrudeGeometry(shape, {
-    depth: 26,
-    bevelEnabled: true,
-    bevelThickness: 4,
-    bevelSize: 3,
-    bevelSegments: opts.lowPower ? 3 : 8,
-    curveSegments: 4,
-  });
-  geo.center();
-  geo.scale(0.026, 0.026, 0.026);
+  // --- The "7_" code mark -----------------------------------------------
+  // Drawn on a 114 x 120 grid (y down) and mirrored into three's y-up space:
+  // a 7 plus a terminal cursor typed on the same front plane.
+  const shapeOf = (pts: [number, number][]) => new THREE.Shape(pts.map(([x, y]) => new THREE.Vector2(x, -y)));
+  const bevel = { bevelEnabled: true, bevelSegments: opts.lowPower ? 3 : 8, curveSegments: 4 };
+  const S = 0.026;
 
+  const geo = new THREE.ExtrudeGeometry(
+    shapeOf([[0, 0], [100, 0], [100, 17], [51, 120], [29, 120], [76, 19], [0, 19]]),
+    { ...bevel, depth: 26, bevelThickness: 4, bevelSize: 3 },
+  );
+  geo.translate(-57, 60, -13);
+  geo.scale(S, S, S);
   const mat = new THREE.MeshPhysicalMaterial({
     color: new THREE.Color("#1f1f22"),
     metalness: 0.55,
     roughness: 0.22,
     clearcoat: 1,
     clearcoatRoughness: 0.08,
-    iridescence: 0.55,
+    iridescence: 0.45,
     iridescenceIOR: 1.35,
     iridescenceThicknessRange: [180, 620],
     envMapIntensity: 1.25,
   });
   const seven = new THREE.Mesh(geo, mat);
 
-  // Thin wireframe echo behind it — the "code" layer of the mark
-  const wire = new THREE.LineSegments(
-    new THREE.EdgesGeometry(geo, 25),
-    new THREE.LineBasicMaterial({ color: "#222222", transparent: true, opacity: 0.18 }),
+  const cursorGeo = new THREE.ExtrudeGeometry(
+    shapeOf([[74, 108], [114, 108], [114, 120], [74, 120]]),
+    { ...bevel, depth: 10, bevelThickness: 2, bevelSize: 1.5 },
   );
-  wire.position.set(0.55, -0.35, -1.4);
-  wire.scale.setScalar(1.08);
+  cursorGeo.translate(-57, 60, 3); // front face flush with the 7's
+  cursorGeo.scale(S, S, S);
+  // Kept out of tone mapping so it reads as the exact brand green, not a washed pastel
+  const cursorMat = new THREE.MeshPhysicalMaterial({
+    color: new THREE.Color("#00752d"),
+    emissive: new THREE.Color("#005a22"),
+    emissiveIntensity: 0.08,
+    metalness: 0.05,
+    roughness: 0.55,
+    clearcoat: 0.3,
+    envMapIntensity: 0.25,
+    toneMapped: false,
+  });
+  const cursor = new THREE.Mesh(cursorGeo, cursorMat);
 
   const group = new THREE.Group();
-  group.add(seven, wire);
+  group.add(seven, cursor);
   scene.add(group);
 
   // --- Particles: a slow orbit of fine points ---------------------------
@@ -101,7 +108,7 @@ export function createSevenScene(
   let scroll = 0;
   let active = true;
   let raf = 0;
-  const clock = new THREE.Clock();
+  const t0 = performance.now();
 
   const resize = () => {
     const { clientWidth: w, clientHeight: h } = canvas;
@@ -115,7 +122,7 @@ export function createSevenScene(
   resize();
 
   const render = () => {
-    const t = clock.getElapsedTime();
+    const t = (performance.now() - t0) / 1000;
     const k = opts.reducedMotion ? 1 : 0.06;
     smooth.x += (pointer.x - smooth.x) * k;
     smooth.y += (pointer.y - smooth.y) * k;
@@ -126,7 +133,8 @@ export function createSevenScene(
     group.rotation.x = 0.12 - smooth.y * 0.35 + Math.cos(idle * 0.38) * 0.05;
     group.rotation.z = -0.05 + smooth.s * 0.25;
     group.position.y = Math.sin(idle * 0.8) * 0.08 + smooth.s * 1.2;
-    wire.rotation.y = Math.sin(idle * 0.3) * 0.15;
+    // Terminal blink: on for ~0.53s, off for ~0.53s
+    cursor.visible = opts.reducedMotion || Math.floor(t * 1.9) % 2 === 0;
     particles.rotation.y = idle * 0.05 + smooth.x * 0.2;
     particles.rotation.x = smooth.y * 0.1;
 
@@ -161,6 +169,8 @@ export function createSevenScene(
       ro.disconnect();
       geo.dispose();
       mat.dispose();
+      cursorGeo.dispose();
+      cursorMat.dispose();
       pGeo.dispose();
       env.dispose();
       pmrem.dispose();

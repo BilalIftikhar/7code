@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { SevenSceneHandle } from "./SevenScene";
 import { prefersReducedMotion } from "@/components/motion/utils";
+import { CodeMark } from "@/components/Logo";
 
 /** WebGL that runs on a real GPU. Software renderers (SwiftShader, llvmpipe) would stall the main thread. */
 function hardwareWebGL() {
@@ -90,12 +91,10 @@ export function HeroSeven({ className = "" }: { className?: string }) {
   return (
     <div ref={wrap} className={`relative ${className}`} aria-hidden="true">
       {/* Flat 7: instant, zero-JS; faded out once the 3D scene takes over */}
-      <svg
-        viewBox="0 0 100 120"
+      <CodeMark
+        blink
         className={`absolute inset-0 m-auto h-[70%] w-auto text-night transition-opacity duration-700 ${ready ? "opacity-0" : "opacity-100"}`}
-      >
-        <path d="M0 0H100V17L51 120H29L76 19H0Z" fill="currentColor" />
-      </svg>
+      />
       <canvas
         ref={canvas}
         className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ${ready ? "opacity-100" : "opacity-0"}`}

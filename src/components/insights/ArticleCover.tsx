@@ -22,13 +22,7 @@ export function ArticleCover({
   const dark = tone.includes("text-white");
   return (
     <div className={`relative isolate overflow-hidden ${tone} ${className}`}>
-      <svg
-        viewBox="0 0 100 120"
-        className={`absolute -bottom-[14%] right-[-6%] h-[120%] w-auto ${dark ? "text-white/[0.07]" : "text-night/[0.06]"} transition-transform duration-1000 ease-[var(--ease-out-quart)] group-hover:-translate-y-[3%] group-hover:rotate-[-3deg]`}
-        aria-hidden="true"
-      >
-        <path d="M8 14 H90 L38 116" fill="none" stroke="currentColor" strokeWidth="13" />
-      </svg>
+      <span aria-hidden="true" className={`absolute bottom-6 right-6 h-[5px] w-8 rounded-sm bg-cursor md:bottom-8 md:right-8`} />
       <div className={`absolute inset-0 flex flex-col justify-between ${size === "lg" ? "p-6 md:p-12" : "p-5 md:p-7"}`}>
         <span className={`self-start rounded-full px-3 py-1 text-xs font-semibold ${dark ? "bg-white/10" : "bg-night/[0.07]"}`}>
           {category}

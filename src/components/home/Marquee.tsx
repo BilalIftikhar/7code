@@ -22,9 +22,7 @@ function Row({ outline = false }: { outline?: boolean }) {
               >
                 {w}
               </span>
-              <svg viewBox="0 0 100 120" className="h-[0.9em] w-auto text-signal text-[clamp(2rem,5vw,4.5rem)]" aria-hidden="true">
-                <path d="M8 14 H90 L38 116" fill="none" stroke="currentColor" strokeWidth="16" />
-              </svg>
+              <span className="mx-[0.15em] mt-[0.55em] inline-block h-[0.14em] w-[0.5em] rounded-sm bg-cursor text-[clamp(3rem,9vw,8.5rem)]" aria-hidden="true" />
             </li>
           ))}
         </ul>

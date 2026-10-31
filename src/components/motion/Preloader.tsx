@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { CodeMark } from "@/components/Logo";
 
 const KEY = "7code-intro";
 export const INTRO_MS = 1150;
@@ -46,9 +47,7 @@ export function Preloader() {
   return (
     <div aria-hidden="true" className={`preloader ${done ? "is-done" : ""}`}>
       <div className="flex items-end gap-5">
-        <svg viewBox="0 0 100 120" className="h-16 w-auto md:h-20">
-          <path className="preloader-seven" pathLength={1} d="M0 0H100V17L51 120H29L76 19H0Z" fill="none" stroke="#fff" strokeWidth="3" />
-        </svg>
+        <CodeMark outline blink color="#fff" className="h-16 w-auto md:h-20" />
         <span ref={count} className="display text-6xl tabular-nums md:text-8xl">
           000
         </span>

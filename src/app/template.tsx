@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { CodeMark } from "@/components/Logo";
 
 // Persists across client-side navigations; false only for the very first render.
 let firstRender = true;
@@ -19,9 +20,7 @@ export default function Template({ children }: { children: ReactNode }) {
     <>
       {curtain && (
         <div aria-hidden="true" className="page-curtain">
-          <svg viewBox="0 0 100 120" className="h-12 w-auto">
-            <path d="M0 0H100V17L51 120H29L76 19H0Z" fill="#fff" />
-          </svg>
+          <CodeMark color="#fff" className="h-12 w-auto" />
         </div>
       )}
       {children}

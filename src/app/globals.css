@@ -24,6 +24,8 @@
   --color-graphite: #5c5c5c;
   --color-mist: #a3a3a3;
   --color-rule: #dcdcdc;
+  /* The terminal cursor in the "7_" mark — the brand's one accent */
+  --color-cursor: #16a34a;
 
   --font-sans: var(--font-inter-tight), system-ui, sans-serif;
 
@@ -352,3 +354,11 @@ a:focus-visible > .roll::after, button:focus-visible > .roll::after { transform:
   .site-menu, .site-menu.is-open { clip-path: none; }
   .site-menu .menu-item > a, .site-menu .menu-aside { transform: none; opacity: 1; }
 }
+
+/* Terminal cursor blink for the "7_" mark */
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor-blink { animation: cursor-blink 1.06s steps(1, end) infinite; }
+@media (prefers-reduced-motion: reduce) { .cursor-blink { animation: none; } }
