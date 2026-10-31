@@ -195,3 +195,94 @@
   border-radius: 0.3em;
   background: var(--color-chalk);
 }
+
+/* 3D tilt cards */
+.card3d[data-tilt] {
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(calc(var(--h, 0) * 10px));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.card3d[data-tilt] > * { transform-style: preserve-3d; }
+.card3d[data-tilt] [data-depth] {
+  transform: translateZ(calc(var(--h, 0) * var(--depth, 30) * 1px));
+  transition: none;
+}
+.card3d-glare {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: calc(var(--h, 0) * 0.9);
+  background: radial-gradient(520px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.28), transparent 45%);
+  mix-blend-mode: soft-light;
+  transform: translateZ(1px);
+}
+.card3d[data-tilt]::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 4% 6% -4%;
+  z-index: -1;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, 0.55);
+  filter: blur(28px);
+  opacity: calc(var(--h, 0) * 0.35);
+  transform: translateZ(-40px);
+}
+
+/* Preloader (first visit) */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-night);
+  color: #fff;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+  /* Safety net: never block the page if scripts fail */
+  animation: preloader-failsafe 0s 3.2s forwards;
+}
+.preloader.is-done { clip-path: inset(0 0 100% 0); }
+.preloader-seven {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-seven 0.85s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+@keyframes preloader-failsafe { to { visibility: hidden; } }
+html.intro-seen .preloader { display: none; }
+
+/* Hero intro waits for the preloader on first visits */
+.line-rise, .rise { animation-delay: var(--d, 0s); }
+html:not(.intro-seen) .line-rise,
+html:not(.intro-seen) .rise { animation-delay: calc(var(--d, 0s) + 1.05s); }
+
+/* Route transition curtain */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: var(--color-night);
+  animation: curtain-up 0.85s cubic-bezier(0.76, 0, 0.24, 1) 0.08s both;
+}
+.page-curtain svg { animation: curtain-mark 0.85s ease both; }
+@keyframes curtain-up {
+  from { clip-path: inset(0 0 0 0); }
+  to { clip-path: inset(0 0 100% 0); }
+}
+@keyframes curtain-mark {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-30px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader, .page-curtain { display: none; }
+  html:not(.intro-seen) .line-rise, html:not(.intro-seen) .rise { animation-delay: 0s; }
+}

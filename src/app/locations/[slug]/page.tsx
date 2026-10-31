@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Card3D } from "@/components/motion/Card3D";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLocation, locations } from "@/lib/locations";
@@ -135,6 +136,7 @@ export default async function LocationPage({ params }: PageProps<"/locations/[sl
             const sv = services.find((x) => x.slug === cs.service);
             return (
               <li key={cs.h}>
+                <Card3D className="h-full rounded-xl" max={7}>
                 <Link
                   href={`/services/${cs.service}`}
                   className="group flex h-full flex-col justify-between gap-8 rounded-xl bg-card p-6 transition-colors hover:bg-night hover:text-white md:p-8"
@@ -145,6 +147,7 @@ export default async function LocationPage({ params }: PageProps<"/locations/[sl
                   </div>
                   <span className="text-sm font-semibold underline-offset-4 group-hover:underline">{sv?.name ?? "View service"}</span>
                 </Link>
+                </Card3D>
               </li>
             );
           })}

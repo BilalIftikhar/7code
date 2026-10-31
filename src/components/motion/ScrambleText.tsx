@@ -9,7 +9,20 @@ const GLYPHS = "01<>/{}[]=+*#7ABCDEFGHJKLMNPQRSTUVWXYZ";
  * Kinetic "decode" reveal: characters resolve from code glyphs left to right.
  * The final text is server-rendered, so search engines and screen readers get it as-is.
  */
-export function ScrambleText({ text, delay = 0, duration = 1100, className = "" }: { text: string; delay?: number; duration?: number; className?: string }) {
+export function ScrambleText({
+  text,
+  delay = 0,
+  duration = 1100,
+  className = "",
+  afterIntro = false,
+}: {
+  text: string;
+  delay?: number;
+  duration?: number;
+  className?: string;
+  /** Wait for the first-visit preloader before starting */
+  afterIntro?: boolean;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -29,13 +42,14 @@ export function ScrambleText({ text, delay = 0, duration = 1100, className = "" 
       el.textContent = out;
       if (t < 1) raf = requestAnimationFrame(tick);
     };
-    const id = window.setTimeout(() => (raf = requestAnimationFrame(tick)), delay);
+    const introWait = afterIntro && !document.documentElement.classList.contains("intro-seen") ? 1050 : 0;
+    const id = window.setTimeout(() => (raf = requestAnimationFrame(tick)), delay + introWait);
     return () => {
       window.clearTimeout(id);
       cancelAnimationFrame(raf);
       el.textContent = text;
     };
-  }, [text, delay, duration]);
+  }, [text, delay, duration, afterIntro]);
 
   return (
     <span ref={ref} className={className}>

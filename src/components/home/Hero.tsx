@@ -42,12 +42,12 @@ export function Hero({ featured }: { featured: Project }) {
           <h1>
             <span className="flex items-center gap-3 text-sm font-semibold text-graphite md:text-base">
               <span className="h-2 w-2 shrink-0 rounded-full bg-[#25d366] shadow-[0_0_0_4px_rgba(37,211,102,0.18)]" aria-hidden="true" />
-              <ScrambleText text="Web development, SEO & digital marketing agency for Dubai, Abu Dhabi & Lahore" delay={150} />
+              <ScrambleText text="Web development, SEO & digital marketing agency for Dubai, Abu Dhabi & Lahore" delay={150} afterIntro />
             </span>{" "}
             <span className="display mt-6 block text-[clamp(2.7rem,7.4vw,7.4rem)]">
               {LINES.map((l, i) => (
                 <span key={l} className="block overflow-hidden pb-[0.06em]">
-                  <span className="line-rise block" style={{ animationDelay: `${0.15 + i * 0.09}s` }}>
+                  <span className="line-rise block" style={{ ["--d" as string]: `${0.15 + i * 0.09}s` }}>
                     {l}
                   </span>{" "}
                 </span>
@@ -58,7 +58,7 @@ export function Hero({ featured }: { featured: Project }) {
         <HeroSeven className="-mt-4 h-[300px] sm:h-[380px] lg:col-span-4 lg:mt-0 lg:h-[560px]" />
       </div>
 
-      <div className="rise mt-6 grid gap-6 md:mt-10 md:grid-cols-12 md:items-end" style={{ animationDelay: "0.8s" }}>
+      <div className="rise mt-6 grid gap-6 md:mt-10 md:grid-cols-12 md:items-end" style={{ ["--d" as string]: "0.8s" }}>
         <div className="md:col-span-6">
           <p className="max-w-[48ch] text-lg leading-relaxed text-graphite text-pretty">
             Custom websites, web apps, Shopify stores and mobile apps — plus the SEO, AI-search and ad campaigns that make them

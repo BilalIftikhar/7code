@@ -20,6 +20,7 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
   - Trust & conversion: client-name strip, Upwork Top Rated / 100% JSS badges, verbatim Upwork reviews, count-up stats, homepage quote form, floating WhatsApp, AED budgets
   - 3D: three.js extruded glossy "7" with particles + wireframe echo (mouse + scroll reactive, lazy-loaded after the intro, pauses off-screen, SVG fallback)
   - Motion graphics: pinned "Build → Launch → Grow" scroll story, code-scramble keyword line, CSS headline reveal
+- [x] World-class agency layer (Awwwards/Lusion/Locomotive patterns): 3D tilt cards with glare + depth layers site-wide; pinned horizontal cover-flow 3D work gallery (swipe carousel on mobile); first-visit counter preloader (skipped for 12h, reduced motion, and if JS fails); curtain page transitions; scroll-velocity skew on the marquee
 - [ ] 7. SEO/AEO/GEO + QA + deploy: sitemap, robots, Organization schema, OG images, Lighthouse, Vercel
 
 ## Needed from the founder before launch

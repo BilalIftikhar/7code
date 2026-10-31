@@ -40,6 +40,7 @@ export function Marquee() {
   useEffect(() => {
     if (prefersReducedMotion() || !a.current || !b.current) return;
     gsap.registerPlugin(ScrollTrigger);
+    const skewTargets = [a.current.firstElementChild, b.current.firstElementChild].filter(Boolean);
     const t1 = gsap.to(a.current, { xPercent: -50, ease: "none", duration: 45, repeat: -1 });
     const t2 = gsap.fromTo(b.current, { xPercent: -50 }, { xPercent: 0, ease: "none", duration: 45, repeat: -1 });
     const st = ScrollTrigger.create({
@@ -47,9 +48,14 @@ export function Marquee() {
       start: "top bottom",
       end: "bottom top",
       onUpdate(self) {
-        const boost = 1 + Math.min(Math.abs(self.getVelocity()) / 250, 6);
+        const v = self.getVelocity();
+        const boost = 1 + Math.min(Math.abs(v) / 250, 6);
         gsap.to([t1, t2], { timeScale: boost, duration: 0.2, overwrite: true });
         gsap.to([t1, t2], { timeScale: 1, duration: 1.2, delay: 0.2, ease: "power2.out" });
+        // Lean the type with scroll speed, then settle
+        const skew = gsap.utils.clamp(-14, 14, v / -220);
+        gsap.to(skewTargets, { skewX: skew, duration: 0.25, overwrite: true });
+        gsap.to(skewTargets, { skewX: 0, duration: 0.9, delay: 0.25, ease: "power3.out" });
       },
     });
     return () => {

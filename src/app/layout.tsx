@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Cursor } from "@/components/motion/Cursor";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { Preloader, introScript } from "@/components/motion/Preloader";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -32,8 +33,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: introScript }} />
+      </head>
       <body className="flex min-h-full flex-col">
+        <Preloader />
         <a
           href="#main"
           className="sr-only z-[60] rounded bg-signal px-4 py-2 text-on-signal focus:not-sr-only focus:fixed focus:left-4 focus:top-4"

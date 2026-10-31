@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { Card3D } from "@/components/motion/Card3D";
 
 // Verbatim client feedback from the founder's Upwork contracts (5.0 ratings).
 const reviews = [
@@ -45,7 +46,7 @@ export function Testimonials() {
       </div>
       <ul className="mt-12 grid gap-3 md:grid-cols-12">
         {reviews.map((r, i) => (
-          <li key={i} className={`flex flex-col justify-between gap-10 rounded-xl p-7 md:p-10 ${i === 0 ? "bg-night text-white md:col-span-8" : "bg-card md:col-span-4"}`}>
+          <Card3D as="li" key={i} max={5} className={`flex flex-col justify-between gap-10 rounded-xl p-7 md:p-10 ${i === 0 ? "bg-night text-white md:col-span-8" : "bg-card md:col-span-4"}`}>
             <figure>
               <Stars />
               <blockquote className={`mt-6 leading-relaxed ${i === 0 ? "display-soft text-[clamp(1.3rem,2.2vw,1.85rem)]" : "text-xl"}`}>
@@ -56,7 +57,7 @@ export function Testimonials() {
                 {r.context}
               </figcaption>
             </figure>
-          </li>
+          </Card3D>
         ))}
       </ul>
     </section>

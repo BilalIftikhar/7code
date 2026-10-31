@@ -4,6 +4,7 @@ import { ClientStrip } from "@/components/home/ClientStrip";
 import { GrowthStory } from "@/components/home/GrowthStory";
 import { Testimonials } from "@/components/home/Testimonials";
 import { CountUp } from "@/components/motion/CountUp";
+import { Card3D } from "@/components/motion/Card3D";
 import { ContactForm } from "@/app/contact/ContactForm";
 import { services } from "@/lib/services";
 import { archive, projects } from "@/lib/projects";
@@ -11,7 +12,7 @@ import { site, whatsappLink } from "@/lib/site";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
-import { WorkGrid } from "@/components/home/WorkGrid";
+import { WorkGallery3D } from "@/components/home/WorkGallery3D";
 import { ServicesIndex } from "@/components/home/ServicesIndex";
 import { RevealText } from "@/components/motion/RevealText";
 import { getArticles } from "@/lib/insights";
@@ -66,26 +67,26 @@ export default function Home() {
       {/* CREDIBILITY — verified facts only */}
       <section aria-label="At a glance" className="wrap py-16 md:py-20">
         <dl className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <div className="rounded-xl bg-card p-6 md:p-8">
+          <Card3D className="rounded-xl bg-card p-6 md:p-8" max={10}>
             <dt className="text-graphite">Founder&apos;s full-stack experience</dt>
             <dd className="display mt-6 text-6xl">
               <CountUp to={6} suffix="+" /> years
             </dd>
-          </div>
-          <div className="rounded-xl bg-card p-6 md:p-8">
+          </Card3D>
+          <Card3D className="rounded-xl bg-card p-6 md:p-8" max={10}>
             <dt className="text-graphite">Projects shipped, including design work</dt>
             <dd className="display mt-6 text-6xl">
               <CountUp to={projects.length + archive.length} />
             </dd>
             <dd className="mt-1 text-sm text-graphite">{projects.length} with full case studies</dd>
-          </div>
-          <div className="rounded-xl bg-card p-6 md:p-8">
+          </Card3D>
+          <Card3D className="rounded-xl bg-card p-6 md:p-8" max={10}>
             <dt className="text-graphite">Countries those clients operate in</dt>
             <dd className="display mt-6 text-6xl">
               <CountUp to={4} />
             </dd>
             <dd className="mt-1 text-sm text-graphite">UAE, Oman, United Kingdom and Pakistan</dd>
-          </div>
+          </Card3D>
         </dl>
       </section>
 
@@ -107,32 +108,8 @@ export default function Home() {
 
       <Marquee />
 
-      {/* SELECTED WORK */}
-      <section aria-labelledby="work-h" className="py-24 md:py-32">
-        <div className="wrap">
-          <div className="grid gap-6 md:grid-cols-12">
-            <RevealText id="work-h" className="display text-[clamp(2.4rem,5.5vw,4.5rem)] md:col-span-7">
-              More work
-            </RevealText>
-            <p className="max-w-[44ch] text-lg leading-relaxed text-graphite md:col-span-4 md:col-start-9 md:self-end">
-              Marketplaces, storefronts, business websites and search programmes for clients in the UAE, Oman, the UK and
-              Pakistan.
-            </p>
-          </div>
-
-          <div className="mt-14">
-            <WorkGrid projects={projects.slice(1)} offset={1} />
-          </div>
-          <div className="mt-14 flex justify-center">
-            <Link
-              href="/work"
-              className="rounded-full border border-night/20 bg-card px-7 py-4 font-semibold transition-colors hover:border-night"
-            >
-              View all work
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* SELECTED WORK — pinned horizontal 3D gallery */}
+      <WorkGallery3D projects={projects} total={projects.length + archive.length} />
 
       <Testimonials />
 

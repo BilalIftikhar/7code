@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Card3D } from "@/components/motion/Card3D";
 import Link from "next/link";
 import { services } from "@/lib/services";
 import { site, whatsappLink } from "@/lib/site";
@@ -42,6 +43,7 @@ export default function ServicesPage() {
         <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {services.map((s) => (
             <li key={s.slug}>
+              <Card3D className="h-full rounded-xl" max={8}>
               <Link
                 href={`/services/${s.slug}`}
                 className="group flex h-full flex-col justify-between gap-10 rounded-xl bg-card p-6 transition-colors hover:bg-night hover:text-white md:p-8"
@@ -66,6 +68,7 @@ export default function ServicesPage() {
                   </span>
                 </div>
               </Link>
+              </Card3D>
             </li>
           ))}
         </ul>

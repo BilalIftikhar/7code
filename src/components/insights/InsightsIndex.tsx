@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Card3D } from "@/components/motion/Card3D";
 import { useState } from "react";
 import type { ArticleMeta } from "@/lib/insights";
 import { ArticleCover } from "./ArticleCover";
@@ -35,8 +36,9 @@ export function InsightsIndex({ articles }: { articles: ArticleMeta[] }) {
       <ul className="mt-10 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {shown.map((a, i) => (
           <li key={a.slug}>
-            <Link href={`/insights/${a.slug}`} data-cursor="Read" className="group block">
-              <div className="overflow-hidden rounded-xl">
+            <Card3D className="h-full rounded-2xl" max={7}>
+            <Link href={`/insights/${a.slug}`} data-cursor="Read" className="group block h-full rounded-2xl border border-rule bg-card p-2">
+              <div data-depth style={{ ["--depth" as string]: 24 }} className="overflow-hidden rounded-xl">
                 <ArticleCover
                   title={a.title}
                   category={a.category}
@@ -44,12 +46,15 @@ export function InsightsIndex({ articles }: { articles: ArticleMeta[] }) {
                   className="aspect-[4/3] transition-transform duration-1000 ease-[var(--ease-out-quart)] group-hover:scale-[1.03]"
                 />
               </div>
+              <div className="px-3 pb-3">
               <h2 className="mt-4 text-xl font-semibold leading-snug text-balance">{a.title}</h2>
               <p className="mt-2 line-clamp-2 leading-relaxed text-graphite">{a.description}</p>
               <p className="mt-3 text-sm text-graphite">
                 <time dateTime={a.published}>{fmt(a.published)}</time>, {a.readingMinutes} min read
               </p>
+              </div>
             </Link>
+            </Card3D>
           </li>
         ))}
       </ul>

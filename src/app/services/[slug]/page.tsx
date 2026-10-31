@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Card3D } from "@/components/motion/Card3D";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getService, services } from "@/lib/services";
@@ -117,9 +118,11 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         </RevealText>
         <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {s.details.map((d) => (
-            <li key={d.name} className="flex flex-col rounded-xl bg-card p-6 md:p-8">
-              <h3 className="text-xl font-semibold">{d.name}</h3>
-              <p className="mt-3 leading-relaxed text-graphite">{d.body}</p>
+            <li key={d.name}>
+              <Card3D className="h-full rounded-xl bg-card p-6 md:p-8" max={8}>
+                <h3 data-depth style={{ ["--depth" as string]: 30 }} className="text-xl font-semibold">{d.name}</h3>
+                <p className="mt-3 leading-relaxed text-graphite">{d.body}</p>
+              </Card3D>
             </li>
           ))}
         </ul>
