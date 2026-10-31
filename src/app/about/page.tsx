@@ -28,11 +28,13 @@ const principles = [
 ];
 
 const skills = [
+  { area: "Languages", items: "PHP, JavaScript, TypeScript, Python, SQL, HTML and CSS" },
   { area: "Frontend", items: "Next.js (SSR, SSG, ISR), React, Vue.js, TypeScript, Tailwind CSS, responsive Figma-to-code builds" },
   { area: "Backend", items: "PHP, Laravel, CodeIgniter, Node.js (Next.js API routes and server runtime)" },
-  { area: "Data", items: "PostgreSQL, MySQL, MongoDB, Sequelize, Mongoose; data modelling, indexing and query tuning" },
+  { area: "Databases", items: "PostgreSQL, MySQL, MongoDB, Firebase, Supabase (Postgres); Eloquent, Sequelize and Mongoose ORMs; schema design, indexing, query optimisation and migrations" },
   { area: "APIs & integrations", items: "REST API design, OAuth login, payment gateways and webhooks, Shopify (Liquid and headless storefronts)" },
-  { area: "Cloud & delivery", items: "Git and GitHub, CI/CD, Vercel, Netlify, Supabase Storage" },
+  { area: "Cloud & hosting", items: "AWS, Railway, Vercel, Netlify, Supabase Storage" },
+  { area: "Delivery", items: "Git and GitHub, CI/CD pipelines, staging and production environments" },
   { area: "Ways of working", items: "Cross-functional delivery with product, design and QA in distributed, remote teams" },
 ];
 
@@ -88,7 +90,7 @@ export default function AboutPage() {
     jobTitle: "Founder & Senior Full-Stack Software Engineer",
     worksFor: { "@id": ids.org },
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of Agriculture Faisalabad" },
-    knowsAbout: ["Laravel", "PHP", "CodeIgniter", "Node.js", "Next.js", "React", "Vue.js", "TypeScript", "Tailwind CSS", "Shopify", "REST APIs", "OAuth", "Payment gateway integration", "PostgreSQL", "MySQL", "MongoDB", "Database optimisation"],
+    knowsAbout: ["Laravel", "PHP", "Python", "JavaScript", "SQL", "AWS", "Railway", "Firebase", "Supabase", "CodeIgniter", "Node.js", "Next.js", "React", "Vue.js", "TypeScript", "Tailwind CSS", "Shopify", "REST APIs", "OAuth", "Payment gateway integration", "PostgreSQL", "MySQL", "MongoDB", "Database optimisation"],
     hasOccupation: { "@type": "Occupation", name: "Senior Full-Stack Software Engineer", skills: skills.map((s) => s.items).join("; ") },
     sameAs: [site.founder.linkedin, site.founder.upwork, site.founder.portfolio],
   };
