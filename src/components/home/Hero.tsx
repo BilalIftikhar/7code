@@ -9,6 +9,7 @@ import { ScrambleText } from "@/components/motion/ScrambleText";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { HeroSeven } from "@/components/three/HeroSeven";
 import { prefersReducedMotion } from "@/components/motion/utils";
+import { whenIdle } from "@/components/motion/idle";
 import { site, whatsappLink } from "@/lib/site";
 import type { Project } from "@/lib/projects";
 
@@ -18,9 +19,12 @@ export function Hero({ featured }: { featured: Project }) {
   const showcase = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    // Desktop only: the scroll-scrubbed clip-path repaints on every scroll frame
+    if (prefersReducedMotion() || window.innerWidth < 1024) return;
+    let ctx: gsap.Context | null = null;
+    const cancel = whenIdle(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
+    ctx = gsap.context(() => {
       // Showcase opens up as it scrolls in (headline reveal is pure CSS — see .line-rise)
       gsap.fromTo(
         showcase.current,
@@ -32,7 +36,11 @@ export function Hero({ featured }: { featured: Project }) {
         },
       );
     });
-    return () => ctx.revert();
+    });
+    return () => {
+      cancel();
+      ctx?.revert();
+    };
   }, []);
 
   return (

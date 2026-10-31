@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion } from "@/components/motion/utils";
+import { whenIdle } from "@/components/motion/idle";
 
 const steps = [
   { name: "Build", body: "We design and build a fast website, store or product around how your customers buy." },
@@ -27,19 +28,32 @@ export function GrowthStory() {
   const section = useRef<HTMLElement>(null);
   const svg = useRef<SVGSVGElement>(null);
   const [step, setStep] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const bar = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const root = svg.current;
-    if (!root || !section.current || prefersReducedMotion()) return;
+    const sec = section.current;
+    if (!root || !sec || prefersReducedMotion()) return;
+    let tl: gsap.core.Timeline | null = null;
+    let mm: gsap.MatchMedia | null = null;
+    let io: IntersectionObserver | null = null;
+
+    // Built lazily: on desktop in idle time, on phones only when the section is near
+    const build = () => {
     gsap.registerPlugin(ScrollTrigger);
     const q = gsap.utils.selector(root);
 
-    const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+    tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+    let lastStep = -1;
     const onUpdate = () => {
-      const t = tl.time();
-      setStep(t >= STEP_AT[2] ? 2 : t >= STEP_AT[1] ? 1 : 0);
-      setProgress(tl.progress());
+      const t = tl!.time();
+      const next = t >= STEP_AT[2] ? 2 : t >= STEP_AT[1] ? 1 : 0;
+      if (next !== lastStep) {
+        lastStep = next;
+        setStep(next);
+      }
+      // Progress bar is written directly — no React re-render per frame
+      if (bar.current) bar.current.style.transform = `scaleX(${tl!.progress()})`;
     };
     tl.eventCallback("onUpdate", onUpdate);
 
@@ -74,35 +88,45 @@ export function GrowthStory() {
       .from(q(".bar"), { attr: { height: 0, y: 420 }, stagger: 0.08, duration: 0.6 }, "-=0.6")
       .to({}, { duration: 0.6 });
 
-    const mm = gsap.matchMedia();
+    mm = gsap.matchMedia();
     mm.add("(min-width: 1024px)", () => {
       const st = ScrollTrigger.create({
-        trigger: section.current,
+        trigger: sec,
         start: "top top",
         end: "+=2600",
         pin: true,
         scrub: 0.6,
-        animation: tl,
+        animation: tl!,
       });
       return () => st.kill();
     });
     mm.add("(max-width: 1023px)", () => {
-      tl.repeat(-1).repeatDelay(1.2);
-      const st = ScrollTrigger.create({
-        trigger: section.current,
-        start: "top 75%",
-        end: "bottom top",
-        onToggle: (self) => (self.isActive ? tl.play() : tl.pause()),
-      });
-      return () => {
-        st.kill();
-        tl.repeat(0);
-      };
+      // Phones: play through once when it comes into view
+      tl!.play();
     });
+    };
+
+    let cancelIdle = () => {};
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      cancelIdle = whenIdle(build);
+    } else {
+      io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            io?.disconnect();
+            build();
+          }
+        },
+        { rootMargin: "0px 0px -25% 0px" },
+      );
+      io.observe(sec);
+    }
 
     return () => {
-      mm.revert();
-      tl.kill();
+      cancelIdle();
+      io?.disconnect();
+      mm?.revert();
+      tl?.kill();
     };
   }, []);
 
@@ -129,7 +153,7 @@ export function GrowthStory() {
             ))}
           </ol>
           <div className="mt-6 h-1 overflow-hidden rounded-full bg-rule" aria-hidden="true">
-            <div className="h-full origin-left bg-night" style={{ transform: `scaleX(${progress})` }} />
+            <div ref={bar} className="h-full origin-left bg-night" style={{ transform: "scaleX(0)" }} />
           </div>
         </div>
 

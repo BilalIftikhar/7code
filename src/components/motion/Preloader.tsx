@@ -60,4 +60,5 @@ export function Preloader() {
 
 /** Inline, pre-paint: mark repeat visits so CSS hides the preloader immediately. */
 // Skips the intro if it played in the last 12 hours (any tab).
-export const introScript = `try{var t=+localStorage.getItem("${KEY}");if(t&&Date.now()-t<432e5)document.documentElement.classList.add("intro-seen")}catch(e){document.documentElement.classList.add("intro-seen")}`;
+// Also skipped on phones and with Save-Data, where first paint matters most.
+export const introScript = `try{var c=navigator.connection,t=+localStorage.getItem("${KEY}");if(innerWidth<768||(c&&c.saveData)||(t&&Date.now()-t<432e5))document.documentElement.classList.add("intro-seen")}catch(e){document.documentElement.classList.add("intro-seen")}`;

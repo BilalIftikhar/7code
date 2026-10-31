@@ -8,6 +8,7 @@ import type { Project } from "@/lib/projects";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { Card3D } from "@/components/motion/Card3D";
 import { prefersReducedMotion } from "@/components/motion/utils";
+import { whenIdle } from "@/components/motion/idle";
 
 /**
  * Pinned horizontal gallery: vertical scroll drives the track sideways while
@@ -18,13 +19,15 @@ export function WorkGallery3D({ projects, total }: { projects: Project[]; total:
   const section = useRef<HTMLElement>(null);
   const track = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const bar = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sec = section.current;
     const tr = track.current;
     if (!sec || !tr || prefersReducedMotion()) return;
-    gsap.registerPlugin(ScrollTrigger);
+    const setBar = (p: number) => {
+      if (bar.current) bar.current.style.transform = `scaleX(${Math.max(p, 0.02)})`;
+    };
     const cards = Array.from(tr.querySelectorAll<HTMLElement>("[data-slide]"));
     let last = -1;
 
@@ -32,15 +35,18 @@ export function WorkGallery3D({ projects, total }: { projects: Project[]; total:
       const vw = window.innerWidth;
       let best = 0;
       let bestD = Infinity;
-      cards.forEach((c, i) => {
+      // Read every position first, then write — avoids forced layout per card
+      const centres = cards.map((c) => {
         const r = c.getBoundingClientRect();
-        const d = (r.left + r.width / 2 - vw / 2) / (vw / 2); // -1 .. 1 across the viewport
+        return r.left + r.width / 2;
+      });
+      cards.forEach((c, i) => {
+        const d = (centres[i] - vw / 2) / (vw / 2); // -1 .. 1 across the viewport
         const cd = Math.max(-1.6, Math.min(1.6, d));
         const rot = -cd * 26;
         const z = -Math.abs(cd) * 220;
         const s = 1 - Math.min(Math.abs(cd), 1) * 0.08;
         c.style.transform = `perspective(1600px) translateZ(${z.toFixed(1)}px) rotateY(${rot.toFixed(2)}deg) scale(${s.toFixed(3)})`;
-        c.style.opacity = String(1 - Math.min(Math.abs(cd), 1.4) * 0.35);
         if (Math.abs(d) < bestD) {
           bestD = Math.abs(d);
           best = i;
@@ -52,7 +58,10 @@ export function WorkGallery3D({ projects, total }: { projects: Project[]; total:
       }
     };
 
-    const mm = gsap.matchMedia();
+    let mm: gsap.MatchMedia | null = null;
+    const cancelIdle = whenIdle(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    mm = gsap.matchMedia();
     mm.add("(min-width: 1024px)", () => {
       const distance = () => tr.scrollWidth - window.innerWidth;
       const tween = gsap.to(tr, {
@@ -66,7 +75,7 @@ export function WorkGallery3D({ projects, total }: { projects: Project[]; total:
           pin: true,
           scrub: 0.8,
           invalidateOnRefresh: true,
-          onUpdate: (self) => setProgress(self.progress),
+          onUpdate: (self) => setBar(self.progress),
         },
       });
       update3D();
@@ -75,21 +84,24 @@ export function WorkGallery3D({ projects, total }: { projects: Project[]; total:
         tween.kill();
         cards.forEach((c) => {
           c.style.transform = "";
-          c.style.opacity = "";
         });
       };
     });
     mm.add("(max-width: 1023px)", () => {
       const onScroll = () => {
         const max = tr.scrollWidth - tr.clientWidth;
-        setProgress(max > 0 ? tr.scrollLeft / max : 0);
+        setBar(max > 0 ? tr.scrollLeft / max : 0);
         const w = cards[0]?.getBoundingClientRect().width ?? 1;
         setActive(Math.min(cards.length - 1, Math.round(tr.scrollLeft / (w + 16))));
       };
       tr.addEventListener("scroll", onScroll, { passive: true });
       return () => tr.removeEventListener("scroll", onScroll);
     });
-    return () => mm.revert();
+    });
+    return () => {
+      cancelIdle();
+      mm?.revert();
+    };
   }, []);
 
   const count = projects.length;
@@ -149,7 +161,7 @@ export function WorkGallery3D({ projects, total }: { projects: Project[]; total:
 
       <div className="wrap mt-4 lg:mt-10">
         <div className="h-1 overflow-hidden rounded-full bg-rule" aria-hidden="true">
-          <div className="h-full origin-left bg-night" style={{ transform: `scaleX(${Math.max(progress, 0.02)})` }} />
+          <div ref={bar} className="h-full origin-left bg-night" style={{ transform: "scaleX(0.02)" }} />
         </div>
       </div>
     </section>

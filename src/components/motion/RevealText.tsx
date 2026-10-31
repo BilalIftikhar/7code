@@ -1,9 +1,6 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
 import { prefersReducedMotion } from "./utils";
 
 type Props = {
@@ -23,28 +20,44 @@ export function RevealText({ as = "h2", children, className, id, delay = 0, onLo
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (prefersReducedMotion()) {
+    // Reduced motion and phones: show the text as-is (faster first paint, less script work)
+    if (prefersReducedMotion() || window.innerWidth < 768) {
       el.style.visibility = "visible";
       return;
     }
-    gsap.registerPlugin(ScrollTrigger, SplitText);
-    const split = SplitText.create(el, {
-      type: "lines",
-      mask: "lines",
-      autoSplit: true,
-      onSplit(self) {
-        gsap.set(el, { visibility: "visible" });
-        return gsap.from(self.lines, {
-          yPercent: 115,
-          duration: 1.15,
-          ease: "expo.out",
-          stagger: 0.09,
-          delay,
-          scrollTrigger: onLoad ? undefined : { trigger: el, start: "top 88%", once: true },
+    // GSAP is loaded on demand, so phones and reduced-motion visitors never download it here
+    let cancelled = false;
+    let revert = () => {};
+    void Promise.all([import("gsap"), import("gsap/ScrollTrigger"), import("gsap/SplitText")]).then(
+      ([{ gsap }, { ScrollTrigger }, { SplitText }]) => {
+        if (cancelled) return;
+        gsap.registerPlugin(ScrollTrigger, SplitText);
+        const split = SplitText.create(el, {
+          type: "lines",
+          mask: "lines",
+          autoSplit: true,
+          onSplit(self) {
+            gsap.set(el, { visibility: "visible" });
+            return gsap.from(self.lines, {
+              yPercent: 115,
+              duration: 1.15,
+              ease: "expo.out",
+              stagger: 0.09,
+              delay,
+              scrollTrigger: onLoad ? undefined : { trigger: el, start: "top 88%", once: true },
+            });
+          },
         });
+        revert = () => split.revert();
       },
-    });
-    return () => split.revert();
+      () => {
+        el.style.visibility = "visible";
+      },
+    );
+    return () => {
+      cancelled = true;
+      revert();
+    };
   }, [delay, onLoad]);
 
   const props = { id, className, "data-reveal": "" };

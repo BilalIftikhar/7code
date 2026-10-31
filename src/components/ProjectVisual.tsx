@@ -2,11 +2,11 @@ import type { Project } from "@/lib/projects";
 
 // Monochrome tile tones, one per project, so the grid has rhythm without colour.
 const tones = [
-  { bg: "bg-night", fg: "text-white", stroke: "text-white/10", sub: "text-white/55" },
-  { bg: "bg-[#e6e6e6]", fg: "text-night", stroke: "text-night/[0.07]", sub: "text-night/55" },
-  { bg: "bg-night-2", fg: "text-white", stroke: "text-white/10", sub: "text-white/55" },
-  { bg: "bg-card", fg: "text-night", stroke: "text-night/[0.06]", sub: "text-night/50" },
-  { bg: "bg-[#3a3a3a]", fg: "text-white", stroke: "text-white/10", sub: "text-white/55" },
+  { bg: "bg-night", fg: "text-white", stroke: "text-white/10", sub: "text-white/80" },
+  { bg: "bg-[#e6e6e6]", fg: "text-night", stroke: "text-night/[0.07]", sub: "text-night/80" },
+  { bg: "bg-night-2", fg: "text-white", stroke: "text-white/10", sub: "text-white/80" },
+  { bg: "bg-card", fg: "text-night", stroke: "text-night/[0.06]", sub: "text-night/75" },
+  { bg: "bg-[#3a3a3a]", fg: "text-white", stroke: "text-white/10", sub: "text-white/80" },
 ];
 
 /**

@@ -101,17 +101,27 @@ export default function Home() {
             first design to the leads that follow.
           </p>
         </div>
-        <ServicesIndex services={services} />
+        <Suspense>
+          <ServicesIndex services={services} />
+        </Suspense>
       </section>
 
-      <GrowthStory />
+      <Suspense>
+        <GrowthStory />
+      </Suspense>
 
-      <Marquee />
+      <Suspense>
+        <Marquee />
+      </Suspense>
 
       {/* SELECTED WORK — pinned horizontal 3D gallery */}
-      <WorkGallery3D projects={projects} total={projects.length + archive.length} />
+      <Suspense>
+        <WorkGallery3D projects={projects} total={projects.length + archive.length} />
+      </Suspense>
 
-      <Testimonials />
+      <Suspense>
+        <Testimonials />
+      </Suspense>
 
       {/* WHY 7CODE */}
       <section aria-labelledby="why-h" className="wrap py-24 md:py-32">
@@ -140,7 +150,9 @@ export default function Home() {
             Eight stages from first call to ongoing growth. Select a stage to see what happens.
           </p>
         </div>
-        <ProcessTimeline />
+        <Suspense>
+          <ProcessTimeline />
+        </Suspense>
       </section>
 
       {/* INDUSTRIES */}

@@ -25,7 +25,7 @@
   --color-mist: #a3a3a3;
   --color-rule: #dcdcdc;
 
-  --font-sans: "Inter Tight Variable", system-ui, sans-serif;
+  --font-sans: var(--font-inter-tight), system-ui, sans-serif;
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -285,4 +285,14 @@ html:not(.intro-seen) .rise { animation-delay: calc(var(--d, 0s) + 1.05s); }
 @media (prefers-reduced-motion: reduce) {
   .preloader, .page-curtain { display: none; }
   html:not(.intro-seen) .line-rise, html:not(.intro-seen) .rise { animation-delay: 0s; }
+}
+
+/* Phones: paint the hero headline immediately so it counts as the first content (LCP) */
+@media (max-width: 767px) {
+  .line-rise { animation: none; }
+}
+
+/* Phones: headings are visible at first paint — no wait for the line-split script */
+@media (max-width: 767px) {
+  [data-reveal].invisible { visibility: visible; }
 }

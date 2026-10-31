@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
 import { useRichPointer } from "./utils";
 
 /**
@@ -16,44 +15,53 @@ export function Cursor() {
   useEffect(() => {
     const el = dot.current;
     if (!enabled || !el) return;
-    const xTo = gsap.quickTo(el, "x", { duration: 0.45, ease: "power3.out" });
-    const yTo = gsap.quickTo(el, "y", { duration: 0.45, ease: "power3.out" });
-    let shown = false;
-    let px = -1;
-    let py = -1;
-    const labelAt = (x: number, y: number) => {
-      const hit = document.elementFromPoint(x, y) as HTMLElement | null;
-      setLabel(hit?.closest<HTMLElement>("[data-cursor]")?.dataset.cursor ?? null);
-    };
-    // Content moves under a still pointer while scrolling
-    const onScroll = () => {
-      if (px >= 0) labelAt(px, py);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    const move = (e: PointerEvent) => {
-      px = e.clientX;
-      py = e.clientY;
-      if (!shown) {
-        gsap.set(el, { x: e.clientX, y: e.clientY });
-        gsap.to(el, { autoAlpha: 1, duration: 0.3 });
-        shown = true;
-      }
-      xTo(e.clientX);
-      yTo(e.clientY);
-      labelAt(e.clientX, e.clientY);
-    };
-    const leave = () => {
-      gsap.to(el, { autoAlpha: 0, duration: 0.2 });
-      shown = false;
-    };
-    window.addEventListener("pointermove", move);
-    document.documentElement.addEventListener("pointerleave", leave);
-    document.documentElement.classList.add("has-cursor");
+    let cleanup = () => {};
+    let cancelled = false;
+    void import("gsap").then(({ gsap }) => {
+      if (cancelled) return;
+      const xTo = gsap.quickTo(el, "x", { duration: 0.45, ease: "power3.out" });
+      const yTo = gsap.quickTo(el, "y", { duration: 0.45, ease: "power3.out" });
+      let shown = false;
+      let px = -1;
+      let py = -1;
+      const labelAt = (x: number, y: number) => {
+        const hit = document.elementFromPoint(x, y) as HTMLElement | null;
+        setLabel(hit?.closest<HTMLElement>("[data-cursor]")?.dataset.cursor ?? null);
+      };
+      // Content moves under a still pointer while scrolling
+      const onScroll = () => {
+        if (px >= 0) labelAt(px, py);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      const move = (e: PointerEvent) => {
+        px = e.clientX;
+        py = e.clientY;
+        if (!shown) {
+          gsap.set(el, { x: e.clientX, y: e.clientY });
+          gsap.to(el, { autoAlpha: 1, duration: 0.3 });
+          shown = true;
+        }
+        xTo(e.clientX);
+        yTo(e.clientY);
+        labelAt(e.clientX, e.clientY);
+      };
+      const leave = () => {
+        gsap.to(el, { autoAlpha: 0, duration: 0.2 });
+        shown = false;
+      };
+      window.addEventListener("pointermove", move);
+      document.documentElement.addEventListener("pointerleave", leave);
+      document.documentElement.classList.add("has-cursor");
+      cleanup = () => {
+        window.removeEventListener("pointermove", move);
+        window.removeEventListener("scroll", onScroll);
+        document.documentElement.removeEventListener("pointerleave", leave);
+        document.documentElement.classList.remove("has-cursor");
+      };
+    });
     return () => {
-      window.removeEventListener("pointermove", move);
-      window.removeEventListener("scroll", onScroll);
-      document.documentElement.removeEventListener("pointerleave", leave);
-      document.documentElement.classList.remove("has-cursor");
+      cancelled = true;
+      cleanup();
     };
   }, [enabled]);
 

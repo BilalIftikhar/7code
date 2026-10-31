@@ -27,7 +27,8 @@ export function ScrambleText({
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || prefersReducedMotion()) return;
+    // Phones skip the effect so the text is final at first paint
+    if (!el || prefersReducedMotion() || window.innerWidth < 768) return;
     let raf = 0;
     let start = 0;
     const tick = (now: number) => {

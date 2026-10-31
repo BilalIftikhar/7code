@@ -21,6 +21,7 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
   - 3D: three.js extruded glossy "7" with particles + wireframe echo (mouse + scroll reactive, lazy-loaded after the intro, pauses off-screen, SVG fallback)
   - Motion graphics: pinned "Build → Launch → Grow" scroll story, code-scramble keyword line, CSS headline reveal
 - [x] World-class agency layer (Awwwards/Lusion/Locomotive patterns): 3D tilt cards with glare + depth layers site-wide; pinned horizontal cover-flow 3D work gallery (swipe carousel on mobile); first-visit counter preloader (skipped for 12h, reduced motion, and if JS fails); curtain page transitions; scroll-velocity skew on the marquee
+- [x] Speed pass (Lighthouse): 3D loads on first interaction + hardware GPU only; phones paint the hero instantly (no preloader/mask/scramble); next/font/local preloaded Latin font with size-matched fallback; GSAP/Lenis loaded on demand in idle time; CSS (compositor) marquee; lazy, re-render-free motion story and gallery; Suspense hydration boundaries; contrast fixes. Result: desktop 98–100 perf on all audited pages, a11y/BP/SEO 100; mobile LCP 1.8–2.3 s and CLS 0 under real throttling
 - [ ] 7. SEO/AEO/GEO + QA + deploy: sitemap, robots, Organization schema, OG images, Lighthouse, Vercel
 
 ## Needed from the founder before launch
