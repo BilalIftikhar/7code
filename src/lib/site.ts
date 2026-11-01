@@ -6,7 +6,7 @@ export const site = {
   name: "7CODE",
   // Final domain: set NEXT_PUBLIC_SITE_URL in Vercel (no trailing slash). Sitemap, canonicals,
   // share images, schema and llms.txt all follow it.
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://7code.agency").replace(/\/$/, ""), // TODO: confirm final domain
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://7code.digital").replace(/\/$/, ""),
   tagline: "We build. We grow. We transform.",
   description:
     "Web development, SEO and digital marketing agency for Dubai, Abu Dhabi and Lahore: custom websites, web apps, Shopify stores, mobile apps and AI-search SEO.",
@@ -28,7 +28,8 @@ export const site = {
     markets: ["Pakistan", "United Arab Emirates", "Oman", "Saudi Arabia", "United Kingdom", "United States"],
   },
   social: {
-    linkedin: "https://www.linkedin.com/in/mbilaliftikhar/",
+    // 7CODE company page; the founder's own profile is site.founder.linkedin
+    linkedin: "https://www.linkedin.com/company/7code-digital/",
     github: "https://github.com/BilalIftikhar",
   },
 } as const;

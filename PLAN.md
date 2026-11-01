@@ -27,7 +27,6 @@ Seven Lift, Maxtgc, Ferry Global Logistics, Masood Lifts, MUHSEEQ. No invented s
 
 ## Needed from the founder before launch
 
-- Final domain (`src/lib/site.ts` → `url`)
 - 7CODE email inbox (`src/lib/site.ts` → `contact.email`)
 - Confirm the UAE WhatsApp number carries over to 7CODE
 - Real results per project (Search Console / leads), approved by each client

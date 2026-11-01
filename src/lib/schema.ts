@@ -56,7 +56,7 @@ export function organizationLd() {
         itemOffered: { "@type": "Service", name: s.name, url: `${site.url}/services/${s.slug}` },
       })),
     },
-    sameAs: [site.social.linkedin, site.social.github, site.founder.upwork],
+    sameAs: [site.social.linkedin, site.social.github],
   };
 }
 
