@@ -24,8 +24,8 @@ export function organizationLd() {
     logo: { "@type": "ImageObject", "@id": ids.logo, url: `${site.url}/icon.svg`, caption: site.name },
     image: `${site.url}/opengraph-image`,
     founder: [
-      { "@type": "Person", "@id": ids.cofounder, name: site.cofounder.name, jobTitle: site.cofounder.role },
       { "@type": "Person", "@id": ids.founder, name: site.founder.name, jobTitle: site.founder.role },
+      { "@type": "Person", "@id": ids.cofounder, name: site.cofounder.name, jobTitle: site.cofounder.role },
     ],
     address: { "@type": "PostalAddress", addressLocality: "Lahore", addressRegion: "Punjab", addressCountry: "PK" },
     areaServed: site.location.markets.map((name) => ({ "@type": "Country", name })),

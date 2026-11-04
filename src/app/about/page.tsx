@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = meta({
   title: "About us — a founder-led digital agency in Lahore",
   description:
-    "7CODE is a founder-led digital agency in Lahore, founded by Abdul and Muhammad Bilal Iftikhar, serving clients in the UAE, Oman, the UK and beyond.",
+    "7CODE is a founder-led digital agency in Lahore, founded by senior full-stack engineer Muhammad Bilal Iftikhar with co-founder Abdul, serving clients in the UAE, Oman, the UK and beyond.",
   path: "/about",
 });
 
@@ -17,12 +17,12 @@ const timeline = [
   { when: "2017 – 2021", what: "Bachelor's in Information Technology, University of Agriculture Faisalabad", detail: "System analysis, software architecture and database design." },
   { when: "2021 – 2025", what: "Senior Software Engineer, Algolix Technologies", detail: "Four years building Laravel back ends with Vue, React and Next.js front ends for client SaaS products, including query optimisation, OAuth and payment integrations." },
   { when: "2025 – now", what: "Full-Stack Developer on AV Leads (via Vocuit)", detail: "Building and maintaining a live-events marketplace on Next.js and Laravel, working directly with its founders." },
-  { when: "Now", what: "Co-founded 7CODE with Abdul", detail: "Bringing development, design and growth marketing together for clients in the UAE, Oman, the UK and Pakistan." },
+  { when: "Now", what: "Founder, 7CODE", detail: "Bringing development, design and growth marketing together for clients in the UAE, Oman, the UK and Pakistan." },
 ];
 
 const principles = [
   { name: "Say what's true", body: "We only show real projects, real numbers and real reviews. Where we contributed to someone else's product, our case study says so." },
-  { name: "Senior eyes on everything", body: "Our technical co-founder reviews the architecture and code on every project. You never get handed to whoever happens to be free." },
+  { name: "Senior eyes on everything", body: "The founder reviews the architecture and code on every project. You never get handed to whoever happens to be free." },
   { name: "You own it all", body: "Code, designs, domains and hosting live on your accounts. If you ever move on, you take everything with you." },
   { name: "Build only what helps", body: "We suggest the smallest thing that solves the problem, and tell you when you don't need what you asked for." },
 ];
@@ -87,7 +87,7 @@ export default function AboutPage() {
     "@type": "Person",
     "@id": ids.founder,
     name: site.founder.name,
-    jobTitle: "Co-Founder & Senior Full-Stack Software Engineer",
+    jobTitle: "Founder & Senior Full-Stack Software Engineer",
     worksFor: { "@id": ids.org },
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of Agriculture Faisalabad" },
     knowsAbout: ["Laravel", "PHP", "Python", "JavaScript", "SQL", "AWS", "Railway", "Firebase", "Supabase", "CodeIgniter", "Node.js", "Next.js", "React", "Vue.js", "TypeScript", "Tailwind CSS", "Shopify", "REST APIs", "OAuth", "Payment gateway integration", "PostgreSQL", "MySQL", "MongoDB", "Database optimisation"],
@@ -121,7 +121,7 @@ export default function AboutPage() {
       <section aria-label="At a glance" className="wrap py-16 md:py-24">
         <dl className="grid gap-3 sm:grid-cols-3">
           <div className="rounded-xl bg-card p-6 md:p-8">
-            <dt className="text-graphite">Co-founder&apos;s full-stack experience</dt>
+            <dt className="text-graphite">Founder&apos;s full-stack experience</dt>
             <dd className="display mt-6 text-6xl">{site.founder.yearsExperience} years</dd>
           </div>
           <div className="rounded-xl bg-card p-6 md:p-8">
@@ -138,17 +138,13 @@ export default function AboutPage() {
 
       {/* Founder */}
       <section aria-labelledby="founder-h" className="wrap pb-20 md:pb-28">
-        <SectionTitle id="founder-h" note={`7CODE was founded by ${site.foundedBy}.`}>The founders</SectionTitle>
+        <SectionTitle id="founder-h" note={`Founded by ${site.founder.name}, with co-founder ${site.cofounder.name}.`}>The founders</SectionTitle>
         <div className="mt-12 grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <div className="md:sticky md:top-28 space-y-3">
-            <div id="cofounder" className="rounded-xl bg-card p-8 md:p-10">
-              <p className="display text-4xl md:text-5xl">{site.cofounder.name}</p>
-              <p className="mt-4 text-graphite">{site.cofounder.role}</p>
-            </div>
             <div className="rounded-xl bg-night p-8 text-white md:p-10">
               <p className="display text-4xl md:text-5xl">{site.founder.name}</p>
-              <p className="mt-4 text-white/70">Co-Founder and senior full-stack software engineer</p>
+              <p className="mt-4 text-white/70">Founder and senior full-stack software engineer</p>
               <dl className="mt-8 space-y-4 border-t border-white/15 pt-6 text-sm">
                 <div className="flex justify-between gap-6">
                   <dt className="text-white/60">Experience</dt>
@@ -179,6 +175,10 @@ export default function AboutPage() {
                 </a>
               </div>
             </div>
+            <div id="cofounder" className="rounded-xl bg-card p-8 md:p-10">
+              <p className="display text-4xl md:text-5xl">{site.cofounder.name}</p>
+              <p className="mt-4 text-graphite">{site.cofounder.role}</p>
+            </div>
             </div>
           </div>
           <div className="md:col-span-6 md:col-start-7">
@@ -192,7 +192,7 @@ export default function AboutPage() {
               most of 7CODE&apos;s client work runs. He is Top Rated Plus on Upwork with a 100% Job Success Score.
             </p>
             <p className="mt-5 leading-relaxed text-graphite">
-              Before co-founding 7CODE with Abdul he spent four years as a senior engineer at Algolix Technologies building client SaaS
+              Before founding 7CODE he spent four years as a senior engineer at Algolix Technologies building client SaaS
               products, and since 2025 he has been the full-stack developer on AV Leads, a live-events marketplace, where
               he designed the booking and matching system and the APIs behind it. Along the way he has worked on a UK
               eCommerce store, an enterprise XR platform used by 3,000+ organisations, and logistics and heavy-equipment
@@ -296,7 +296,7 @@ export default function AboutPage() {
         <div className="mt-12 grid gap-3 md:grid-cols-3">
           <div className="rounded-xl bg-card p-6 md:p-8">
             <h3 className="text-xl font-semibold">Founder-led direction</h3>
-            <p className="mt-3 leading-relaxed text-graphite">Architecture, code review and the final say on quality sit with our technical co-founder on every project.</p>
+            <p className="mt-3 leading-relaxed text-graphite">Architecture, code review and the final say on quality sit with the founder on every project.</p>
           </div>
           <div className="rounded-xl bg-card p-6 md:p-8">
             <h3 className="text-xl font-semibold">Distributed specialists</h3>

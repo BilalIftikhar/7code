@@ -18,7 +18,7 @@ const groups: { name: string; faqs: { q: string; a: string }[] }[] = [
       { q: "What does a full-service digital agency do?", a: "It handles everything a business needs online in one place: strategy, design, website or app development, eCommerce, search optimisation, social media and paid advertising. 7CODE covers all of these with one team, so the build and the marketing are planned together." },
       { q: "Where is 7CODE based?", a: "In Lahore, Pakistan. We work remotely with clients in the UAE, Oman, the United Kingdom and elsewhere." },
       { q: "Do you have an office in Dubai or Abu Dhabi?", a: "No. We don't have a physical office in the UAE. We serve UAE clients remotely, with a UAE WhatsApp number and working hours that overlap almost completely with Gulf time." },
-      { q: "Who will actually work on my project?", a: "Our technical co-founder, a senior full-stack engineer, leads every project and reviews the work. Specialists in design, development, SEO and marketing join depending on what your project needs." },
+      { q: "Who will actually work on my project?", a: "The founder, a senior full-stack engineer, leads every project and reviews the work. Specialists in design, development, SEO and marketing join depending on what your project needs." },
     ],
   },
   {

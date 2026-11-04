@@ -37,7 +37,7 @@ export function Testimonials() {
         </h2>
         <div className="md:col-span-4 md:col-start-9 md:self-end">
           <p className="text-lg leading-relaxed text-graphite">
-            Verified reviews from co-founder Bilal&apos;s Upwork contracts, where he is Top Rated Plus with a 100% Job Success Score.
+            Verified reviews from the founder&apos;s Upwork contracts, where he is Top Rated Plus with a 100% Job Success Score.
           </p>
           <a href={site.founder.upwork} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block font-semibold underline underline-offset-4">
             See the Upwork profile

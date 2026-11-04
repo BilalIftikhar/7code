@@ -43,7 +43,7 @@ const reasons = [
   },
   {
     title: "A senior engineer leads every project",
-    body: `Our technical co-founder has ${site.founder.yearsExperience} years of full-stack experience across Laravel, Next.js, React and Shopify, and reviews the work himself.`,
+    body: `Our founder has ${site.founder.yearsExperience} years of full-stack experience across Laravel, Next.js, React and Shopify, and reviews the work himself.`,
   },
   {
     title: "Built for UAE and Gulf businesses",
@@ -68,7 +68,7 @@ export default function Home() {
       <section aria-label="At a glance" className="wrap py-16 md:py-20">
         <dl className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <Card3D className="rounded-xl bg-card p-6 md:p-8" max={10}>
-            <dt className="text-graphite">Co-founder&apos;s full-stack experience</dt>
+            <dt className="text-graphite">Founder&apos;s full-stack experience</dt>
             <dd className="display mt-6 text-6xl">
               <CountUp to={6} suffix="+" /> years
             </dd>
@@ -196,14 +196,14 @@ export default function Home() {
               Founder-led
             </RevealText>
             <p className="mt-6 text-lg text-graphite">
-              Founded by <span className="font-semibold text-night">{site.cofounder.name}</span> and{" "}
-              <span className="font-semibold text-night">{site.founder.name}</span>.
+              Founded by <span className="font-semibold text-night">{site.founder.name}</span>, with co-founder{" "}
+              <span className="font-semibold text-night">{site.cofounder.name}</span>.
             </p>
           </div>
           <div className="md:col-span-6 md:col-start-7">
             <p className="text-xl leading-relaxed">
-              7CODE was founded by {site.foundedBy}. Bilal, our technical co-founder, is a senior full-stack engineer
-              with {site.founder.yearsExperience} years of building production web applications in Laravel, PHP, React, Vue, Next.js and Shopify.
+              7CODE was founded by {site.founder.name}, a senior full-stack engineer with {site.founder.yearsExperience}{" "}
+              years of building production web applications in Laravel, PHP, React, Vue, Next.js and Shopify.
             </p>
             <p className="mt-5 leading-relaxed text-graphite">
               He spent four years as a senior software engineer at Algolix Technologies building SaaS products, and
