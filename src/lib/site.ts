@@ -12,12 +12,18 @@ export const site = {
     "Web development, SEO and digital marketing agency for Dubai, Abu Dhabi and Lahore: custom websites, web apps, Shopify stores, mobile apps and AI-search SEO.",
   founder: {
     name: "Muhammad Bilal Iftikhar",
-    role: "Founder & technical lead",
+    role: "Co-Founder & technical lead",
     yearsExperience: "6+", // documented in CV
     upwork: "https://www.upwork.com/freelancers/~012e9b9487fa4f8fce",
     linkedin: "https://www.linkedin.com/in/mbilaliftikhar/",
     portfolio: "https://mbilaliftikhar.vercel.app/",
   },
+  // 7CODE was founded by Abdul and Muhammad Bilal Iftikhar (in that order).
+  cofounder: {
+    name: "Abdul",
+    role: "Co-Founder",
+  },
+  foundedBy: "Abdul and Muhammad Bilal Iftikhar",
   contact: {
     whatsapp: "+971566390908",
     whatsappDisplay: "+971 56 639 0908",

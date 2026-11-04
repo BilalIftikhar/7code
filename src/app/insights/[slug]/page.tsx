@@ -59,7 +59,7 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
       "@type": "Person",
       name: site.founder.name,
       url: `${site.url}/about`,
-      jobTitle: "Founder & Senior Full-Stack Software Engineer",
+      jobTitle: "Co-Founder & Senior Full-Stack Software Engineer",
       sameAs: [site.founder.linkedin],
     },
     publisher: { "@type": "Organization", "@id": ids.org, name: site.name, url: site.url },
@@ -139,7 +139,7 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
               <p className="text-sm text-graphite">Written by</p>
               <p className="mt-2 text-xl font-semibold">{site.founder.name}</p>
               <p className="mt-3 leading-relaxed text-graphite">
-                Founder of 7CODE and a senior full-stack software engineer with {site.founder.yearsExperience} years of
+                Co-founder of 7CODE and a senior full-stack software engineer with {site.founder.yearsExperience} years of
                 building production web applications in Laravel, React and Next.js, for clients from Abu Dhabi to the UK.
               </p>
               <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">

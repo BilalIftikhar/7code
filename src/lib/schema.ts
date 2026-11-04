@@ -7,6 +7,7 @@ export const ids = {
   org: `${site.url}/#organization`,
   website: `${site.url}/#website`,
   founder: `${site.url}/about#founder`,
+  cofounder: `${site.url}/about#cofounder`,
   logo: `${site.url}/#logo`,
 };
 
@@ -22,7 +23,10 @@ export function organizationLd() {
     description: site.description,
     logo: { "@type": "ImageObject", "@id": ids.logo, url: `${site.url}/icon.svg`, caption: site.name },
     image: `${site.url}/opengraph-image`,
-    founder: { "@type": "Person", "@id": ids.founder, name: site.founder.name, jobTitle: site.founder.role },
+    founder: [
+      { "@type": "Person", "@id": ids.cofounder, name: site.cofounder.name, jobTitle: site.cofounder.role },
+      { "@type": "Person", "@id": ids.founder, name: site.founder.name, jobTitle: site.founder.role },
+    ],
     address: { "@type": "PostalAddress", addressLocality: "Lahore", addressRegion: "Punjab", addressCountry: "PK" },
     areaServed: site.location.markets.map((name) => ({ "@type": "Country", name })),
     contactPoint: [

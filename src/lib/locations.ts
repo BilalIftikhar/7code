@@ -32,7 +32,7 @@ export const locations: Location[] = [
       "Lahore-based web development, software and SEO agency building websites, web apps, Shopify stores and search programmes for Pakistani businesses and exporters.",
     h1: "Software house and web development company in Lahore",
     intro: [
-      "Lahore is home. 7CODE's founder and team work from here, building websites, software and stores for businesses across Punjab and for clients abroad.",
+      "Lahore is home. 7CODE's team works from here, building websites, software and stores for businesses across Punjab and for clients abroad.",
       "For Lahore businesses that means working with a team in your own city and time zone, with the same senior engineering we deliver to clients in the UAE and UK.",
     ],
     presenceNote: "Our headquarters. In-person meetings in Lahore can be arranged.",
@@ -56,7 +56,7 @@ export const locations: Location[] = [
     industries: ["Textile & apparel exporters", "Education", "Healthcare & clinics", "Real estate", "Retail", "Startups & SaaS"],
     work: ["muhseeq", "av-leads", "logistivo"],
     faqs: [
-      { q: "Is 7CODE based in Lahore?", a: "Yes. Lahore is our headquarters, and our founder and team work from here." },
+      { q: "Is 7CODE based in Lahore?", a: "Yes. Lahore is our headquarters, and our team works from here." },
       { q: "Can we meet in person in Lahore?", a: "Yes. For Lahore clients we can arrange in-person meetings, alongside calls and WhatsApp." },
       { q: "Do you build websites for Pakistani exporters?", a: "Yes. We've built a B2B catalogue and quotation site for an apparel manufacturer in Faisalabad, designed for international buyers." },
       { q: "Do you do local SEO for Lahore businesses?", a: "Yes, including Google Business Profile optimisation, location pages and content written for how Lahore customers search, in English, Urdu and Roman Urdu." },
