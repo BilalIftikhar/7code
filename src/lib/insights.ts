@@ -87,7 +87,8 @@ function parse(file: string): Article {
       },
     },
   });
-  const html = md.parse(content) as string;
+  // Tables scroll sideways on phones instead of widening the page
+  const html = (md.parse(content) as string).replace(/<table>/g, '<div class="table-wrap"><table>').replace(/<\/table>/g, "</table></div>");
   const words = content.split(/\s+/).filter(Boolean).length;
 
   return {

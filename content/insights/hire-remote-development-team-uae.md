@@ -4,6 +4,7 @@ seoTitle: "Hiring a remote development team from the UAE: a practical guide"
 description: "Remote teams can build excellent software for UAE businesses if ownership, scope, communication and payments are set up right. A practical checklist."
 category: Business Growth
 published: 2026-10-29
+updated: 2026-11-06
 faqs:
   - q: "How can a UAE company hire a remote software development team safely?"
     a: "Agree a written scope and price before work starts, keep code, hosting and domains on your own accounts, insist on a staging link you can check at any time, pay by milestones, and choose a team whose working hours overlap with yours."
@@ -11,6 +12,10 @@ faqs:
     a: "Pakistan Standard Time is UTC+5 and the UAE is UTC+4, so Pakistan is one hour ahead. Working days overlap almost completely."
   - q: "Who should own the code when I hire a remote developer?"
     a: "You should. Ask for the code to live in a repository on your own GitHub or GitLab account and for hosting and domains to be registered to you from day one."
+  - q: "Can a remote team build an Arabic or bilingual website?"
+    a: "Yes. Ask to see right-to-left (Arabic) layouts in the team's past work or on the staging link, and make sure both languages have their own URLs so each can rank in search."
+  - q: "What are the warning signs when choosing a remote development team?"
+    a: "A firm price after a five-minute chat, no live projects you can open, reluctance to put code and hosting in your name, and no named senior person staying on the project are the clearest warning signs."
   - q: "Is a fixed price or hourly billing better for remote projects?"
     a: "Fixed price suits work with a clear scope, such as a website or a first product version. Monthly or hourly billing suits ongoing work where priorities change, such as maintenance, SEO or a dedicated developer."
 ---
@@ -69,6 +74,24 @@ Before signing, look for:
 - **Honest case studies** that say what the team actually did, including when they contributed to part of a larger product.
 - **Relevant experience.** If you run a logistics or equipment business, a team that has built for one will need less explanation.
 - **A senior person who stays on the project**, not just in the sales call.
+
+## Red flags to walk away from
+
+- A fixed price quoted before anyone has asked about your goals or users.
+- Only screenshots or mock-ups, never a live link you can open.
+- "We'll transfer the code at the end." It should be yours from the first commit.
+- Every answer comes from a salesperson and no developer joins the calls.
+- Pressure to pay most of the budget upfront.
+
+## How an engagement runs at 7CODE
+
+For transparency, this is the process we follow on every build:
+
+1. **Discovery call** to understand your goals, users and budget.
+2. **A fixed, itemised quote** that lists what's included and what isn't, priced by stage.
+3. **A working staging link within the first weeks**, updated as each stage lands.
+4. **Launch on your accounts**: your GitHub, your hosting, your domain, with full handover.
+5. **Optional ongoing support**, SEO or new features, billed monthly against agreed priorities.
 
 ## A quick checklist
 

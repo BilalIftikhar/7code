@@ -163,6 +163,11 @@
 }
 .prose-7 a:hover { text-decoration-thickness: 2px; }
 .prose-7 ul, .prose-7 ol { padding-left: 1.4em; }
+.prose-7 .table-wrap { overflow-x: auto; }
+.prose-7 table { width: 100%; border-collapse: collapse; font-size: 0.95em; }
+.prose-7 th, .prose-7 td { text-align: left; vertical-align: top; padding: 0.7em 0.9em; border-bottom: 1px solid var(--color-rule); }
+.prose-7 th { font-weight: 650; color: var(--color-night); background: var(--color-card); }
+.prose-7 td { color: color-mix(in srgb, var(--color-night) 82%, transparent); }
 .prose-7 ul { list-style: disc; }
 .prose-7 ol { list-style: decimal; }
 .prose-7 li { padding-left: 0.3em; }

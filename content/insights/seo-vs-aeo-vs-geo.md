@@ -1,12 +1,17 @@
 ---
 title: "SEO, AEO and GEO: what's the difference, and which does your business need?"
-seoTitle: "SEO vs AEO vs GEO — the differences explained for business owners"
+seoTitle: "Difference between SEO and AEO (and GEO), explained"
 description: "SEO ranks your pages, AEO gets your content used as the answer, and GEO helps AI assistants cite your business. How each works and where to start."
 category: SEO
 published: 2026-10-31
+updated: 2026-11-06
 faqs:
   - q: "What is the difference between SEO and AEO?"
     a: "SEO aims to rank your pages in search results. AEO (answer engine optimisation) aims to have your content used as the direct answer in featured snippets, voice search and AI summaries, by writing clear answer-first content with the right structured data."
+  - q: "Is AEO replacing SEO?"
+    a: "No. AEO builds on SEO. Search engines and AI tools still need a fast, crawlable page before they can lift an answer from it, so AEO without SEO foundations rarely works."
+  - q: "How do you measure AEO?"
+    a: "Track featured snippets and 'People also ask' appearances for your target questions, impressions for question-style queries in Google Search Console, and whether AI Overviews and assistants quote or link to your pages."
   - q: "What is GEO?"
     a: "GEO (generative engine optimisation) makes your business easy for AI assistants such as ChatGPT and Gemini to understand, describe and cite, through consistent business information, clear descriptive pages and original, well-sourced content."
   - q: "Can anyone guarantee my business will appear in ChatGPT answers?"
@@ -16,6 +21,20 @@ faqs:
 ---
 
 **Short answer:** SEO gets your pages to rank on Google. AEO (answer engine optimisation) gets your content picked as *the answer* — in featured snippets, voice search and AI overviews. GEO (generative engine optimisation) makes your business easy for AI assistants like ChatGPT and Gemini to understand and mention. They overlap heavily, and they all start from the same foundation: a fast site with clear, honest, well-structured pages.
+
+## The difference between SEO and AEO
+
+**SEO gets your page into the results. AEO gets your words used as the answer.** SEO is judged by rankings and clicks; AEO is judged by whether a search engine, voice assistant or AI overview quotes your content directly.
+
+| | SEO | AEO |
+|---|---|---|
+| Goal | Rank your page for a search | Be the direct answer to a question |
+| Where it shows | Google's results list | Featured snippets, "People also ask", voice answers, AI Overviews |
+| What you change | Site speed, structure, titles, content depth, links | How answers are written: question headings, a short answer first, FAQ markup |
+| Typical unit of work | A page | A question |
+| How you measure it | Rankings, clicks, organic leads | Snippet and AI Overview appearances, question-query impressions |
+
+In practice the two share most of the work. A slow or badly structured page won't rank, and a page that doesn't rank is rarely chosen as the answer. That's why we treat AEO as the way you write on top of good SEO rather than a separate project.
 
 ## Why three acronyms now
 
@@ -70,6 +89,12 @@ Think of it as one stack rather than three separate projects:
 3. **GEO** is how you present your business as a whole: consistent, specific, and backed by real evidence.
 
 A page that does all three well tends to rank, gets quoted in snippets, and gives AI assistants exactly what they need to describe you accurately.
+
+## What this looks like on a real site
+
+On [sevenlift.net](/work/seven-lift), a crane and equipment hire company in Abu Dhabi, we combined all three: fast server-rendered pages and one page per district (SEO), answer-first FAQs with structured data (AEO), and consistent, specific business information for AI tools (GEO). Over three months Google Search Console recorded 357 organic clicks from 23,000 impressions, with daily clicks rising from a handful in August to peaks of 11 to 16 a day by late October.
+
+That isn't a dramatic overnight number, and it shouldn't be: it's what steady, honest foundations look like in their first months, and it compounds as more pages earn their place.
 
 ## Where to start
 

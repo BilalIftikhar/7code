@@ -20,6 +20,17 @@ export type Project = {
   challenge: string;
   approach: string[];
   focusAreas?: string[];
+  /** Who the client is, in plain facts. */
+  about: string;
+  /** Service pages this project used (slugs from services.ts). */
+  services: string[];
+  /** Location pages this project relates to (slugs from locations.ts). */
+  locations?: string[];
+  /** What other businesses can learn from it: our view, not a client claim. */
+  takeaway: string;
+  /** Only real, measured figures. */
+  results?: { value: string; label: string }[];
+  resultsNote?: string;
 };
 
 export const projects: Project[] = [
@@ -43,6 +54,9 @@ export const projects: Project[] = [
       "Ship releases from a rough product spec to a finished, responsive interface, usually a few times a month.",
       "Rebuilt several of the highest-traffic pages with server-side and static rendering plus code-splitting, which brought load times down noticeably.",
     ],
+    about: "AV Leads is a live-events marketplace. Event organisers post jobs and are matched with vetted audio-visual engineers and technicians, then book them through the platform.",
+    services: ["web-development"],
+    takeaway: "A marketplace lives or dies on how quickly it can match and book. Designing the data model, indexes and APIs before the screens is what keeps that fast as usage grows, so it is the first thing we plan on any platform build.",
   },
   {
     slug: "seven-lift",
@@ -66,6 +80,17 @@ export const projects: Project[] = [
       "Set up a blog for equipment and site-planning questions that customers actually ask.",
     ],
     focusAreas: ["Abu Dhabi", "Al Reem Island", "Yas Island", "Saadiyat Island"],
+    about: "Seven Lift General Transport hires out mobile cranes, articulated forklifts, boom trucks (Hiab), low-bed and flatbed heavy transport and generators to contractors across Abu Dhabi.",
+    services: ["web-development", "seo-aeo-geo"],
+    locations: ["abu-dhabi"],
+    takeaway: "In equipment hire, the page that wins the call is the one written for the exact district the job is in, with a phone and WhatsApp button within thumb reach. City-level pages alone leave most of the demand on the table.",
+    results: [
+      { value: "357", label: "Organic clicks from Google" },
+      { value: "23K", label: "Search impressions" },
+      { value: "19.4", label: "Average position" },
+      { value: "1.6%", label: "Click-through rate" },
+    ],
+    resultsNote: "Google Search Console, web search, 9 August to 1 November 2026. Daily clicks rose from 0 to 4 a day in August to peaks of 11 to 16 a day by late October.",
   },
   {
     slug: "maxtgc",
@@ -87,6 +112,10 @@ export const projects: Project[] = [
       "Stripped the duplicate area pages from the old WordPress site so the two domains stopped competing.",
       "Wrote every location page with its own title, description, H1, content, FAQs, internal links and schema, with no mass-generated city pages.",
     ],
+    about: "Maxhaul Transport & General Contracting (Maxtgc) rents heavy equipment, including lorry loaders and boom trucks, and runs haulage for contractors across the UAE.",
+    services: ["web-development", "seo-aeo-geo"],
+    locations: ["dubai", "abu-dhabi"],
+    takeaway: "Two sites competing for the same searches usually means neither ranks well. Choosing one domain, removing the duplicates and writing each location page by hand gives search engines one clear answer to show.",
   },
   {
     slug: "poolstore",
@@ -107,6 +136,9 @@ export const projects: Project[] = [
       "Built and refined the storefront on the existing CodeIgniter platform.",
       "Optimised the key product pages for load speed and a clearer path to checkout.",
     ],
+    about: "PoolStore is a UK online retailer of pool and spa supplies, with a large catalogue of technical pool and spa products.",
+    services: ["ecommerce", "web-development"],
+    takeaway: "On a technical catalogue, customers compare before they buy. Fast product pages and a short, clear route to checkout matter more than a redesign, and they are the cheapest place to win back lost sales.",
   },
   {
     slug: "ferry-global",
@@ -129,6 +161,10 @@ export const projects: Project[] = [
       "Launched on its own domain, ferryglobaluae.com, deployed on Vercel.",
     ],
     focusAreas: ["Abu Dhabi", "Dubai", "Sharjah", "Ajman", "Ras Al Khaimah", "Fujairah", "Umm Al Quwain"],
+    about: "Ferry Global Logistics and General Transport LLC is an Abu Dhabi company, established in 2023 and based in Mohamed Bin Zayed City. It is licensed for land, sea and air freight, warehousing, customs clearance, heavy equipment rental, crane work and towing, and serves all seven emirates.",
+    services: ["web-development", "seo-aeo-geo"],
+    locations: ["abu-dhabi", "dubai"],
+    takeaway: "A company with many licensed services needs structure before content. Grouping services the way a buyer thinks, and being honest about one office serving the whole country, builds more trust than a long list of keywords.",
   },
   {
     slug: "igivu",
@@ -149,6 +185,9 @@ export const projects: Project[] = [
       "Built frontend features and integration work for the platform's core delivery.",
       "Worked within the existing product team's release process.",
     ],
+    about: "IGIVU builds XR (virtual, augmented and mixed reality) solutions for events, training and enterprise, used by more than 3,000 organisations including Stanford University.",
+    services: ["web-development"],
+    takeaway: "Joining a mature product means fitting its codebase and release process, not rewriting them. We work inside a client's existing team the same way, which is often the fastest route to shipping features.",
   },
   {
     slug: "masood-lifts",
@@ -171,6 +210,9 @@ export const projects: Project[] = [
       "Structured answers and entity information so AI search tools can cite the business correctly.",
     ],
     focusAreas: ["Sohar", "Sohar Port", "Sohar Freezone", "Sohar Industrial Area", "Liwa", "Saham"],
+    about: "Abdul Masood Trading (Masood Lifts) rents construction and lifting equipment in Oman, including scissor lifts, boom lifts (man lifts), bulldozers and motor graders, from its base in Sohar.",
+    services: ["seo-aeo-geo"],
+    takeaway: "Industrial buyers search by site, not by country. Content written for the port, the freezone and each industrial area reaches the people who actually commission lifting work, and gives AI assistants specific facts to cite.",
   },
   {
     slug: "logistivo",
@@ -190,6 +232,9 @@ export const projects: Project[] = [
       "Built the interface in React with Tailwind CSS, matching the Figma designs across breakpoints.",
       "Used TanStack Query and Zustand for predictable data fetching and state.",
     ],
+    about: "Logistivo is an AI-assisted logistics operating system, with data-heavy dashboards at its core.",
+    services: ["web-development", "branding-ui-ux"],
+    takeaway: "Dashboards are judged on real data, not on mock-ups. Building against real content and every screen size early catches the layout problems that a static design hides.",
   },
   {
     slug: "muhseeq",
@@ -211,6 +256,10 @@ export const projects: Project[] = [
       "Designed a quotation flow that sends buyers' selections straight to WhatsApp, email or phone.",
       "Kept the site serverless and static, so it is cheap to host and quick to load for overseas buyers.",
     ],
+    about: "MUHSEEQ Apparel Manufacturing is a custom apparel manufacturer and exporter in Faisalabad, Pakistan, selling to wholesale buyers overseas.",
+    services: ["web-development", "ecommerce"],
+    locations: ["lahore"],
+    takeaway: "Not every B2B business needs online checkout. A fast catalogue that sends a buyer's selection straight to WhatsApp or email is cheaper to run and matches how wholesale prices are actually agreed.",
   },
 ];
 

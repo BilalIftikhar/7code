@@ -4,7 +4,9 @@ import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/PageParts";
 import { notFound } from "next/navigation";
-import { projects } from "@/lib/projects";
+import { projects, type Project } from "@/lib/projects";
+import { services } from "@/lib/services";
+import { locations } from "@/lib/locations";
 import { site } from "@/lib/site";
 import { ProjectVisual } from "@/components/ProjectVisual";
 
@@ -23,13 +25,30 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   const { slug } = await params;
   const p = projects.find((x) => x.slug === slug);
   if (!p) return {};
-  const long = `${p.name} case study — ${p.industry}${place(p.region)}`;
+  // "Seven Lift: Website & SEO case study, Abu Dhabi" reads cleanly and stays short
+  const title = `${p.name}: ${p.kind} case study${place(p.region)}`;
   return meta({
-    title: long.length <= 65 ? long : `${p.name} — ${p.industry}${place(p.region)}`,
+    title,
     image: `/work/${p.slug}/opengraph-image`,
     description: p.summary,
     path: `/work/${p.slug}`,
   });
+}
+
+/** Answer-first Q&As built only from the recorded project facts. */
+function faqsFor(p: Project) {
+  const list = (xs: string[]) => (xs.length > 1 ? `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}` : xs[0]);
+  const qa: { q: string; a: string }[] = [
+    { q: `What did 7CODE do for ${p.client}?`, a: `${p.role} The work covered ${list(p.scope).toLowerCase()}.` },
+    { q: `What problem did the ${p.name} project solve?`, a: p.challenge },
+  ];
+  if (p.stack.length) qa.push({ q: `What technology was ${p.name} built with?`, a: `${list(p.stack)}.` });
+  if (p.focusAreas?.length) qa.push({ q: `Which areas does the ${p.name} work target?`, a: `${list(p.focusAreas)}, each with its own content rather than one generic page.` });
+  qa.push({
+    q: `Can 7CODE do similar work for my business?`,
+    a: `Yes. We work with businesses in Dubai, Abu Dhabi, across the UAE and worldwide. Tell us what you need on the contact page or WhatsApp ${site.contact.whatsappDisplay}, and you'll get a fixed, itemised quote after a short discovery call.`,
+  });
+  return qa;
 }
 
 export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
@@ -47,11 +66,24 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
     creator: { "@type": "Organization", "@id": ids.org, name: site.name, url: site.url },
     about: { "@type": "Organization", name: p.client, ...(p.url ? { url: p.url } : {}) },
     keywords: [...p.scope, ...p.stack].join(", "),
+    url: `${site.url}/work/${p.slug}`,
+    image: `${site.url}/work/${p.slug}/opengraph-image`,
+    inLanguage: "en",
+    abstract: p.about,
   };
+  const faqs = faqsFor(p);
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+  const usedServices = services.filter((s) => p.services.includes(s.slug));
+  const usedLocations = locations.filter((l) => p.locations?.includes(l.slug));
 
   return (
     <article>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
       <header className="wrap pt-10 md:pt-14">
         <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Work", href: "/work" }, { name: p.name }]} />
@@ -103,6 +135,28 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
                 <dd className="mt-1">{p.stack.join(", ")}</dd>
               </div>
               )}
+              <div>
+                <dt className="text-sm text-graphite">Services used</dt>
+                <dd className="mt-1 flex flex-col gap-1">
+                  {usedServices.map((s) => (
+                    <Link key={s.slug} href={`/services/${s.slug}`} className="underline decoration-rule underline-offset-4 hover:decoration-night">
+                      {s.name}
+                    </Link>
+                  ))}
+                </dd>
+              </div>
+              {usedLocations.length > 0 && (
+                <div>
+                  <dt className="text-sm text-graphite">Related locations</dt>
+                  <dd className="mt-1 flex flex-col gap-1">
+                    {usedLocations.map((l) => (
+                      <Link key={l.slug} href={`/locations/${l.slug}`} className="underline decoration-rule underline-offset-4 hover:decoration-night">
+                        Web development in {l.city}
+                      </Link>
+                    ))}
+                  </dd>
+                </div>
+              )}
               {p.focusAreas && (
                 <div>
                   <dt className="text-sm text-graphite">Areas targeted</dt>
@@ -113,7 +167,12 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           </aside>
 
           <div className="md:col-span-7 md:col-start-6">
-            <section aria-labelledby="challenge">
+            <section aria-labelledby="about-client">
+              <h2 id="about-client" className="display-soft text-3xl">About the client</h2>
+              <p className="mt-5 text-lg leading-relaxed">{p.about}</p>
+            </section>
+
+            <section aria-labelledby="challenge" className="mt-16">
               <h2 id="challenge" className="display-soft text-3xl">The challenge</h2>
               <p className="mt-5 text-lg leading-relaxed">{p.challenge}</p>
             </section>
@@ -132,10 +191,57 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
 
             <section aria-labelledby="results" className="mt-16 rounded-xl bg-card p-7 md:p-9">
               <h2 id="results" className="display-soft text-2xl">Results</h2>
-              <p className="mt-3 leading-relaxed text-graphite">
-                We publish results only once they&apos;re measured and the client has approved them. Figures for this
-                project will be added here.
-              </p>
+              {p.results ? (
+                <>
+                  <dl className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-4">
+                    {p.results.map((r) => (
+                      <div key={r.label}>
+                        <dd className="display text-4xl md:text-5xl">{r.value}</dd>
+                        <dt className="mt-2 text-sm text-graphite">{r.label}</dt>
+                      </div>
+                    ))}
+                  </dl>
+                  {p.resultsNote && <p className="mt-6 text-sm leading-relaxed text-graphite">{p.resultsNote}</p>}
+                </>
+              ) : (
+                <p className="mt-3 leading-relaxed text-graphite">
+                  We publish figures only once they&apos;re measured and the client has approved them, so this section will
+                  be updated rather than filled with estimates.
+                  {p.url && (
+                    <>
+                      {" "}You can see the live work at{" "}
+                      <a href={p.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+                        {p.url.replace(/^https?:\/\/(www\.)?/, "")}
+                      </a>
+                      .
+                    </>
+                  )}
+                </p>
+              )}
+            </section>
+
+            <section aria-labelledby="takeaway" className="mt-16">
+              <h2 id="takeaway" className="display-soft text-3xl">What other businesses can take from this</h2>
+              <p className="mt-5 text-lg leading-relaxed">{p.takeaway}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {usedServices.map((s) => (
+                  <Link key={s.slug} href={`/services/${s.slug}`} className="rounded-full border border-rule bg-card px-4 py-2 text-sm font-semibold transition-colors hover:border-night">
+                    {s.name}
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            <section aria-labelledby="faq" className="mt-16">
+              <h2 id="faq" className="display-soft text-3xl">Questions about this project</h2>
+              <dl className="mt-6 divide-y divide-rule border-y border-rule">
+                {faqs.map((f) => (
+                  <div key={f.q} className="py-6">
+                    <dt className="text-lg font-semibold">{f.q}</dt>
+                    <dd className="mt-2 leading-relaxed text-graphite">{f.a}</dd>
+                  </div>
+                ))}
+              </dl>
             </section>
           </div>
         </div>
