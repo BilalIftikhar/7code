@@ -12,7 +12,7 @@ export type SevenSceneHandle = {
 
 export function createSevenScene(
   canvas: HTMLCanvasElement,
-  opts: { reducedMotion: boolean; lowPower: boolean },
+  opts: { reducedMotion: boolean; lowPower: boolean; onDark?: boolean },
 ): SevenSceneHandle {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: !opts.lowPower, alpha: true, powerPreference: "high-performance" });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, opts.lowPower ? 1.25 : 1.75));
@@ -42,9 +42,10 @@ export function createSevenScene(
   geo.translate(-57, 60, -13);
   geo.scale(S, S, S);
   const mat = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color("#1f1f22"),
-    metalness: 0.55,
-    roughness: 0.22,
+    // Light chrome on dark backgrounds, dark lacquer on light ones
+    color: new THREE.Color(opts.onDark ? "#dfe5e1" : "#1f1f22"),
+    metalness: opts.onDark ? 0.75 : 0.55,
+    roughness: opts.onDark ? 0.16 : 0.22,
     clearcoat: 1,
     clearcoatRoughness: 0.08,
     iridescence: 0.45,
@@ -62,9 +63,9 @@ export function createSevenScene(
   cursorGeo.scale(S, S, S);
   // Kept out of tone mapping so it reads as the exact brand green, not a washed pastel
   const cursorMat = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color("#00752d"),
-    emissive: new THREE.Color("#005a22"),
-    emissiveIntensity: 0.08,
+    color: new THREE.Color(opts.onDark ? "#22c55e" : "#00752d"),
+    emissive: new THREE.Color(opts.onDark ? "#16a34a" : "#005a22"),
+    emissiveIntensity: opts.onDark ? 0.35 : 0.08,
     metalness: 0.05,
     roughness: 0.55,
     clearcoat: 0.3,
@@ -91,7 +92,7 @@ export function createSevenScene(
   pGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
   const particles = new THREE.Points(
     pGeo,
-    new THREE.PointsMaterial({ color: "#222222", size: 0.022, transparent: true, opacity: 0.55, depthWrite: false }),
+    new THREE.PointsMaterial({ color: opts.onDark ? "#d9f5e5" : "#222222", size: 0.022, transparent: true, opacity: opts.onDark ? 0.45 : 0.55, depthWrite: false }),
   );
   scene.add(particles);
 

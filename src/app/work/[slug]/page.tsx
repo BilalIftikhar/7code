@@ -2,6 +2,7 @@ import { ids } from "@/lib/schema";
 import type { Metadata } from "next";
 import { meta } from "@/lib/meta";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/PageParts";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
@@ -53,19 +54,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <header className="wrap pt-10 md:pt-14">
-        <nav aria-label="Breadcrumb" className="text-sm text-graphite">
-          <ol className="flex gap-2">
-            <li>
-              <Link href="/" className="hover:text-night">Home</Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link href="/work" className="hover:text-night">Work</Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page" className="text-night">{p.name}</li>
-          </ol>
-        </nav>
+        <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Work", href: "/work" }, { name: p.name }]} />
         <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
             <p className="text-graphite">

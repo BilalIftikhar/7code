@@ -4,6 +4,7 @@ import { archive, projects } from "@/lib/projects";
 import { WorkGrid } from "@/components/home/WorkGrid";
 import { Archive } from "@/components/Archive";
 import { RevealText } from "@/components/motion/RevealText";
+import { Breadcrumbs } from "@/components/PageParts";
 
 export const metadata: Metadata = meta({
   title: "Our work — websites, platforms, eCommerce and UI/UX",
@@ -15,8 +16,9 @@ export const metadata: Metadata = meta({
 export default function WorkPage() {
   return (
     <>
-      <section className="wrap pt-16 md:pt-24">
-        <p className="text-sm text-graphite">
+      <section className="wrap pt-10 md:pt-14">
+        <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Work" }]} />
+        <p className="mt-10 text-sm text-graphite md:mt-14">
           Work, {projects.length} case studies and {archive.length} archived projects
         </p>
         <RevealText as="h1" onLoad className="display invisible mt-6 max-w-[14ch] text-[clamp(2.8rem,9vw,8rem)]">

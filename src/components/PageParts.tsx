@@ -19,7 +19,42 @@ export function breadcrumbLd(crumbs: Crumb[]) {
 }
 
 export function JsonLd({ data }: { data: unknown }) {
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/** Visible breadcrumb trail plus matching BreadcrumbList schema. */
+export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
+  return (
+    <>
+      <JsonLd data={breadcrumbLd(crumbs)} />
+      <nav aria-label="Breadcrumb" className="text-sm text-graphite">
+        <ol className="flex flex-wrap gap-2">
+          {crumbs.map((c, i) => (
+            <li key={c.name} className="flex gap-2">
+              {i > 0 && <span aria-hidden="true">/</span>}
+              {c.href && i < crumbs.length - 1 ? (
+                <Link href={c.href} className="hover:text-night">
+                  {c.name}
+                </Link>
+              ) : (
+                <span
+                  aria-current={i === crumbs.length - 1 ? "page" : undefined}
+                  className={i === crumbs.length - 1 ? "text-night" : ""}
+                >
+                  {c.name}
+                </span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </>
+  );
 }
 
 /** Breadcrumb + large headline + intro, shared by inner pages. */
@@ -38,25 +73,7 @@ export function PageHeader({
 }) {
   return (
     <header className="wrap pt-10 md:pt-14">
-      <JsonLd data={breadcrumbLd(crumbs)} />
-      <nav aria-label="Breadcrumb" className="text-sm text-graphite">
-        <ol className="flex flex-wrap gap-2">
-          {crumbs.map((c, i) => (
-            <li key={c.name} className="flex gap-2">
-              {i > 0 && <span aria-hidden="true">/</span>}
-              {c.href && i < crumbs.length - 1 ? (
-                <Link href={c.href} className="hover:text-night">
-                  {c.name}
-                </Link>
-              ) : (
-                <span aria-current={i === crumbs.length - 1 ? "page" : undefined} className={i === crumbs.length - 1 ? "text-night" : ""}>
-                  {c.name}
-                </span>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
+      <Breadcrumbs crumbs={crumbs} />
       <RevealText
         as="h1"
         onLoad
@@ -74,14 +91,27 @@ export function PageHeader({
   );
 }
 
-export function SectionTitle({ id, children, note }: { id: string; children: ReactNode; note?: ReactNode }) {
+export function SectionTitle({
+  id,
+  children,
+  note,
+}: {
+  id: string;
+  children: ReactNode;
+  note?: ReactNode;
+}) {
   return (
     <div className="grid gap-6 border-t border-night pt-10 md:grid-cols-12">
-      <RevealText id={id} className="display text-[clamp(2.2rem,5vw,4rem)] md:col-span-7">
+      <RevealText
+        id={id}
+        className="display text-[clamp(2.2rem,5vw,4rem)] md:col-span-7"
+      >
         {children}
       </RevealText>
       {note && (
-        <p className="max-w-[44ch] text-lg leading-relaxed text-graphite md:col-span-4 md:col-start-9 md:self-end">{note}</p>
+        <p className="max-w-[44ch] text-lg leading-relaxed text-graphite md:col-span-4 md:col-start-9 md:self-end">
+          {note}
+        </p>
       )}
     </div>
   );
@@ -102,7 +132,9 @@ export function CtaBox({
   return (
     <section aria-label="Start a project" className="wrap pb-6">
       <div className="grid gap-8 rounded-2xl bg-night px-6 py-14 text-white md:grid-cols-12 md:px-12 md:py-20">
-        <p className="display text-[clamp(2.2rem,5vw,4.25rem)] md:col-span-8">{title}</p>
+        <p className="display text-[clamp(2.2rem,5vw,4.25rem)] md:col-span-8">
+          {title}
+        </p>
         <div className="md:col-span-4 md:self-end">
           <p className="leading-relaxed text-white/75">{body}</p>
           <Link

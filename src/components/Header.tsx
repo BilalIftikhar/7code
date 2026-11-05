@@ -355,23 +355,7 @@ export function Header() {
               </ul>
             </div>
             <div className="flex items-center justify-between gap-4 text-sm">
-              <ul className="flex gap-5">
-                <li>
-                  <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
-                    LinkedIn
-                  </a>
-                </li>
-                <li>
-                  <a href={site.founder.upwork} target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
-                    Upwork
-                  </a>
-                </li>
-                <li>
-                  <a href={site.social.github} target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">
-                    GitHub
-                  </a>
-                </li>
-              </ul>
+              <Link href="/contact" className="text-white/80 hover:text-white">Start a project</Link>
               <Mark className="h-6 w-6" invert />
             </div>
           </div>

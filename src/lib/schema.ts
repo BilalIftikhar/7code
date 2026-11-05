@@ -60,7 +60,7 @@ export function organizationLd() {
         itemOffered: { "@type": "Service", name: s.name, url: `${site.url}/services/${s.slug}` },
       })),
     },
-    sameAs: [site.social.linkedin, site.social.github],
+    sameAs: [site.social.linkedin, site.social.instagram, site.social.github],
   };
 }
 

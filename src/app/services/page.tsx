@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { meta } from "@/lib/meta";
 import { Card3D } from "@/components/motion/Card3D";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/PageParts";
 import { services } from "@/lib/services";
 import { site, whatsappLink } from "@/lib/site";
 import { RevealText } from "@/components/motion/RevealText";
@@ -29,8 +30,9 @@ export default function ServicesPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
-      <section className="wrap pt-16 md:pt-24">
-        <p className="text-sm text-graphite">Services, {services.length} disciplines</p>
+      <section className="wrap pt-10 md:pt-14">
+        <Breadcrumbs crumbs={[{ name: "Home", href: "/" }, { name: "Services" }]} />
+        <p className="mt-10 text-sm text-graphite md:mt-14">Services, {services.length} disciplines</p>
         <RevealText as="h1" onLoad className="display invisible mt-6 max-w-[14ch] text-[clamp(2.8rem,9vw,8rem)]">
           Build it, then grow it.
         </RevealText>

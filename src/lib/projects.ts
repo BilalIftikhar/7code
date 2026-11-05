@@ -29,7 +29,7 @@ export const projects: Project[] = [
     client: "AV Leads",
     industry: "Live events marketplace",
     region: "Remote engagement",
-    url: "https://avleads.com",
+    url: "https://www.avleads.com",
     kind: "Web platform",
     summary:
       "A marketplace that connects live-event organisers with vetted AV engineers and technicians, built on Next.js and Laravel from API design to production.",
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     client: "Seven Lift General Transport",
     industry: "Crane & equipment hire",
     region: "Abu Dhabi, UAE",
-    url: "https://sevenlift.net",
+    url: "https://www.sevenlift.net",
     kind: "Website & SEO",
     summary:
       "A lead-focused website and local search programme for a crane and heavy equipment hire company covering Abu Dhabi and its surrounding areas.",
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     client: "Abdul Masood Trading",
     industry: "Lifting & equipment",
     region: "Sohar, Oman",
-    url: "https://masoodlifts.com",
+    url: "https://www.masoodlifts.com",
     kind: "SEO, AEO & GEO",
     summary:
       "SEO, AEO and GEO work that targets the industrial areas around Sohar where lifting work is actually commissioned.",

@@ -28,7 +28,7 @@ const INTERACTION = ["pointermove", "pointerdown", "touchstart", "wheel", "scrol
  * 3D scene never competes with the first paint. Without a hardware GPU, with
  * Save-Data on, or with reduced motion, the flat 7 simply stays.
  */
-export function HeroSeven({ className = "" }: { className?: string }) {
+export function HeroSeven({ className = "", onDark = false }: { className?: string; onDark?: boolean }) {
   const wrap = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
@@ -52,7 +52,7 @@ export function HeroSeven({ className = "" }: { className?: string }) {
       if (!hardwareWebGL()) return;
       const { createSevenScene } = await import("./SevenScene");
       if (cancelled) return;
-      handle = createSevenScene(cv, { reducedMotion: false, lowPower });
+      handle = createSevenScene(cv, { reducedMotion: false, lowPower, onDark });
       setReady(true);
     };
     const onFirst = () => {
@@ -86,14 +86,14 @@ export function HeroSeven({ className = "" }: { className?: string }) {
       document.removeEventListener("visibilitychange", onVis);
       handle?.dispose();
     };
-  }, []);
+  }, [onDark]);
 
   return (
     <div ref={wrap} className={`relative ${className}`} aria-hidden="true">
       {/* Flat 7: instant, zero-JS; faded out once the 3D scene takes over */}
       <CodeMark
         blink
-        className={`absolute inset-0 m-auto h-[70%] w-auto text-night transition-opacity duration-700 ${ready ? "opacity-0" : "opacity-100"}`}
+        className={`absolute inset-0 m-auto h-[70%] w-auto ${onDark ? "text-white" : "text-night"} transition-opacity duration-700 ${ready ? "opacity-0" : "opacity-100"}`}
       />
       <canvas
         ref={canvas}

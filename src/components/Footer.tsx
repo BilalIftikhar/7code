@@ -130,6 +130,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="text-chalk/85 hover:text-white">
+                  Instagram
+                </a>
+              </li>
+              <li>
                 <a href={site.social.github} target="_blank" rel="noopener noreferrer" className="text-chalk/85 hover:text-white">
                   GitHub
                 </a>

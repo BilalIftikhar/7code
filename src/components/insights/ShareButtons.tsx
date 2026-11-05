@@ -28,14 +28,13 @@ export function ShareButtons({ url, title }: { url: string; title: string }) {
       <ul className="mt-3 flex flex-wrap gap-2">
         {links.map((l) => (
           <li key={l.name}>
-            <a
-              href={l.href}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => window.open(l.href, "_blank", "noopener,noreferrer,width=640,height=640")}
               className="block rounded-full border border-rule bg-card px-4 py-2 text-sm font-semibold transition-colors hover:border-night"
             >
-              {l.name}
-            </a>
+              Share on {l.name}
+            </button>
           </li>
         ))}
         <li>

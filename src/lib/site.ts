@@ -35,6 +35,7 @@ export const site = {
   social: {
     // 7CODE company page; the founder's own profile is site.founder.linkedin
     linkedin: "https://www.linkedin.com/company/7code-digital/",
+    instagram: "https://www.instagram.com/7code.digital/",
     github: "https://github.com/BilalIftikhar",
   },
 } as const;
