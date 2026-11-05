@@ -7,7 +7,7 @@ import { prefersReducedMotion } from "@/components/motion/utils";
 /*
  * Scroll-driven showcase for /work: two headline lines slide past each other
  * while a ribbon of live project cards sweeps around the viewer in 3D, then the
- * first six cards land in a 3×2 grid (2×3 on tall screens) that links to the
+ * cards land in a 3×3 grid that links to the
  * case studies. Every card shows a real capture of the client's live site,
  * slowly scrolling, or a titled card where no capture exists.
  *
@@ -166,11 +166,12 @@ void main(){
         camera.fov = asp < 16 / 9 ? (Math.atan(0.561 / asp) * 360) / Math.PI : FOV;
         camera.updateProjectionMatrix();
         tanH = Math.tan((camera.fov * Math.PI) / 360);
-        cols = asp < 0.9 ? 2 : 3;
-        rows = asp < 0.9 ? 3 : 2;
+        // every project lands: a 3×3 grid on every screen
+        cols = 3;
+        rows = Math.ceil(items.length / 3);
       };
       function grid(i: number) {
-        const vh = 2 * GZ * tanH, vw = vh * asp, gw = vw * (cols === 3 ? 0.74 : 0.88), gap = gw * 0.017;
+        const vh = 2 * GZ * tanH, vw = vh * asp, gw = vw * (asp < 0.9 ? 0.94 : asp < 1.3 ? 0.78 : 0.6), gap = gw * 0.017;
         const cw = (gw - gap * (cols - 1)) / cols, ch = cw / (CARD_W / CARD_H), gh = ch * rows + gap * 1.6 * (rows - 1);
         const c = i % cols, r = Math.floor(i / cols);
         return { x: -gw / 2 + cw / 2 + c * (cw + gap), y: gh / 2 - ch / 2 - r * (ch + gap * 1.6), w: cw, h: ch, vw, vh, c, r };
@@ -233,6 +234,7 @@ void main(){
         cap.current!.style.transform = `translate(-50%,calc(-50% + ${rise * 34}vh))`;
         intro.current!.style.opacity = String(1 - span(pp, 0, 0.05));
         rule.current!.style.transform = `scaleX(${ease(span(pp, 0.72, 0.86))})`;
+        rule.current!.style.opacity = "0";
         const time = (performance.now() - t0) / 1000;
         const pr = span(pp, RIB_A, RIB_B), head = mix(0, PATH_L + cards.length * STEP, pr);
         for (const c of cards) {

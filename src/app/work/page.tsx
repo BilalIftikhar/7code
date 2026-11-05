@@ -7,7 +7,7 @@ import { RevealText } from "@/components/motion/RevealText";
 import { Breadcrumbs } from "@/components/PageParts";
 import { WorkRibbon, type RibbonItem } from "@/components/work/WorkRibbon";
 
-// Ribbon order: the first six land in the final grid, the rest only sweep past.
+// Ribbon order: every card sweeps past, then all nine land in a 3×3 grid.
 const RIBBON = ["seven-lift", "ferry-global", "muhseeq", "masood-lifts", "av-leads", "logistivo", "maxtgc", "igivu", "poolstore"];
 const ribbon: RibbonItem[] = RIBBON.map((slug) => {
   const p = projects.find((x) => x.slug === slug)!;
