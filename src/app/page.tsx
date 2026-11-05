@@ -11,6 +11,8 @@ import { archive, projects } from "@/lib/projects";
 import { site, whatsappLink } from "@/lib/site";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { Hero } from "@/components/home/Hero";
+import { WorkRibbon } from "@/components/work/WorkRibbon";
+import { ribbonItems } from "@/lib/ribbon";
 import { Marquee } from "@/components/home/Marquee";
 import { WorkGallery3D } from "@/components/home/WorkGallery3D";
 import { ServicesIndex } from "@/components/home/ServicesIndex";
@@ -91,6 +93,10 @@ export default function Home() {
       </section>
 
       {/* SERVICES — index list */}
+      <section aria-label="Selected work showcase" className="mb-24 md:mb-32">
+        <WorkRibbon items={ribbonItems} linkHref="/work" linkLabel="VIEW ALL WORK" height={500} />
+      </section>
+
       <section aria-labelledby="services-h" className="wrap pb-24 md:pb-32">
         <div className="grid gap-6 border-t border-night pt-10 md:grid-cols-12">
           <RevealText id="services-h" className="display text-[clamp(2.4rem,5.5vw,4.5rem)] md:col-span-7">

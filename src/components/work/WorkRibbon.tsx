@@ -36,7 +36,18 @@ function webglOK() {
   }
 }
 
-export function WorkRibbon({ items }: { items: RibbonItem[] }) {
+export function WorkRibbon({
+  items,
+  linkHref = "#case-studies",
+  linkLabel = "ALL CASE STUDIES",
+  height = 600,
+}: {
+  items: RibbonItem[];
+  linkHref?: string;
+  linkLabel?: string;
+  /** Scroll length of the section in vh. */
+  height?: number;
+}) {
   const track = useRef<HTMLDivElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -326,7 +337,7 @@ void main(){
   if (!enabled) return null;
 
   return (
-    <div ref={track} className="wr-track" aria-label="Project showcase">
+    <div ref={track} className="wr-track" style={{ height: `${height}vh` }} aria-label="Project showcase">
       <div ref={stage} className="wr-stage">
         <h2 aria-label="Selected work">
           <div className="wr-hl wr-l1" ref={l1} aria-hidden="true">
@@ -352,8 +363,8 @@ void main(){
           <div className="wr-mid">
             WEBSITES<s>/</s>PLATFORMS<s>/</s>ECOMMERCE<s>/</s>SEO
           </div>
-          <a className="wr-r" href="#case-studies">
-            ALL CASE STUDIES
+          <a className="wr-r" href={linkHref}>
+            {linkLabel}
           </a>
         </div>
         <div className="wr-name" ref={nameEl} aria-hidden="true" />

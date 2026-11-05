@@ -85,6 +85,8 @@ export function HeroSeven({ className = "", onDark = false }: { className?: stri
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("visibilitychange", onVis);
       handle?.dispose();
+      // Back to the flat 7 until the scene restarts on the next visit
+      setReady(false);
     };
   }, [onDark]);
 

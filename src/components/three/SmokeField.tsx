@@ -55,7 +55,7 @@ export function SmokeField({ className = "" }: { className?: string }) {
     let cleanup = () => {};
     const cancelIdle = whenIdle(() => {
       const gl = cv.getContext("webgl", { antialias: false, depth: false, alpha: false, powerPreference: "low-power" });
-      if (!gl) return;
+      if (!gl || gl.isContextLost()) return;
       const sh = (type: number, src: string) => {
         const s = gl.createShader(type)!;
         gl.shaderSource(s, src);
@@ -127,13 +127,15 @@ export function SmokeField({ className = "" }: { className?: string }) {
         ro.disconnect();
         io.disconnect();
         window.removeEventListener("pointermove", onMove);
-        gl.getExtension("WEBGL_lose_context")?.loseContext();
+        // Keep the context alive: when the visitor comes back, Next.js remounts this same
+        // canvas, and a deliberately lost context would paint as a blank white panel.
       };
     }, 1200);
 
     return () => {
       cancelIdle();
       cleanup();
+      setLive(false);
     };
   }, []);
 

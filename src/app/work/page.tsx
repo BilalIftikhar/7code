@@ -5,14 +5,10 @@ import { WorkGrid } from "@/components/home/WorkGrid";
 import { Archive } from "@/components/Archive";
 import { RevealText } from "@/components/motion/RevealText";
 import { Breadcrumbs } from "@/components/PageParts";
-import { WorkRibbon, type RibbonItem } from "@/components/work/WorkRibbon";
+import { WorkRibbon } from "@/components/work/WorkRibbon";
+import { ribbonItems } from "@/lib/ribbon";
 
-// Ribbon order: every card sweeps past, then all nine land in a 3×3 grid.
-const RIBBON = ["seven-lift", "ferry-global", "muhseeq", "masood-lifts", "av-leads", "logistivo", "maxtgc", "igivu", "poolstore"];
-const ribbon: RibbonItem[] = RIBBON.map((slug) => {
-  const p = projects.find((x) => x.slug === slug)!;
-  return { slug, name: p.name, img: `/work/ribbon/${slug}.jpg` };
-});
+
 
 export const metadata: Metadata = meta({
   title: "Our work — websites, platforms, eCommerce and UI/UX",
@@ -39,7 +35,7 @@ export default function WorkPage() {
       </section>
 
       <section aria-label="Project showcase" className="mt-16 md:mt-24">
-        <WorkRibbon items={ribbon} />
+        <WorkRibbon items={ribbonItems} />
       </section>
 
       <section id="case-studies" aria-label="Case studies" className="wrap scroll-mt-24 py-16 md:py-24">
