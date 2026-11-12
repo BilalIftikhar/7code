@@ -100,6 +100,13 @@ export default function ServicesPage() {
       <section aria-labelledby="so-h" className="wrap pb-20 md:pb-28">
         <div className="border-t border-night pt-10">
           <h2 id="so-h" className="display text-[clamp(2.2rem,5vw,4rem)]">Social media management</h2>
+          <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-graphite">
+            We plan, design, film, publish and report on your social media. Start with the{" "}
+            <Link href="/social-media-management" className="font-semibold text-night underline underline-offset-4">
+              social media management overview
+            </Link>
+            , or go straight to a platform.
+          </p>
         </div>
         <div className="mt-10">
           <LandingGrid items={byKind("social")} />

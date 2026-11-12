@@ -304,6 +304,7 @@ const STATIC_NAMES: Record<string, string> = {
   "/services/wordpress": "WordPress",
   "/services/seo-aeo-geo": "SEO, AEO & GEO",
   "/services/social-media": "Social media management",
+  "/social-media-management": "Social media management",
   "/services/branding-ui-ux": "Branding & UI/UX",
   "/services/performance-marketing": "Performance marketing",
   "/services/ai-automation": "AI & automation",

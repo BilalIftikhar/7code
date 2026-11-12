@@ -125,6 +125,9 @@ export function Footer() {
                   <Link href={`/services/${s.slug}`}>{s.name}</Link>
                 </li>
               ))}
+              <li>
+                <Link href="/social-media-management">Social media packages</Link>
+              </li>
             </ul>
           </nav>
 

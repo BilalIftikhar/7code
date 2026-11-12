@@ -7,7 +7,7 @@ import { projects } from "../src/lib/projects";
 import { locations } from "../src/lib/locations";
 
 const known = new Set<string>([
-  "/", "/services", "/work", "/locations", "/insights", "/about", "/process", "/industries", "/faq", "/contact", "/technologies", "/compare",
+  "/", "/services", "/work", "/locations", "/insights", "/about", "/process", "/industries", "/faq", "/contact", "/technologies", "/compare", "/social-media-management",
   ...services.map((s) => `/services/${s.slug}`),
   ...projects.map((p) => `/work/${p.slug}`),
   ...locations.map((l) => `/locations/${l.slug}`),
