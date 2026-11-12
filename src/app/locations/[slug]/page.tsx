@@ -12,22 +12,28 @@ import { CtaBox, JsonLd, PageHeader, SectionTitle } from "@/components/PageParts
 import { FaqList, faqJsonLd } from "@/components/FaqList";
 import { WorkGrid } from "@/components/home/WorkGrid";
 import { Magnetic } from "@/components/motion/Magnetic";
+import { LandingGrid, LandingPage, landingMetadata } from "@/components/landing/LandingPage";
+import { getLanding, landings, slugsUnder } from "@/lib/landings";
 
 export function generateStaticParams() {
-  return locations.map((l) => ({ slug: l.slug }));
+  return [...locations.map((l) => ({ slug: l.slug })), ...slugsUnder("/locations").map((slug) => ({ slug }))];
 }
 
 export async function generateMetadata({ params }: PageProps<"/locations/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const l = getLocation(slug);
-  if (!l) return {};
+  if (!l) return landingMetadata(`/locations/${slug}`);
   return meta({ title: l.seoTitle, description: l.metaDescription, path: `/locations/${l.slug}`, absolute: true, image: `/locations/${l.slug}/opengraph-image` });
 }
 
 export default async function LocationPage({ params }: PageProps<"/locations/[slug]">) {
   const { slug } = await params;
   const l = getLocation(slug);
-  if (!l) notFound();
+  if (!l) {
+    if (getLanding(`/locations/${slug}`)) return <LandingPage path={`/locations/${slug}`} />;
+    notFound();
+  }
+  const localServices = landings.filter((x) => x.kind === "city-service" && x.path.startsWith(`/locations/${l.slug}/`));
 
   const svc = l.services.map((s) => services.find((x) => x.slug === s)).filter((s) => s !== undefined);
   const work = l.work.map((w) => projects.find((p) => p.slug === w)).filter((p) => p !== undefined);
@@ -178,6 +184,19 @@ export default async function LocationPage({ params }: PageProps<"/locations/[sl
           <SectionTitle id="lwork-h">Relevant work</SectionTitle>
           <div className="mt-12">
             <WorkGrid projects={work} />
+          </div>
+        </section>
+      )}
+
+      {localServices.length > 0 && (
+        <section aria-labelledby="lsvc-h" className="wrap pb-20 md:pb-28">
+          <div className="border-t border-night pt-10">
+            <h2 id="lsvc-h" className="display text-[clamp(2.2rem,5vw,4rem)]">
+              Services in {l.city}
+            </h2>
+          </div>
+          <div className="mt-10">
+            <LandingGrid items={localServices} />
           </div>
         </section>
       )}

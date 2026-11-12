@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { LandingGrid } from "@/components/landing/LandingPage";
+import { byKind } from "@/lib/landings";
 import { meta } from "@/lib/meta";
 import { Card3D } from "@/components/motion/Card3D";
 import Link from "next/link";
@@ -75,6 +77,33 @@ export default function ServicesPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section aria-labelledby="sw-h" className="wrap pb-20 md:pb-28">
+        <div className="border-t border-night pt-10">
+          <h2 id="sw-h" className="display text-[clamp(2.2rem,5vw,4rem)]">Software development services</h2>
+        </div>
+        <div className="mt-10">
+          <LandingGrid items={byKind("service")} />
+        </div>
+      </section>
+
+      <section aria-labelledby="ai-h" className="wrap pb-20 md:pb-28">
+        <div className="border-t border-night pt-10">
+          <h2 id="ai-h" className="display text-[clamp(2.2rem,5vw,4rem)]">AI and automation</h2>
+        </div>
+        <div className="mt-10">
+          <LandingGrid items={byKind("ai")} />
+        </div>
+      </section>
+
+      <section aria-labelledby="so-h" className="wrap pb-20 md:pb-28">
+        <div className="border-t border-night pt-10">
+          <h2 id="so-h" className="display text-[clamp(2.2rem,5vw,4rem)]">Social media management</h2>
+        </div>
+        <div className="mt-10">
+          <LandingGrid items={byKind("social")} />
+        </div>
       </section>
 
       <section aria-labelledby="unsure-h" className="wrap pb-6">

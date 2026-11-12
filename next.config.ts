@@ -4,6 +4,15 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      { source: "/ai-solutions", destination: "/services/ai-automation", permanent: true },
+      { source: "/social-media-management", destination: "/services/social-media", permanent: true },
+      { source: "/uae", destination: "/locations/uae", permanent: true },
+      { source: "/oman", destination: "/locations/oman", permanent: true },
+      { source: "/pakistan", destination: "/locations/pakistan", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

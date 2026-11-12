@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { LandingGrid } from "@/components/landing/LandingPage";
+import { byKind } from "@/lib/landings";
 import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { CtaBox, PageHeader, SectionTitle } from "@/components/PageParts";
@@ -99,6 +101,15 @@ export default function IndustriesPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section aria-labelledby="ind-h" className="wrap pb-20 md:pb-28">
+        <div className="border-t border-night pt-10">
+          <h2 id="ind-h" className="display text-[clamp(2.2rem,5vw,4rem)]">Software and websites by industry</h2>
+        </div>
+        <div className="mt-10">
+          <LandingGrid items={byKind("industry")} />
+        </div>
       </section>
 
       <CtaBox title="Don't see your industry?" body="Tell us how your customers buy. The approach carries over more often than you'd think." />

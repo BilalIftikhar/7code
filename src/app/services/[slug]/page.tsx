@@ -11,22 +11,28 @@ import { WorkGrid } from "@/components/home/WorkGrid";
 import { FaqList, faqJsonLd } from "@/components/FaqList";
 import { RevealText } from "@/components/motion/RevealText";
 import { Magnetic } from "@/components/motion/Magnetic";
+import { LandingGrid, LandingPage, landingMetadata } from "@/components/landing/LandingPage";
+import { getLanding, landings, slugsUnder } from "@/lib/landings";
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return [...services.map((s) => ({ slug: s.slug })), ...slugsUnder("/services").map((slug) => ({ slug }))];
 }
 
 export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const s = getService(slug);
-  if (!s) return {};
+  if (!s) return landingMetadata(`/services/${slug}`);
   return meta({ title: s.seoTitle, description: s.metaDescription, path: `/services/${s.slug}`, image: `/services/${s.slug}/opengraph-image` });
 }
 
 export default async function ServicePage({ params }: PageProps<"/services/[slug]">) {
   const { slug } = await params;
   const s = getService(slug);
-  if (!s) notFound();
+  if (!s) {
+    if (getLanding(`/services/${slug}`)) return <LandingPage path={`/services/${slug}`} />;
+    notFound();
+  }
+  const children = landings.filter((l) => l.crumbs.at(-1)?.href === `/services/${s.slug}`);
 
   const related = s.related.map((r) => projects.find((p) => p.slug === r)).filter((p) => p !== undefined);
   const archived = s.archiveKinds ? archive.filter((a) => s.archiveKinds!.includes(a.kind)) : [];
@@ -198,6 +204,19 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
               </ul>
             </div>
           )}
+        </section>
+      )}
+
+      {children.length > 0 && (
+        <section aria-labelledby="explore-h" className="wrap pb-20 md:pb-28">
+          <div className="border-t border-night pt-10">
+            <h2 id="explore-h" className="display text-[clamp(2.2rem,5vw,4rem)]">
+              Explore {s.name.toLowerCase()}
+            </h2>
+          </div>
+          <div className="mt-10">
+            <LandingGrid items={children} />
+          </div>
         </section>
       )}
 

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { LandingGrid } from "@/components/landing/LandingPage";
+import { byKind } from "@/lib/landings";
 import { meta } from "@/lib/meta";
 import Link from "next/link";
 import { locations } from "@/lib/locations";
 import { CtaBox, PageHeader } from "@/components/PageParts";
 
 export const metadata: Metadata = meta({
-  title: "Locations — Lahore, Dubai and Abu Dhabi",
+  title: "Locations — UAE, Oman, Pakistan and worldwide",
   description:
-    "7CODE is headquartered in Lahore, Pakistan, and serves businesses in Dubai, Abu Dhabi and the rest of the UAE remotely.",
+    "7CODE is headquartered in Lahore, Pakistan, and serves businesses in the UAE, Oman, Saudi Arabia, Qatar, the UK, the US and across Pakistan remotely.",
   path: "/locations",
 });
 
@@ -45,6 +47,33 @@ export default function LocationsPage() {
           ))}
         </ul>
       </section>
+      <section aria-labelledby="co-h" className="wrap pb-20 md:pb-28">
+        <div className="border-t border-night pt-10">
+          <h2 id="co-h" className="display text-[clamp(2.2rem,5vw,4rem)]">Countries we serve</h2>
+        </div>
+        <div className="mt-10">
+          <LandingGrid items={byKind("country")} />
+        </div>
+      </section>
+
+      <section aria-labelledby="ci-h" className="wrap pb-20 md:pb-28">
+        <div className="border-t border-night pt-10">
+          <h2 id="ci-h" className="display text-[clamp(2.2rem,5vw,4rem)]">More cities</h2>
+        </div>
+        <div className="mt-10">
+          <LandingGrid items={byKind("city")} />
+        </div>
+      </section>
+
+      <section aria-labelledby="cs-h" className="wrap pb-20 md:pb-28">
+        <div className="border-t border-night pt-10">
+          <h2 id="cs-h" className="display text-[clamp(2.2rem,5vw,4rem)]">Services by city</h2>
+        </div>
+        <div className="mt-10">
+          <LandingGrid items={byKind("city-service")} />
+        </div>
+      </section>
+
       <CtaBox />
     </>
   );
