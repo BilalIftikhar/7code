@@ -12,7 +12,7 @@ import { Card3D } from "@/components/motion/Card3D";
 const PATH = "/social-media-management";
 
 export const metadata: Metadata = meta({
-  title: "Social Media Management Agency | 7CODE",
+  title: "Social Media Management Agency — Content, Reels & Reporting",
   description:
     "7CODE manages social media for businesses in the UAE, Oman, Pakistan and worldwide: strategy, content calendar, design, Reels, captions, scheduling, community management and monthly reporting.",
   path: PATH,
