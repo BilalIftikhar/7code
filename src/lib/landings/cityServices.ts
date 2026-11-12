@@ -1,4 +1,5 @@
 import type { Faq, Item, Landing } from "./types";
+import { uaeDepth } from "./uaeDepth";
 
 // City × service pages. Each one has its own local copy (intro, answer, local section,
 // FAQs). The "what's included" cards come from the service template below.
@@ -650,8 +651,11 @@ const combos: Combo[] = [
 export const cityServices: Landing[] = combos.map((c) => {
   const s = SVC[c.svc];
   const city = CITY[c.city];
+  const path = `${city.href}/${c.svc}`;
+  // The UAE is the priority market, so those pages carry extra, page-specific depth.
+  const depth = uaeDepth[path];
   return {
-    path: `${city.href}/${c.svc}`,
+    path,
     kind: "city-service",
     name: `${s.name} in ${city.name}`,
     line: c.intro[0].split(". ")[0] + ".",
@@ -669,6 +673,7 @@ export const cityServices: Landing[] = combos.map((c) => {
       { type: "cards", h: "What's included", items: s.cards },
       { type: "text", h: c.local.h, paras: c.local.paras },
       { type: "list", h: `Who we work with in ${city.name}`, items: c.forWho },
+      ...(depth?.sections ?? []),
       {
         type: "steps",
         h: "How a project runs",
@@ -682,7 +687,7 @@ export const cityServices: Landing[] = combos.map((c) => {
     ],
     tools: s.tools,
     work: c.work,
-    faqs: c.faqs,
+    faqs: [...c.faqs, ...(depth?.faqs ?? [])],
     related: [city.href, ...s.links],
   } satisfies Landing;
 });
