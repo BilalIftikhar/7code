@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { ScrambleText } from "@/components/motion/ScrambleText";
 import { ProjectVisual } from "@/components/ProjectVisual";
@@ -22,8 +20,13 @@ export function Hero({ featured }: { featured: Project }) {
   useEffect(() => {
     // Desktop only: the scroll-scrubbed clip-path repaints on every scroll frame
     if (prefersReducedMotion() || window.innerWidth < 1024) return;
-    let ctx: gsap.Context | null = null;
-    const cancel = whenIdle(() => {
+    // GSAP is ~90KB of parse and execute work for one scroll-scrubbed clip-path.
+    // Loading it after first paint keeps it off the hydration critical path.
+    let ctx: { revert: () => void } | null = null;
+    let dead = false;
+    const cancel = whenIdle(async () => {
+    const [{ gsap }, { ScrollTrigger }] = await Promise.all([import("gsap"), import("gsap/ScrollTrigger")]);
+    if (dead) return;
     gsap.registerPlugin(ScrollTrigger);
     ctx = gsap.context(() => {
       // Showcase opens up as it scrolls in (headline reveal is pure CSS — see .line-rise)
@@ -39,6 +42,7 @@ export function Hero({ featured }: { featured: Project }) {
     });
     });
     return () => {
+      dead = true;
       cancel();
       ctx?.revert();
     };

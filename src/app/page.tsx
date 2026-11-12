@@ -1,24 +1,30 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import { ClientStrip } from "@/components/home/ClientStrip";
-import { GrowthStory } from "@/components/home/GrowthStory";
-import { Testimonials } from "@/components/home/Testimonials";
 import { CountUp } from "@/components/motion/CountUp";
 import { Card3D } from "@/components/motion/Card3D";
-import { ContactForm } from "@/app/contact/ContactForm";
 import { services } from "@/lib/services";
 import { archive, projects } from "@/lib/projects";
 import { site, whatsappLink } from "@/lib/site";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { Hero } from "@/components/home/Hero";
-import { WorkRibbon } from "@/components/work/WorkRibbon";
 import { ribbonItems } from "@/lib/ribbon";
-import { Marquee } from "@/components/home/Marquee";
-import { WorkGallery3D } from "@/components/home/WorkGallery3D";
-import { ServicesIndex } from "@/components/home/ServicesIndex";
 import { RevealText } from "@/components/motion/RevealText";
 import { getArticles } from "@/lib/insights";
 import { ArticleCard } from "@/components/insights/ArticleCard";
+
+// Below the fold. Server-rendered as usual, so the HTML (and the SEO) is unchanged,
+// but their JavaScript — including GSAP and three.js — loads after the first paint
+// instead of competing with it.
+const GrowthStory = dynamic(() => import("@/components/home/GrowthStory").then((m) => m.GrowthStory));
+const Testimonials = dynamic(() => import("@/components/home/Testimonials").then((m) => m.Testimonials));
+const WorkRibbon = dynamic(() => import("@/components/work/WorkRibbon").then((m) => m.WorkRibbon));
+const Marquee = dynamic(() => import("@/components/home/Marquee").then((m) => m.Marquee));
+const WorkGallery3D = dynamic(() => import("@/components/home/WorkGallery3D").then((m) => m.WorkGallery3D));
+const ServicesIndex = dynamic(() => import("@/components/home/ServicesIndex").then((m) => m.ServicesIndex));
+const ContactForm = dynamic(() => import("@/app/contact/ContactForm").then((m) => m.ContactForm));
+
 
 const industries: { name: string; work?: string }[] = [
   { name: "Live events & marketplaces", work: "av-leads" },

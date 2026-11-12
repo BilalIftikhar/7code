@@ -36,8 +36,10 @@ void main(){
   gl_FragColor=vec4(c,1.);
 }`;
 
-const GRAIN =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
+// A 64px greyscale noise tile. The previous version generated grain with an SVG
+// feTurbulence filter, which the browser had to run over the whole hero on every
+// paint; Lighthouse measured it as the LCP element with 1.6s of render delay.
+const GRAIN = 'url("/brand/grain.png")';
 
 export function SmokeField({ className = "" }: { className?: string }) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -77,8 +79,8 @@ export function SmokeField({ className = "" }: { className?: string }) {
       const uT = gl.getUniformLocation(prg, "t");
       const uM = gl.getUniformLocation(prg, "m");
 
-      // Smoke is soft: a third of the CSS size is plenty and keeps the GPU cost tiny
-      const scale = 0.34;
+      // Smoke is soft: a quarter of the CSS size is plenty and keeps the GPU cost tiny
+      const scale = 0.28;
       const resize = () => {
         const w = Math.max(2, Math.round(cv.clientWidth * scale));
         const h = Math.max(2, Math.round(cv.clientHeight * scale));
@@ -106,7 +108,7 @@ export function SmokeField({ className = "" }: { className?: string }) {
       let last = 0;
       const draw = (now: number) => {
         raf = requestAnimationFrame(draw);
-        if (!visible || document.hidden || now - last < 33) return;
+        if (!visible || document.hidden || now - last < 41) return;
         last = now;
         mx += (tx - mx) * 0.04;
         my += (ty - my) * 0.04;
@@ -145,7 +147,7 @@ export function SmokeField({ className = "" }: { className?: string }) {
       <div className="absolute inset-0 bg-[radial-gradient(60%_70%_at_78%_35%,rgba(120,170,150,0.28),transparent_70%),radial-gradient(45%_55%_at_60%_85%,rgba(22,163,74,0.22),transparent_70%),#0a0b0c]" />
       <canvas ref={canvas} className={`absolute inset-0 h-full w-full transition-opacity duration-[1600ms] ${live ? "opacity-100" : "opacity-0"}`} />
       {/* Film grain */}
-      <div className="absolute inset-0 opacity-[0.18] mix-blend-overlay" style={{ backgroundImage: GRAIN }} />
+      <div className="absolute inset-0 opacity-[0.12]" style={{ backgroundImage: GRAIN, backgroundSize: "64px 64px" }} />
     </div>
   );
 }

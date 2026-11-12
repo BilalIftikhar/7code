@@ -122,7 +122,7 @@
   to { transform: none; }
 }
 .line-rise {
-  animation: line-rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: line-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .rise {
   opacity: 0;
@@ -264,8 +264,12 @@ html.intro-seen .preloader { display: none; }
 
 /* Hero intro waits for the preloader on first visits */
 .line-rise, .rise { animation-delay: var(--d, 0s); }
+/* On a first visit the intro curtain lifts over ~0.93s. The hero headline used to
+   wait a further 1.05s before starting its rise, which made it the Largest
+   Contentful Paint. It now starts while the curtain is still clearing, which
+   keeps the same rhythm and shows the headline about half a second sooner. */
 html:not(.intro-seen) .line-rise,
-html:not(.intro-seen) .rise { animation-delay: calc(var(--d, 0s) + 1.05s); }
+html:not(.intro-seen) .rise { animation-delay: calc(var(--d, 0s) + 0.55s); }
 
 /* Route transition curtain */
 .page-curtain {
