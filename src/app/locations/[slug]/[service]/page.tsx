@@ -4,7 +4,7 @@ import { landings } from "@/lib/landings";
 
 export function generateStaticParams() {
   return landings
-    .filter((l) => l.kind === "city-service")
+    .filter((l) => l.kind === "city-service" || l.kind === "area")
     .map((l) => {
       const [, , slug, service] = l.path.split("/");
       return { slug, service };

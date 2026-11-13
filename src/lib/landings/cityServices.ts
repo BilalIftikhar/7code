@@ -4,9 +4,9 @@ import { uaeDepth } from "./uaeDepth";
 // City × service pages. Each one has its own local copy (intro, answer, local section,
 // FAQs). The "what's included" cards come from the service template below.
 
-type Svc = { name: string; serviceType: string; contact: string; cards: Item[]; tools: string[]; links: string[] };
+export type Svc = { name: string; serviceType: string; contact: string; cards: Item[]; tools: string[]; links: string[] };
 
-const SVC: Record<string, Svc> = {
+export const SVC: Record<string, Svc> = {
   "software-development": {
     name: "Software development",
     serviceType: "Custom software development",

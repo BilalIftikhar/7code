@@ -8,8 +8,9 @@ import { industries } from "./industries";
 import { compare } from "./compare";
 import { places } from "./places";
 import { cityServices } from "./cityServices";
+import { areaLandings, uaeEmirateHubs } from "./areas";
 
-export const landings: Landing[] = [...software, ...tech, ...ai, ...social, ...industries, ...compare, ...places, ...cityServices];
+export const landings: Landing[] = [...software, ...tech, ...ai, ...social, ...industries, ...compare, ...places, ...cityServices, ...uaeEmirateHubs, ...areaLandings];
 
 export const landingsByPath = new Map(landings.map((l) => [l.path, l]));
 export const getLanding = (path: string) => landingsByPath.get(path);

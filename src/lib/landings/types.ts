@@ -21,7 +21,9 @@ export type LandingKind =
   | "compare"
   | "country"
   | "city"
-  | "city-service";
+  | "city-service"
+  | "area"
+  | "area-service";
 
 export type Landing = {
   /** Absolute site path, no trailing slash */
