@@ -17,7 +17,7 @@ export const places: Landing[] = [
     name: "United Arab Emirates",
     line: "Software, websites, AI automation and social media for businesses across all seven emirates.",
     crumbs: L,
-    seoTitle: "Software Development & Digital Agency for the UAE | 7CODE",
+    seoTitle: "Software Development & Digital Agency for the UAE",
     metaDescription:
       "Software development, web design, AI automation, SEO and social media management for businesses in Dubai, Abu Dhabi, Sharjah and across the UAE, delivered remotely by 7CODE.",
     h1: "Software, web and digital services for UAE businesses",
@@ -88,7 +88,7 @@ export const places: Landing[] = [
     name: "Oman",
     line: "Websites, software, SEO and social media for businesses in Muscat, Sohar, Salalah and across Oman.",
     crumbs: L,
-    seoTitle: "Software Development & Digital Agency for Oman | 7CODE",
+    seoTitle: "Software Development & Digital Agency for Oman",
     metaDescription:
       "Software development, websites, AI automation, SEO and social media management for businesses in Muscat, Sohar, Salalah and across Oman, delivered remotely by 7CODE.",
     h1: "Software, web and digital services for Oman",
@@ -155,7 +155,7 @@ export const places: Landing[] = [
     name: "Pakistan",
     line: "Software house in Lahore serving businesses and exporters across Pakistan.",
     crumbs: L,
-    seoTitle: "Software House & Digital Agency in Pakistan | 7CODE Lahore",
+    seoTitle: "Software House & Digital Agency in Pakistan",
     metaDescription:
       "Lahore-based software house and digital agency: custom software, SaaS, websites, AI automation, SEO and social media for businesses in Lahore, Karachi, Islamabad, Faisalabad and across Pakistan.",
     h1: "Software house and digital agency in Pakistan",
@@ -223,7 +223,7 @@ export const places: Landing[] = [
     name: "Saudi Arabia",
     line: "Remote software, web and automation services for Saudi businesses.",
     crumbs: L,
-    seoTitle: "Software & Web Development for Saudi Arabia | 7CODE",
+    seoTitle: "Software & Web Development for Saudi Arabia",
     metaDescription:
       "Remote software development, bilingual websites, AI automation and SEO for private-sector businesses in Riyadh, Jeddah, Dammam and across Saudi Arabia, from 7CODE's team in Lahore.",
     h1: "Software and web development for Saudi businesses",
@@ -278,7 +278,7 @@ export const places: Landing[] = [
     name: "Qatar",
     line: "Remote software, web and digital services for businesses in Doha and across Qatar.",
     crumbs: L,
-    seoTitle: "Software & Web Development for Qatar Businesses | 7CODE",
+    seoTitle: "Software & Web Development for Qatar Businesses",
     metaDescription:
       "Remote software development, bilingual websites, AI automation, SEO and social media for businesses in Doha and across Qatar, delivered by 7CODE's team in Lahore.",
     h1: "Software and web development for Qatar",
@@ -340,7 +340,7 @@ export const places: Landing[] = [
     name: "United Kingdom",
     line: "Senior full-stack development and digital services for UK companies, delivered remotely.",
     crumbs: L,
-    seoTitle: "Remote Software Development Team for UK Companies | 7CODE",
+    seoTitle: "Remote Software Development Team for UK Companies",
     metaDescription:
       "Remote software development for UK startups and SMEs: SaaS, web apps, Next.js websites and AI automation, with good time-zone overlap and fixed, itemised quotes. Team in Lahore.",
     h1: "Remote software development for UK companies",
@@ -398,7 +398,7 @@ export const places: Landing[] = [
     name: "United States",
     line: "Remote SaaS, web app and automation development for US startups and SMEs.",
     crumbs: L,
-    seoTitle: "Offshore Software Development for US Startups | 7CODE",
+    seoTitle: "Offshore Software Development for US Startups",
     metaDescription:
       "Remote software development for US startups and small businesses: SaaS products, MVPs, web apps and AI automation, with async-friendly communication and fixed, itemised quotes.",
     h1: "Software development for US startups and SMEs",
@@ -454,7 +454,7 @@ export const places: Landing[] = [
     name: "Sharjah",
     line: "Websites, software and digital marketing for Sharjah businesses.",
     crumbs: [...L, { name: "UAE", href: "/locations/uae" }],
-    seoTitle: "Web Development & Software Company for Sharjah | 7CODE",
+    seoTitle: "Web Development & Software Company for Sharjah",
     metaDescription:
       "Web design, custom software, SEO and social media for Sharjah businesses, from SAIF Zone and Sharjah Industrial Area to Al Majaz and Muwaileh, delivered remotely by 7CODE.",
     h1: "Web development and software for Sharjah businesses",
@@ -503,7 +503,7 @@ export const places: Landing[] = [
     name: "Ajman",
     line: "Affordable, professional websites and digital marketing for Ajman SMEs.",
     crumbs: [...L, { name: "UAE", href: "/locations/uae" }],
-    seoTitle: "Web Design & Digital Marketing for Ajman Businesses | 7CODE",
+    seoTitle: "Web Design & Digital Marketing for Ajman Businesses",
     metaDescription:
       "Professional websites, SEO, social media management and simple business software for Ajman SMEs and Ajman Free Zone companies, delivered remotely by 7CODE with fixed quotes.",
     h1: "Websites and digital marketing for Ajman businesses",
@@ -551,7 +551,7 @@ export const places: Landing[] = [
     name: "Ras Al Khaimah",
     line: "Websites, software and SEO for RAK businesses and free-zone companies.",
     crumbs: [...L, { name: "UAE", href: "/locations/uae" }],
-    seoTitle: "Web & Software Development for Ras Al Khaimah | 7CODE",
+    seoTitle: "Web & Software Development for Ras Al Khaimah",
     metaDescription:
       "Websites, custom software, SEO and social media for Ras Al Khaimah businesses, RAKEZ free-zone companies, industrial firms and tourism operators, delivered remotely by 7CODE.",
     h1: "Web and software development for Ras Al Khaimah",
@@ -600,7 +600,7 @@ export const places: Landing[] = [
     name: "Muscat",
     line: "Software, websites, AI automation and social media for Muscat businesses.",
     crumbs: [...L, { name: "Oman", href: "/locations/oman" }],
-    seoTitle: "Web Development & Software Company for Muscat | 7CODE",
+    seoTitle: "Web Development & Software Company for Muscat",
     metaDescription:
       "Web design, custom software, AI automation, SEO and social media management for Muscat businesses, from Al Khuwair and Qurum to Ghala and Knowledge Oasis Muscat, delivered remotely.",
     h1: "Web development and software for Muscat",
@@ -699,7 +699,7 @@ export const places: Landing[] = [
     name: "Salalah",
     line: "Websites, booking and social media for Salalah's tourism, port and trade businesses.",
     crumbs: [...L, { name: "Oman", href: "/locations/oman" }],
-    seoTitle: "Web Design & Social Media for Salalah Businesses | 7CODE",
+    seoTitle: "Web Design & Social Media for Salalah Businesses",
     metaDescription:
       "Websites, booking systems, SEO and social media for Salalah businesses in tourism, hospitality, port logistics and the free zone, including Khareef-season campaigns. Delivered remotely.",
     h1: "Websites and digital marketing for Salalah",
@@ -748,7 +748,7 @@ export const places: Landing[] = [
     name: "Karachi",
     line: "Software, eCommerce, AI automation and SEO for Karachi businesses.",
     crumbs: [...L, { name: "Pakistan", href: "/locations/pakistan" }],
-    seoTitle: "Software House & Web Development for Karachi | 7CODE",
+    seoTitle: "Software House & Web Development for Karachi",
     metaDescription:
       "Custom software, eCommerce, AI automation, SEO and social media for Karachi businesses in trading, finance, logistics and retail, from 7CODE's team in Lahore.",
     h1: "Software and web development for Karachi",
@@ -864,7 +864,7 @@ export const places: Landing[] = [
     name: "Faisalabad",
     line: "Export websites, ERPs and software for Faisalabad's textile and apparel industry.",
     crumbs: [...L, { name: "Pakistan", href: "/locations/pakistan" }],
-    seoTitle: "Software & Websites for Faisalabad Textile Businesses | 7CODE",
+    seoTitle: "Software & Websites for Faisalabad Textile Businesses",
     metaDescription:
       "Websites, B2B export catalogues, ERP systems and SEO for Faisalabad textile, apparel and manufacturing businesses. We built the MUHSEEQ apparel export site in Faisalabad.",
     h1: "Software and websites for Faisalabad businesses",

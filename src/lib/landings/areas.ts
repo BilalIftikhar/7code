@@ -557,9 +557,147 @@ const alAin: AreaDef[] = [
     services: [WEB, SOCIAL, SOFT], nearby: ["al-jimi", "al-ain-city", "al-foah"] },
 ];
 
-export const AREAS: AreaDef[] = [...dubai, ...abuDhabi, ...sharjah, ...ajman, ...rak, ...fujairah, ...uaq, ...alAin];
+
+// ---- Additional real districts, added for deeper UAE coverage ----
+const extraAreas: AreaDef[] = [
+  // Dubai
+  { slug: "al-karama", name: "Al Karama", emirate: "dubai", type: "retail",
+    profile: ["Al Karama is a dense, long-established central Dubai district famous for its markets, affordable dining and a packed base of small retailers, tailors, electronics shops and budget services.", "High footfall and thin margins make practical tools the win: a simple catalogue or store, order and inventory handling, and local SEO that captures nearby searches."],
+    sectors: ["Retail and markets", "Restaurants and cafés", "Tailoring and services", "Electronics", "Small trading"], services: [WEB, SOFT, SOCIAL], nearby: ["bur-dubai", "oud-metha", "al-satwa"] },
+  { slug: "al-satwa", name: "Al Satwa", emirate: "dubai", type: "retail",
+    profile: ["Al Satwa is an older, lively Dubai neighbourhood of tailors, cafeterias, salons, auto shops and small independent traders serving a dense local community.", "These are high-repeat local businesses, best served by a clean mobile site, Google Business Profile and steady social that reaches the surrounding streets."],
+    sectors: ["Tailoring and textiles", "Cafeterias and food", "Salons and barbers", "Auto services", "Small retail"], services: [WEB, SOCIAL, SOFT], nearby: ["al-karama", "jumeirah", "al-wasl"] },
+  { slug: "mirdif", name: "Mirdif", emirate: "dubai", type: "residential",
+    profile: ["Mirdif is a settled, family-focused Dubai suburb around City Centre Mirdif, with clinics, nurseries, tutoring, salons and neighbourhood services catering to residents.", "Reaching nearby families is the goal, so local SEO, Google Business Profile, booking systems and community-focused social media bring the clearest enquiries."],
+    sectors: ["Clinics and dental", "Nurseries and tutoring", "Salons and fitness", "Home services", "Retail"], services: [WEB, SOCIAL, SOFT], nearby: ["al-garhoud", "nad-al-sheba", "international-city"] },
+  { slug: "discovery-gardens", name: "Discovery Gardens", emirate: "dubai", type: "residential",
+    profile: ["Discovery Gardens is a high-density residential community near Jebel Ali, with a large, cost-conscious resident base and the clinics, grocers, salons and small services around them.", "Local, affordable trade dominates, so a lightweight website, local SEO and consistent social media reaching nearby residents give the best return."],
+    sectors: ["Clinics and pharmacies", "Grocery and retail", "Salons and services", "Home services", "Food delivery"], services: [WEB, SOCIAL, SOFT], nearby: ["jebel-ali", "jlt", "dubai-investment-park"] },
+  { slug: "dubai-sports-city", name: "Dubai Sports City", emirate: "dubai", type: "residential",
+    profile: ["Dubai Sports City is a community built around stadiums and sports academies, mixing residential towers with fitness, coaching, clinics and family-service businesses.", "A health-and-family audience makes social content, booking-ready websites and local SEO the most effective tools here."],
+    sectors: ["Sports academies and coaching", "Fitness and wellness", "Clinics", "Cafés and retail", "Nurseries"], services: [SOCIAL, WEB, SOFT], nearby: ["motor-city", "dubai-production-city", "jvc"] },
+  { slug: "al-wasl", name: "Al Wasl", emirate: "dubai", type: "business",
+    profile: ["Al Wasl, along the road between Jumeirah and the Canal, is a mix of boutique offices, design studios, clinics, cafés and showrooms serving an affluent central-Dubai catchment.", "Image-conscious, service-led businesses here do well with a polished website, brand-grade social content and booking or CRM tools."],
+    sectors: ["Design and interior studios", "Clinics and wellness", "Boutique F&B", "Showrooms", "Professional services"], services: [WEB, SOCIAL, CRM, SOFT], nearby: ["jumeirah", "business-bay", "al-satwa"] },
+  // Abu Dhabi
+  { slug: "al-bateen", name: "Al Bateen", emirate: "abu-dhabi", type: "business",
+    profile: ["Al Bateen is an upscale central Abu Dhabi district of villas, embassies, the marina and a cluster of professional firms, clinics and boutique businesses.", "A settled, affluent base makes a credible website, CRM and considered social content the natural fit, with LinkedIn for the B2B firms."],
+    sectors: ["Professional services", "Clinics and wellness", "Marine and leisure", "Boutique retail", "Real estate"], services: [WEB, SOFT, CRM, SOCIAL], nearby: ["al-khalidiyah", "al-mushrif", "al-danah"] },
+  { slug: "al-zahiyah", name: "Al Zahiyah", emirate: "abu-dhabi", type: "retail",
+    profile: ["Al Zahiyah (the former Tourist Club area) is a dense central Abu Dhabi district of hotels, retail, restaurants and small trading businesses near the Corniche.", "Consumer-facing trade dominates, so bilingual websites, booking systems, local SEO and active social media carry the most weight."],
+    sectors: ["Hotels and hospitality", "Retail and markets", "Restaurants", "Travel services", "Small trading"], services: [WEB, SOCIAL, SOFT], nearby: ["al-danah", "al-khalidiyah", "al-maryah-island"] },
+  { slug: "baniyas", name: "Baniyas", emirate: "abu-dhabi", type: "residential",
+    profile: ["Baniyas is a large residential and light-commercial district on Abu Dhabi's mainland, with local markets, workshops, clinics and services for a settled community.", "Practical, local trade is the focus, well served by affordable websites, local SEO and simple systems for the trading and services firms."],
+    sectors: ["Local retail and markets", "Workshops and services", "Clinics", "Restaurants", "Trading SMEs"], services: [WEB, SOFT, SOCIAL], nearby: ["mohammed-bin-zayed-city", "mussafah", "al-shamkha"] },
+  { slug: "al-shamkha", name: "Al Shamkha", emirate: "abu-dhabi", type: "residential",
+    profile: ["Al Shamkha is a fast-growing residential district on Abu Dhabi's outskirts, with new housing, schools, clinics and the neighbourhood businesses that follow families there.", "As a growing area, local SEO, Google Business Profile and steady social media are the most direct route to new residents."],
+    sectors: ["Clinics and pharmacies", "Schools and nurseries", "Retail and grocery", "Home services", "Cafés"], services: [WEB, SOCIAL, SOFT], nearby: ["khalifa-city", "baniyas", "mohammed-bin-zayed-city"] },
+  { slug: "al-wahda", name: "Al Wahda", emirate: "abu-dhabi", type: "business",
+    profile: ["Al Wahda is a central Abu Dhabi commercial district around a major mall, mixing offices, clinics, retail and professional firms with heavy daily footfall.", "A blend of corporate and consumer businesses suits bilingual websites, CRM, booking tools and social for the retail side."],
+    sectors: ["Corporate offices", "Retail and malls", "Clinics", "Professional services", "Government-adjacent"], services: [WEB, SOFT, CRM, SOCIAL], nearby: ["al-danah", "al-khalidiyah", "al-mushrif"] },
+  // Sharjah
+  { slug: "al-taawun", name: "Al Taawun", emirate: "sharjah", type: "residential",
+    profile: ["Al Taawun is a dense residential and commercial district on the Sharjah corniche near the Dubai border, with towers, retail, clinics and services for a large commuter population.", "Reaching nearby residents is the game, so local SEO, Google Business Profile and consistent social media produce the clearest enquiries."],
+    sectors: ["Clinics and pharmacies", "Retail and grocery", "Restaurants", "Salons and fitness", "Services"], services: [WEB, SOCIAL, SOFT], nearby: ["al-majaz", "al-nahda-sharjah", "al-khan"] },
+  { slug: "university-city-sharjah", name: "University City (Sharjah)", emirate: "sharjah", type: "tech",
+    profile: ["University City is Sharjah's higher-education and research hub, home to universities, research centres and the education-adjacent and technology businesses around them.", "A young, technical, research-led base suits web apps, SaaS, education platforms and the social content these institutions and startups need."],
+    sectors: ["Universities and research", "EdTech and startups", "Student services", "Technology firms", "Events"], services: [SAAS, WEB, SOFT, SOCIAL], nearby: ["muwaileh", "al-qasimia", "saif-zone"] },
+  // Ras Al Khaimah
+  { slug: "al-jazeera-al-hamra", name: "Al Jazeera Al Hamra", emirate: "ras-al-khaimah", type: "waterfront",
+    profile: ["Al Jazeera Al Hamra, near the Al Hamra marina and the heritage village, blends tourism and leisure developments with residential communities on the RAK coast.", "Tourism and leisure lead the trade, so booking-ready websites, social content and local SEO are the tools that convert."],
+    sectors: ["Tourism and leisure", "Hospitality", "Real estate", "Retail", "Marine"], services: [SOCIAL, WEB, CRM], nearby: ["al-hamra", "al-nakheel", "rakez"] },
+  // Ajman
+  { slug: "al-mowaihat", name: "Al Mowaihat", emirate: "ajman", type: "residential",
+    profile: ["Al Mowaihat is a growing residential district of Ajman with new villas, schools, clinics and the neighbourhood services that follow families there.", "Local trade is the focus, best served by affordable websites, local SEO and consistent social media reaching nearby residents."],
+    sectors: ["Clinics and pharmacies", "Schools and nurseries", "Retail and grocery", "Home services", "Cafés"], services: [WEB, SOCIAL, SOFT], nearby: ["al-nuaimiya", "al-jurf", "al-rashidiya-ajman"] },
+  // Umm Al Quwain
+  { slug: "al-salamah", name: "Al Salamah", emirate: "umm-al-quwain", type: "residential",
+    profile: ["Al Salamah is a main residential and commercial area of Umm Al Quwain, with local retail, clinics and services for a small, settled community.", "Simple, affordable tools fit best here: a clear website, local SEO and social content kept lightweight."],
+    sectors: ["Local retail", "Clinics", "Services", "Restaurants", "SMEs"], services: [WEB, SOCIAL], nearby: ["umm-al-quwain-city", "uaq-free-trade-zone", "al-nakheel"] },
+];
+
+export const AREAS: AreaDef[] = [...dubai, ...abuDhabi, ...sharjah, ...ajman, ...rak, ...fujairah, ...uaq, ...alAin, ...extraAreas];
+
+// Promote high-demand districts to full service coverage (umbrella hub + service pages).
+const PROMOTE = new Set(["al-barsha", "jumeirah", "jvc", "al-garhoud", "dubai-healthcare-city", "al-khalidiyah", "al-danah", "muwaileh"]);
+for (const a of AREAS) if (PROMOTE.has(a.slug)) a.tier1 = true;
 
 const areaBySlug = new Map(AREAS.map((a) => [a.slug, a]));
+
+// Short keyword noun per service, for titles that each own one search phrase.
+const serviceNoun: Record<string, string> = {
+  [SOFT]: "Software Development", [WEB]: "Web Design & Development", [SAAS]: "SaaS Development",
+  [AI]: "AI Automation", [SOCIAL]: "Social Media Management", [CRM]: "CRM Development",
+};
+
+/** Append ", {Emirate}" only when the title stays within the 70-char limit. */
+const fit = (base: string, suffix: string) => (base.length + suffix.length <= 70 ? base + suffix : base);
+
+/**
+ * Concrete systems we would actually build for a district, keyed off its character.
+ * This is the page's "what would you build for us" answer, and it differs by area type
+ * so an industrial district and a waterfront one never read the same.
+ */
+function buildExamples(a: AreaDef): Item[] {
+  const byType: Record<AreaType, Item[]> = {
+    industrial: [
+      { name: "Job & dispatch tracking", body: "Every job, its status, who it is assigned to and when it ships, off the whiteboard and into one screen." },
+      { name: "Stock across locations", body: "Live inventory by warehouse or branch, with movements and reorder alerts, so you stop selling what isn't there." },
+      { name: "Quotation & invoicing", body: "Branded quotes with pricing rules, approvals and VAT, plus structured invoice data ready for UAE e-invoicing." },
+      { name: "Supplier-document automation", body: "Invoices and delivery notes read automatically into a review queue, cutting the daily re-typing." },
+    ],
+    freezone: [
+      { name: "Trade catalogue & orders", body: "A product catalogue and order portal your buyers use directly, instead of long WhatsApp threads." },
+      { name: "Shipment & inventory system", body: "Track stock, shipments and documents in one place across suppliers and customers." },
+      { name: "Customs & supplier portal", body: "A login where suppliers and partners upload and track documents, with nothing lost in email." },
+      { name: "Invoice & VAT automation", body: "Invoices generated with correct VAT and structured for UAE e-invoicing as the deadline approaches." },
+    ],
+    business: [
+      { name: "CRM with WhatsApp", body: "The WhatsApp conversation is the record, so pipeline and follow-ups survive a salesperson leaving." },
+      { name: "Client portal", body: "A login where clients see documents, requests and history, instead of a thread per enquiry." },
+      { name: "Quotation & proposal system", body: "Branded quotes and proposals with approvals and version history, sent in minutes." },
+      { name: "Reporting dashboard", body: "Numbers pulled from your tools into one morning view, so decisions don't wait on a spreadsheet." },
+    ],
+    tech: [
+      { name: "SaaS MVP", body: "A focused first release — accounts, billing and the one job customers pay for — fast enough to learn from." },
+      { name: "API & integrations", body: "Your product connected to payment, messaging and the tools your customers already run." },
+      { name: "Admin & analytics", body: "A back office to manage accounts and data, with the metrics that actually drive decisions." },
+      { name: "Subscriptions & billing", body: "Card subscriptions in AED or USD alongside manual invoicing for enterprise buyers." },
+    ],
+    waterfront: [
+      { name: "Booking-ready website", body: "A fast, mobile-first site where visitors book or enquire in a couple of taps." },
+      { name: "Reels & social content", body: "Short video and an active feed that reach the young, phone-first audience here." },
+      { name: "Offers & loyalty", body: "Campaign pages and simple loyalty or offer flows that bring people back." },
+      { name: "Local SEO & Google", body: "A complete Google Business Profile and local SEO so you're found in Maps and nearby searches." },
+    ],
+    retail: [
+      { name: "Catalogue or online store", body: "A product catalogue or shop with the UAE payment and delivery options your customers expect." },
+      { name: "Inventory & orders", body: "Stock and orders in one system, so online and walk-in trade don't drift apart." },
+      { name: "Social & offers", body: "Consistent social content and offer campaigns that reach nearby shoppers." },
+      { name: "Local SEO & Google", body: "Google Business Profile and local SEO so searches near you find you first." },
+    ],
+    residential: [
+      { name: "Booking-ready website", body: "A clean, bilingual site where local residents book or message you quickly." },
+      { name: "Google Business Profile", body: "A complete, active profile — the first thing a nearby customer checks." },
+      { name: "Local SEO", body: "Pages and content tuned to how people here search, so you appear for nearby queries." },
+      { name: "Social media", body: "A steady feed and Stories that keep you in front of the surrounding community." },
+    ],
+    city: [
+      { name: "Bilingual website", body: "A fast English-and-Arabic site that reads naturally in both, with proper right-to-left layout." },
+      { name: "Local SEO", body: "Content and setup tuned to local search, so nearby customers find you." },
+      { name: "Simple operations system", body: "A lightweight system for jobs, stock or bookings that fits how a smaller team works." },
+      { name: "Social media", body: "A consistent presence that keeps the business visible to the community it serves." },
+    ],
+    port: [
+      { name: "Shipment & operations system", body: "Track shipments, jobs and documents in one place for logistics and port-services firms." },
+      { name: "Supplier & customs portal", body: "A login where partners handle documents and status, off email." },
+      { name: "Tourism & booking site", body: "For the hospitality side, a booking-ready site and social content that fills rooms and tours." },
+      { name: "Invoice automation", body: "Heavy shipping paperwork read into your systems instead of re-typed." },
+    ],
+  };
+  return byType[a.type];
+}
+
 const areaName = (slug: string) => areaBySlug.get(slug)?.name ?? slug;
 const REMOTE = "7CODE has no office in the UAE. Our team works from Lahore, one hour behind the UAE, and serves this area remotely, with a UAE WhatsApp line and calls in your working hours.";
 
@@ -603,10 +741,13 @@ function hubLanding(a: AreaDef): Landing {
     name: a.name,
     line: `Websites, software, AI automation and social media for ${a.name} businesses, delivered remotely.`,
     crumbs: [{ name: "Locations", href: "/locations" }, { name: em.name, href: em.hub }],
-    seoTitle: `Web & Software Development in ${a.name}, ${em.name}`.slice(0, 70),
-    metaDescription:
-      `Websites, custom software, AI automation and social media management for businesses in ${a.name}, ${em.name}: ${a.sectors.slice(0, 3).join(", ").toLowerCase()} and more. Fixed quotes, served remotely by 7CODE.`.slice(0, 200),
-    h1: `Digital, web and software services for ${a.name} businesses`,
+    seoTitle: a.tier1
+      ? fit(`Digital Agency in ${a.name}`, `, ${em.name}`)
+      : fit(`${serviceNoun[a.services[0]]} Company in ${a.name}`, `, ${em.name}`),
+    metaDescription: a.tier1
+      ? `Web design, custom software, AI automation and social media for ${a.name}, ${em.name} businesses: ${a.sectors.slice(0, 3).join(", ").toLowerCase()} and more. Fixed quotes, delivered remotely by 7CODE.`.slice(0, 200)
+      : `${serviceNoun[a.services[0]]} for businesses in ${a.name}, ${em.name}: ${a.sectors.slice(0, 3).join(", ").toLowerCase()} and more, with fixed quotes and work you own. Delivered remotely by 7CODE.`.slice(0, 200),
+    h1: a.tier1 ? `Digital, web and software services for ${a.name} businesses` : `${serviceNoun[a.services[0]]} for ${a.name} businesses`,
     serviceType: "Software development and digital services",
     areaServed: [a.name, em.name, "United Arab Emirates"],
     presence: REMOTE,
@@ -622,6 +763,7 @@ function hubLanding(a: AreaDef): Landing {
     sections: [
       { type: "cards", h: `What we build for ${a.name} businesses`, note: `The mix most ${a.name} businesses ask us for first.`, items: hubCards(a) },
       { type: "text", h: `${a.name} at a glance`, paras: a.profile },
+      { type: "cards", h: `Systems we'd build for a ${a.name} business`, note: "Concrete examples, shaped by how businesses here actually operate.", items: buildExamples(a) },
       { type: "list", h: `Who we help in ${a.name}`, items: a.sectors },
       {
         type: "text",
@@ -662,7 +804,7 @@ function serviceLanding(a: AreaDef, svc: keyof typeof SVC): Landing {
     name: `${s.name} in ${a.name}`,
     line: `${s.name} for ${a.name} businesses, built and run remotely.`,
     crumbs: [{ name: "Locations", href: "/locations" }, { name: em.name, href: em.hub }, { name: a.name, href: `${em.hub}/${a.slug}` }],
-    seoTitle: `${s.name} in ${a.name}, ${em.name} | 7CODE`.slice(0, 70),
+    seoTitle: fit(`${s.name} in ${a.name}`, `, ${em.name}`),
     metaDescription:
       `${s.name} for businesses in ${a.name}, ${em.name}: built for ${a.sectors.slice(0, 2).join(" and ").toLowerCase()} and more, with fixed quotes and code you own. Delivered remotely by 7CODE.`.slice(0, 200),
     h1: `${s.name} for ${a.name} businesses`,
@@ -731,7 +873,7 @@ function emirateHub(key: EmirateKey, blurb: string, answer: string): Landing {
     name: em.name,
     line: `Websites, software, AI automation and social media for ${em.name} businesses, delivered remotely.`,
     crumbs: [{ name: "Locations", href: "/locations" }],
-    seoTitle: `Web & Software Development Company in ${em.name} | 7CODE`.slice(0, 70),
+    seoTitle: `Web & Software Development Company in ${em.name}`.slice(0, 70),
     metaDescription:
       `Websites, custom software, AI automation, SEO and social media management for businesses across ${em.name}, delivered remotely by 7CODE with fixed quotes and a UAE WhatsApp line.`.slice(0, 200),
     h1: `Software, web and digital services for ${em.name} businesses`,

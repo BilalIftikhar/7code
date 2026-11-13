@@ -298,7 +298,7 @@ const combos: Combo[] = [
   {
     city: "abu-dhabi",
     svc: "ai-automation",
-    seoTitle: "AI Development & Automation in Abu Dhabi | 7CODE",
+    seoTitle: "AI Development & Automation in Abu Dhabi",
     metaDescription:
       "AI development and automation for Abu Dhabi businesses: document processing, AI assistants, agents and n8n workflows for logistics, industrial and service companies, with careful data handling.",
     h1: "AI development and automation for Abu Dhabi",
@@ -385,7 +385,7 @@ const combos: Combo[] = [
   {
     city: "muscat",
     svc: "software-development",
-    seoTitle: "Software Development Company in Muscat, Oman | 7CODE",
+    seoTitle: "Software Development Company in Muscat, Oman",
     metaDescription:
       "Custom software development for Muscat businesses: CRMs, ERPs, portals and web applications for Omani companies, with Arabic support and fixed quotes. Served remotely from Lahore.",
     h1: "Software development for Muscat businesses",
@@ -444,7 +444,7 @@ const combos: Combo[] = [
   {
     city: "muscat",
     svc: "social-media-management",
-    seoTitle: "Social Media Management in Muscat, Oman | 7CODE",
+    seoTitle: "Social Media Management in Muscat, Oman",
     metaDescription:
       "Social media management for Muscat businesses: Instagram, TikTok, Snapchat and LinkedIn content, Reels, captions in Arabic and English, publishing, replies and monthly reporting.",
     h1: "Social media management for Muscat businesses",
@@ -473,7 +473,7 @@ const combos: Combo[] = [
   {
     city: "lahore",
     svc: "social-media-management",
-    seoTitle: "Social Media Management Agency in Lahore | 7CODE",
+    seoTitle: "Social Media Management Agency in Lahore",
     metaDescription:
       "Social media management agency in Lahore: content calendars, post design, Reels, captions in English and Urdu, publishing, community management and reporting for Lahore businesses.",
     h1: "Social media management agency in Lahore",
