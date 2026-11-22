@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { services } from "@/lib/services";
+import { byKind } from "@/lib/landings";
 import { projects } from "@/lib/projects";
 import { site, whatsappLink } from "@/lib/site";
 import { Mark } from "./Logo";
@@ -16,11 +17,23 @@ const company = [
   { href: "/insights", label: "Insights" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
+];
+
+// Primary market hubs, surfaced site-wide so search engines discover them from the
+// frequently-crawled homepage footer (they in turn link their city, district and
+// service pages).
+const locations = [
   { href: "/locations/uae", label: "UAE" },
-  { href: "/locations/oman", label: "Oman" },
-  { href: "/locations/lahore", label: "Lahore" },
   { href: "/locations/dubai", label: "Dubai" },
   { href: "/locations/abu-dhabi", label: "Abu Dhabi" },
+  { href: "/locations/sharjah", label: "Sharjah" },
+  { href: "/locations/saudi-arabia", label: "Saudi Arabia" },
+  { href: "/locations/riyadh", label: "Riyadh" },
+  { href: "/locations/jeddah", label: "Jeddah" },
+  { href: "/locations/dammam", label: "Dammam" },
+  { href: "/locations/al-khobar", label: "Al Khobar" },
+  { href: "/locations/oman", label: "Oman" },
+  { href: "/locations/lahore", label: "Lahore" },
 ];
 
 async function Year() {
@@ -129,12 +142,28 @@ export function Footer() {
                 <Link href="/social-media-management">Social media packages</Link>
               </li>
             </ul>
+            <h2 className="mt-8">Software development</h2>
+            <ul>
+              {byKind("service").map((l) => (
+                <li key={l.path}>
+                  <Link href={l.path}>{l.name}</Link>
+                </li>
+              ))}
+            </ul>
           </nav>
 
           <nav aria-label="Company" className="ft-col" data-a style={{ ["--d" as string]: ".68s" }}>
             <h2>Company</h2>
             <ul>
               {company.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href}>{l.label}</Link>
+                </li>
+              ))}
+            </ul>
+            <h2 className="mt-8">Locations</h2>
+            <ul>
+              {locations.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href}>{l.label}</Link>
                 </li>

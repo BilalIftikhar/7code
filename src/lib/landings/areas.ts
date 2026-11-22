@@ -939,7 +939,7 @@ function emirateHub(key: EmirateKey, blurb: string, answer: string): Landing {
       { q: "Do you build Arabic websites?", a: "Yes, with right-to-left layouts and Arabic content prepared by native speakers or provided by you." },
       { q: `Which ${em.name} areas do you cover?`, a: `All of them. Because we work remotely, every district and town in ${em.name} is served the same way; the pages above cover the main business areas.` },
     ],
-    related: ["/locations/uae", ...districts.filter((d) => d.tier1).slice(0, 4).map((d) => `${em.hub}/${d.slug}`)],
+    related: ["/locations/uae", ...districts.map((d) => `${em.hub}/${d.slug}`)],
   };
 }
 

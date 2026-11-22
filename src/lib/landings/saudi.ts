@@ -325,7 +325,9 @@ function cityHub(c: CityDef): Landing {
     faqs: cityFaqs(c),
     related: [
       "/locations/saudi-arabia",
-      ...(c.tier1 ? [`/locations/${c.slug}/${c.services[0]}`] : []),
+      ...(c.tier1 ? c.services.slice(0, 2).map((svc) => `/locations/${c.slug}/${svc}`) : []),
+      // Link this city's districts so they are crawlable from the city hub.
+      ...DISTRICTS.filter((d) => d.city === c.slug).map((d) => `/locations/${c.slug}/${d.slug}`),
       ...c.nearby.filter((n) => cityBySlug.has(n)).slice(0, 3).map((n) => `/locations/${n}`),
     ].filter((p, i, arr) => arr.indexOf(p) === i),
   };

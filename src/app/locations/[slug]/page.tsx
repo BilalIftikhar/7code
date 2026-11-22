@@ -34,6 +34,8 @@ export default async function LocationPage({ params }: PageProps<"/locations/[sl
     notFound();
   }
   const localServices = landings.filter((x) => x.kind === "city-service" && x.path.startsWith(`/locations/${l.slug}/`));
+  // District/area hub pages under this city, linked so they are crawlable from the city hub.
+  const areaHubs = landings.filter((x) => x.kind === "area" && x.path.startsWith(`/locations/${l.slug}/`) && x.path.split("/").length === 4);
 
   const svc = l.services.map((s) => services.find((x) => x.slug === s)).filter((s) => s !== undefined);
   const work = l.work.map((w) => projects.find((p) => p.slug === w)).filter((p) => p !== undefined);
@@ -197,6 +199,22 @@ export default async function LocationPage({ params }: PageProps<"/locations/[sl
           </div>
           <div className="mt-10">
             <LandingGrid items={localServices} />
+          </div>
+        </section>
+      )}
+
+      {areaHubs.length > 0 && (
+        <section aria-labelledby="lareas-h" className="wrap pb-20 md:pb-28">
+          <div className="border-t border-night pt-10">
+            <h2 id="lareas-h" className="display text-[clamp(2.2rem,5vw,4rem)]">
+              Business areas in {l.city}
+            </h2>
+            <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-graphite">
+              We work with businesses right across {l.city}. Each area has its own page.
+            </p>
+          </div>
+          <div className="mt-10">
+            <LandingGrid items={areaHubs} />
           </div>
         </section>
       )}
