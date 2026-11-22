@@ -9,8 +9,9 @@ import { compare } from "./compare";
 import { places } from "./places";
 import { cityServices } from "./cityServices";
 import { areaLandings, uaeEmirateHubs } from "./areas";
+import { saudiLandings } from "./saudi";
 
-export const landings: Landing[] = [...software, ...tech, ...ai, ...social, ...industries, ...compare, ...places, ...cityServices, ...uaeEmirateHubs, ...areaLandings];
+export const landings: Landing[] = [...software, ...tech, ...ai, ...social, ...industries, ...compare, ...places, ...cityServices, ...uaeEmirateHubs, ...areaLandings, ...saudiLandings];
 
 export const landingsByPath = new Map(landings.map((l) => [l.path, l]));
 export const getLanding = (path: string) => landingsByPath.get(path);
@@ -26,6 +27,7 @@ for (const l of landings) {
 
 export function quality(l: Landing) {
   const g = gate(l);
+  if (l.noindex) g.reasons.push("deprioritised");
   if ((titleCount.get(l.seoTitle) ?? 0) > 1) g.reasons.push("duplicate title");
   if ((descCount.get(l.metaDescription) ?? 0) > 1) g.reasons.push("duplicate description");
   return { ok: g.reasons.length === 0, reasons: g.reasons };

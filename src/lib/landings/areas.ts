@@ -624,6 +624,26 @@ for (const a of AREAS) if (PROMOTE.has(a.slug)) a.tier1 = true;
 
 const areaBySlug = new Map(AREAS.map((a) => [a.slug, a]));
 
+/**
+ * Districts strong enough to keep their deeper /{area}/{service} pages indexed.
+ * These are the prime commercial, tech and free-zone districts with genuine B2B
+ * software/web search demand. Service pages for every other district are generated
+ * but carry noindex, so Google's crawl budget concentrates on the hubs + these
+ * strong pages instead of a long tail of near-identical area×service doorways.
+ * To re-index a district later (once the domain has more authority), add its slug here.
+ */
+const KEEP_SERVICE_PAGES = new Set([
+  // Dubai — core business/financial/tech/industrial/free-zone districts
+  "business-bay", "difc", "downtown-dubai", "dubai-marina", "jlt", "deira",
+  "al-quoz", "jebel-ali", "dubai-internet-city", "dubai-media-city", "dubai-silicon-oasis",
+  // Abu Dhabi
+  "al-reem-island", "al-maryah-island", "mussafah",
+  // Sharjah
+  "sharjah-industrial-area", "saif-zone", "al-majaz",
+  // Northern Emirates — top free zones
+  "rakez", "ajman-free-zone",
+]);
+
 // Short keyword noun per service, for titles that each own one search phrase.
 const serviceNoun: Record<string, string> = {
   [SOFT]: "Software Development", [WEB]: "Web Design & Development", [SAAS]: "SaaS Development",
@@ -788,7 +808,7 @@ function hubLanding(a: AreaDef): Landing {
     faqs: hubFaqs(a),
     related: [
       em.hub,
-      a.tier1 ? `${em.hub}/${a.slug}/${a.services[0]}` : em.hub,
+      a.tier1 && KEEP_SERVICE_PAGES.has(a.slug) ? `${em.hub}/${a.slug}/${a.services[0]}` : em.hub,
       ...a.nearby.filter((n) => areaBySlug.has(n)).slice(0, 3).map((n) => { const na = areaBySlug.get(n)!; return `${EMIRATE[na.emirate].hub}/${na.slug}`; }),
     ].filter((p, i, arr) => arr.indexOf(p) === i),
   };
@@ -801,6 +821,7 @@ function serviceLanding(a: AreaDef, svc: keyof typeof SVC): Landing {
   return {
     path: `${em.hub}/${a.slug}/${svc}`,
     kind: "area-service",
+    noindex: !KEEP_SERVICE_PAGES.has(a.slug),
     name: `${s.name} in ${a.name}`,
     line: `${s.name} for ${a.name} businesses, built and run remotely.`,
     crumbs: [{ name: "Locations", href: "/locations" }, { name: em.name, href: em.hub }, { name: a.name, href: `${em.hub}/${a.slug}` }],

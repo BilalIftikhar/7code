@@ -56,6 +56,8 @@ export type Landing = {
   contact?: { service?: string; topic?: string };
   /** Pages that only exist to answer one question */
   updated?: string;
+  /** Force noindex (kept live and crawlable, out of the sitemap) — used to deprioritise thin area pages so crawl budget concentrates on stronger pages. */
+  noindex?: boolean;
 };
 
 const text = (l: Landing) =>
